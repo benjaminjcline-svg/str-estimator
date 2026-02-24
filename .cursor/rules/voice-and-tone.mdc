@@ -1,0 +1,31 @@
+---
+description: Voice and tone for all copy (marketing, UI, LLM output). Human, direct, punchy.
+globs: "**/*.tsx,**/*.ts,**/learn/**/*.mdx,docs/VOICE-AND-TONE.md"
+alwaysApply: false
+---
+
+# Voice & Tone — STR Estimator
+
+All user-facing copy must follow `docs/VOICE-AND-TONE.md`. Core rules:
+
+## Do
+- **Direct:** "Your deal either works or it doesn't"
+- **Confident:** "Most STR buyers overestimate. Badly."
+- **Specific:** numbers, examples, concrete scenarios
+- **Conversational:** contractions (we're, don't, you'll), "you" and "your"
+- **Punchy:** short sentences, varied rhythm
+
+## Never use
+leverage, robust, comprehensive, delve, utilize, facilitate, holistic, synergy, paradigm, cutting-edge, best-in-class, game-changing, revolutionize, "it's important to note," "in conclusion," "furthermore," "moreover"
+
+## CTAs
+- "Run your deal — $49" ✓
+- "See if it's worth it" / "Know before you buy" ✓
+- "Analyze" / "Get started" ✗
+
+## Example rewrite
+| Before | After |
+|--------|-------|
+| We provide comprehensive STR analysis | We stress-test your numbers and tell you straight: proceed, pause, or walk away. |
+
+When editing copy or prompts, reference `docs/VOICE-AND-TONE.md` for full rules.
