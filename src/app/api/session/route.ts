@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import Stripe from "stripe";
 import { analyzeSTR } from "@/lib/analyze";
 import type { STRInput } from "@/lib/types";
 
@@ -21,6 +20,7 @@ export async function GET(req: NextRequest) {
     );
   }
 
+  const { default: Stripe } = await import("stripe");
   const stripe = new Stripe(stripeKey);
 
   try {

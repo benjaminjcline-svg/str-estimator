@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import Stripe from "stripe";
 import { isTestAccount } from "@/lib/test-accounts";
 import type { STRInput } from "@/lib/types";
 
@@ -38,6 +37,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const { default: Stripe } = await import("stripe");
     const stripe = new Stripe(stripeKey);
     const origin = req.headers.get("origin") ?? req.nextUrl.origin;
     const successUrl = `${origin}/report?session_id={CHECKOUT_SESSION_ID}`;
