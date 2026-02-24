@@ -3,8 +3,6 @@ import Stripe from "stripe";
 import { analyzeSTR } from "@/lib/analyze";
 import type { STRInput } from "@/lib/types";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? "");
-
 /**
  * Retrieve Stripe session and return analysis for paid sessions.
  * Used when user lands on /report?session_id=xxx after payment.
@@ -14,6 +12,16 @@ export async function GET(req: NextRequest) {
   if (!sessionId) {
     return NextResponse.json({ error: "Missing session_id" }, { status: 400 });
   }
+
+  const stripeKey = process.env.STRIPE_SECRET_KEY;
+  if (!stripeKey || stripeKey === "sk_test_xxxxx") {
+    return NextResponse.json(
+      { error: "Payment not configured" },
+      { status: 503 }
+    );
+  }
+
+  const stripe = new Stripe(stripeKey);
 
   try {
     const session = await stripe.checkout.sessions.retrieve(sessionId);
