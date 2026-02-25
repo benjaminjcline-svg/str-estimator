@@ -10,8 +10,14 @@ const PREFIX = "brief:";
 const DATES_KEY = "brief:dates";
 
 function getRedis(): Redis | null {
-  const url = process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  const url =
+    process.env.UPSTASH_REDIS_REST_URL ||
+    process.env.KV_REST_API_URL ||
+    process.env.KV_URL;
+  const token =
+    process.env.UPSTASH_REDIS_REST_TOKEN ||
+    process.env.KV_REST_API_TOKEN ||
+    process.env.KV_REST_API_READ_ONLY_TOKEN;
   if (!url || !token) return null;
   try {
     return new Redis({ url, token });
@@ -80,5 +86,13 @@ export async function getStoredBriefList(): Promise<BriefListItem[]> {
 }
 
 export function isStorageConfigured(): boolean {
-  return !!(process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN);
+  const url =
+    process.env.UPSTASH_REDIS_REST_URL ||
+    process.env.KV_REST_API_URL ||
+    process.env.KV_URL;
+  const token =
+    process.env.UPSTASH_REDIS_REST_TOKEN ||
+    process.env.KV_REST_API_TOKEN ||
+    process.env.KV_REST_API_READ_ONLY_TOKEN;
+  return !!(url && token);
 }

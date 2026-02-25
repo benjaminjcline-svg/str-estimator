@@ -64,6 +64,20 @@ To generate a brief once for debugging or after fixing cron/env:
 
 ---
 
+## Environment variables (Vercel)
+
+For the brief to generate and persist on the live site, set these in Vercel → Project → Settings → Environment Variables (for Production, or All Environments):
+
+| Variable | Required for | Notes |
+|----------|----------------|------|
+| `CRON_SECRET` | Cron to run | Any long random string. Vercel sends it as `Authorization: Bearer <value>` when invoking the cron. Without it, cron requests get 401. |
+| `OPENAI_API_KEY` | Generating the brief | From platform.openai.com. Without it, no article is generated. |
+| Redis (one of the following) | Storing briefs across deploys | Brief storage accepts **Upstash** or **Vercel KV** vars: `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN`, or `KV_REST_API_URL` + `KV_REST_API_TOKEN` (or `KV_URL` + token). Use a **read-write** token so briefs can be saved. |
+
+If Redis is missing, the cron can still run and generate a brief, but it won’t persist after a new deploy. If you see red/warning icons on KV or Redis vars in Vercel, check that the values are valid and the token has write access if you use KV for briefs.
+
+---
+
 ## Quick reference
 
 | Item | Value |
@@ -71,7 +85,7 @@ To generate a brief once for debugging or after fixing cron/env:
 | Cron path | `/api/cron/fetch-brief` |
 | Schedule | 8:00 UTC daily |
 | Auth | `CRON_SECRET` in query `?secret=` or header `Authorization: Bearer <secret>` |
-| Env (required for generation) | `OPENAI_API_KEY`; optional persistence: `UPSTASH_REDIS_*` |
+| Env (required for generation) | `OPENAI_API_KEY`; optional persistence: Redis (see table above) |
 | Brief URLs | `/learn/brief` → today; `/learn/brief/YYYY-MM-DD` for a specific date |
 
 For architecture and content-engine details, see **CONTENT-ENGINE.md**.
