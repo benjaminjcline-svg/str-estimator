@@ -75,7 +75,7 @@ export function getCachedBriefList(): Promise<{ date: string; headline: string }
   return unstable_cache(
     () => getStoredBriefList(),
     ["brief-list"],
-    { revalidate: 3600 }
+    { revalidate: 3600, tags: ["brief-list"] }
   )();
 }
 

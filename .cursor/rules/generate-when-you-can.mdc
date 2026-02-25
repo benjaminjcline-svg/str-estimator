@@ -1,0 +1,18 @@
+---
+description: When the user needs something generated and you can do it, generate it instead of only giving instructions.
+alwaysApply: true
+---
+
+# Generate it when you can
+
+When the user needs something **generated** and you can do it, **do it** instead of only giving instructions.
+
+**Examples:**
+- **Secrets/tokens** (CRON_SECRET, ADMIN_TOKEN, etc.): Run `openssl rand -hex 32` (or equivalent) and output the value. Remind them not to commit or share secrets; they still paste into Vercel/env.
+- **One-off values** (UUIDs, slugs, sample IDs): Generate and output them.
+- **Code or config snippets** (curl commands with their domain, env examples, small scripts): Write the actual snippet with reasonable placeholders they can replace.
+- **File contents** (e.g. a .env.example line, a small JSON payload): Output the content so they can copy or apply it.
+
+**Don’t:** Only say “run this command” or “you could use a generator” when you can run the command or produce the result yourself.
+
+**Still on the user:** Pasting into external UIs (Vercel, dashboards), running destructive commands, or anything that requires their account or machine access.
