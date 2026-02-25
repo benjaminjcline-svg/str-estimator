@@ -35,8 +35,10 @@ To generate today’s brief without waiting for the next cron:
    curl -H "Authorization: Bearer YOUR_CRON_SECRET" "https://<your-domain>/api/cron/fetch-brief"
    ```
 
-3. Success: response `{"ok":true,"date":"YYYY-MM-DD","articleGenerated":true,...}`.
-4. Reload `/learn/brief` (or today’s dated URL); the brief should appear. If you use Redis, it’s stored for good.
+3. Check the response:
+   - **Success:** `{"ok":true,"date":"YYYY-MM-DD","articleGenerated":true,...}` → reload `/learn/brief`; the brief should appear.
+   - **No brief generated:** `articleGenerated: false` and a `diagnostics` object: `hasOpenAI` and `hasRedis`. If `hasOpenAI` is false, add `OPENAI_API_KEY` in Vercel env. If `hasRedis` is false, briefs won’t persist across deploys (optional: add Upstash Redis). Then trigger again.
+4. If you use Redis, the brief is stored for good once generated.
 
 **Security:** Don’t commit `CRON_SECRET` or paste it in public channels. Use env vars or a secrets manager.
 

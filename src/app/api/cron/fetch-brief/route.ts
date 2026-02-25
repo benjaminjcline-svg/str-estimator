@@ -5,7 +5,8 @@
  * GET with ?secret=CRON_SECRET to prevent abuse.
  */
 
-import { getCachedDailyArticle, getTodayDateString } from "@/lib/content-engine/brief-service";
+import { generateTodayBriefUncached, getTodayDateString } from "@/lib/content-engine/brief-service";
+import { isStorageConfigured } from "@/lib/content-engine/brief-storage";
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
@@ -28,16 +29,23 @@ export async function GET(req: Request) {
 
   try {
     const today = getTodayDateString();
-    const article = await getCachedDailyArticle(today);
+    const article = await generateTodayBriefUncached();
     revalidatePath("/learn");
     revalidatePath("/learn/brief");
     revalidatePath(`/learn/brief/${today}`);
-    return NextResponse.json({
+    const body: Record<string, unknown> = {
       ok: true,
       date: today,
       articleGenerated: !!article,
       fetchedAt: new Date().toISOString(),
-    });
+    };
+    if (!article) {
+      body.diagnostics = {
+        hasOpenAI: !!process.env.OPENAI_API_KEY,
+        hasRedis: isStorageConfigured(),
+      };
+    }
+    return NextResponse.json(body);
   } catch (e) {
     console.error("[fetch-brief]", e);
     return NextResponse.json(

@@ -81,3 +81,12 @@ export function getCachedBriefList(): Promise<{ date: string; headline: string }
 export function getTodayDateString(): string {
   return new Date().toISOString().slice(0, 10);
 }
+
+/**
+ * Generate today's brief without using cache. Use in cron so every run actually
+ * attempts generation (avoids being stuck on cached null from a previous failure).
+ */
+export async function generateTodayBriefUncached(): Promise<DailyArticle | null> {
+  const today = getTodayDateString();
+  return getDailyArticleUncached(today);
+}
