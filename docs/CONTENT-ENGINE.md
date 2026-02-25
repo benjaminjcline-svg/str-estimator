@@ -2,7 +2,7 @@
 
 ## Overview
 
-The content engine produces **one daily synthesis article** from STR news across **top 200 North American cities**. It fetches headlines from external RSS feeds, runs an LLM to write a cohesive daily roundup (400–800 words), and publishes at `/learn/brief/[date]`. Headlines link to sources; our analysis is original commentary.
+The content engine produces **one daily synthesis article** from STR news across **top 200 North American cities**. Briefs are **automatic**: when users visit, today’s brief is already there and the Learn page list grows each day. No user-facing “generate” action. It fetches headlines from external RSS feeds, runs an LLM to write a cohesive daily roundup (400–800 words), and publishes at `/learn/brief/[date]`. Headlines link to sources; our analysis is original commentary.
 
 ## Safeguards (No Hallucination / No Plagiarism)
 

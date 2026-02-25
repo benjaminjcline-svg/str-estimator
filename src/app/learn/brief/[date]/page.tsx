@@ -86,7 +86,7 @@ export default async function DailyBriefPage({ params }: Props) {
             </h1>
             <p className="text-label-secondary">
               No brief for this date yet. The daily brief runs at 8:00 UTC.{" "}
-              {date === today && "Check back shortly. We're generating it."}
+              {date === today && "Check back shortly."}
             </p>
             <Link
               href="/learn/brief"

@@ -18,9 +18,11 @@ Use this when the daily STR brief didn’t run or you need to trigger it manuall
    - **500** or **timeout** → Check env vars (`OPENAI_API_KEY`, Upstash Redis if used) and function logs for the actual error.
    - **No log entry** → Cron may not have fired (e.g. first deploy, or Vercel Cron not enabled). Trigger manually once (below) and check again after the next 8:00 UTC.
 
-### 3. Trigger the brief manually
+### 3. Trigger the brief manually (ops only)
 
-To generate today’s brief without waiting for the next cron:
+**Product rule:** Users never trigger generation. The brief is there automatically when they visit; the Learn page list grows each day. If briefs aren’t appearing, fix the cron and env—don’t add a user-facing “generate” action.
+
+To generate a brief once for debugging or after fixing cron/env:
 
 1. Get your cron secret from Vercel: Project → **Settings** → **Environment Variables** → `CRON_SECRET`.
 2. Call the cron endpoint (use one of these):

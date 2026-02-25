@@ -6,6 +6,8 @@ alwaysApply: false
 
 # Daily Brief / Cron — Debugging
 
+**Product rule:** The brief is automatic. Users never trigger generation. When they visit the site, today’s brief is already there and the Learn page list grows each day. If it’s not there, fix the cron and env—don’t add a user-facing “generate” or “retry” action.
+
 When the user says the **brief didn't run**, **cron failed**, or **no brief for today**:
 
 ## 1. Diagnose
