@@ -1,0 +1,28 @@
+---
+description: When the daily STR brief doesn't run—diagnose cron auth, Vercel config, env, and fix the route.
+globs: "vercel.json,**/api/cron/**/*.ts,src/lib/content-engine/*.ts,docs/BRIEF-RUNBOOK.md,docs/CONTENT-ENGINE.md"
+alwaysApply: false
+---
+
+# Daily Brief / Cron — Debugging
+
+When the user says the **brief didn't run**, **cron failed**, or **no brief for today**:
+
+## 1. Diagnose
+
+- **Cron auth**: Vercel sends `Authorization: Bearer CRON_SECRET`. The route must accept both that header and `?secret=CRON_SECRET`. If the route only checks the query param, Vercel's run gets 401 and the brief never generates.
+- **Config**: `vercel.json` crons → path `/api/cron/fetch-brief`, schedule `0 8 * * *` (8:00 UTC).
+- **Env**: `CRON_SECRET`, `OPENAI_API_KEY`; for persistence `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`.
+
+## 2. Fix
+
+- Update the cron route to accept the secret from **either** `Authorization: Bearer <secret>` **or** `?secret=<secret>`.
+- Do not remove query-param support (needed for manual trigger and external cron).
+
+## 3. Tell the user
+
+- Deploy the fix; next 8:00 UTC run should succeed.
+- To run immediately: use the manual trigger (see `docs/BRIEF-RUNBOOK.md`).
+- If it still fails: check Vercel project → Logs for that cron run (401, 500, timeout, missing env).
+
+Reference: `docs/BRIEF-RUNBOOK.md`, `docs/CONTENT-ENGINE.md`, `src/app/api/cron/fetch-brief/route.ts`.

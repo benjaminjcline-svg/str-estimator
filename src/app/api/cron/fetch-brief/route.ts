@@ -16,8 +16,14 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const secret = process.env.CRON_SECRET;
 
-  if (secret && searchParams.get("secret") !== secret) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (secret) {
+    const querySecret = searchParams.get("secret");
+    const authHeader = req.headers.get("authorization");
+    const bearerSecret = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
+    const provided = querySecret ?? bearerSecret;
+    if (provided !== secret) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
   }
 
   try {

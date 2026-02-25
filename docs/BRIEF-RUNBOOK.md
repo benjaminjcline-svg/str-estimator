@@ -1,0 +1,61 @@
+# Daily Brief — Runbook
+
+Use this when the daily STR brief didn’t run or you need to trigger it manually.
+
+## When the brief doesn’t run
+
+### 1. Confirm it didn’t run
+
+- Open **today’s brief**: `https://<your-domain>/learn/brief` (redirects to `/learn/brief/YYYY-MM-DD`).
+- If you see “No brief for this date yet” and it’s after 8:00 UTC, the cron either didn’t run or failed.
+
+### 2. Check Vercel
+
+1. Vercel dashboard → your project → **Logs** (or **Deployments** → select latest → **Functions**).
+2. Filter or search for `/api/cron/fetch-brief` or `fetch-brief`.
+3. Note the result:
+   - **401 Unauthorized** → Cron auth issue. The route must accept `Authorization: Bearer CRON_SECRET` (see CONTENT-ENGINE and the cron route). Fix and redeploy.
+   - **500** or **timeout** → Check env vars (`OPENAI_API_KEY`, Upstash Redis if used) and function logs for the actual error.
+   - **No log entry** → Cron may not have fired (e.g. first deploy, or Vercel Cron not enabled). Trigger manually once (below) and check again after the next 8:00 UTC.
+
+### 3. Trigger the brief manually
+
+To generate today’s brief without waiting for the next cron:
+
+1. Get your cron secret from Vercel: Project → **Settings** → **Environment Variables** → `CRON_SECRET`.
+2. Call the cron endpoint (use one of these):
+
+   **Query param (browser or curl):**
+   ```bash
+   curl "https://<your-domain>/api/cron/fetch-brief?secret=YOUR_CRON_SECRET"
+   ```
+
+   **Header (curl):**
+   ```bash
+   curl -H "Authorization: Bearer YOUR_CRON_SECRET" "https://<your-domain>/api/cron/fetch-brief"
+   ```
+
+3. Success: response `{"ok":true,"date":"YYYY-MM-DD","articleGenerated":true,...}`.
+4. Reload `/learn/brief` (or today’s dated URL); the brief should appear. If you use Redis, it’s stored for good.
+
+**Security:** Don’t commit `CRON_SECRET` or paste it in public channels. Use env vars or a secrets manager.
+
+### 4. Schedule and timezone
+
+- **Cron schedule:** 8:00 UTC daily (`vercel.json`: `0 8 * * *`).
+- **EST:** 3:00 AM EST (4:00 AM EDT when daylight saving applies).
+- On Vercel Hobby, execution can occur anytime within the 8:00 UTC hour.
+
+---
+
+## Quick reference
+
+| Item | Value |
+|------|--------|
+| Cron path | `/api/cron/fetch-brief` |
+| Schedule | 8:00 UTC daily |
+| Auth | `CRON_SECRET` in query `?secret=` or header `Authorization: Bearer <secret>` |
+| Env (required for generation) | `OPENAI_API_KEY`; optional persistence: `UPSTASH_REDIS_*` |
+| Brief URLs | `/learn/brief` → today; `/learn/brief/YYYY-MM-DD` for a specific date |
+
+For architecture and content-engine details, see **CONTENT-ENGINE.md**.

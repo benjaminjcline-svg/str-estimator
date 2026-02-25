@@ -32,10 +32,11 @@ Add sources only if their terms allow headlines + links aggregation. Never repub
 
 ## Daily Updates
 
-- **Cron**: `GET /api/cron/fetch-brief?secret=YOUR_CRON_SECRET` (set `CRON_SECRET` in env)
+- **Cron**: `GET /api/cron/fetch-brief?secret=YOUR_CRON_SECRET` (set `CRON_SECRET` in env). Route also accepts `Authorization: Bearer CRON_SECRET` (Vercel sends this automatically).
 - **Vercel Cron**: Runs daily at 8:00 UTC (see `vercel.json`)
 - **Flow**: Cron fetches feeds → LLM generates one synthesis article → stored in Redis → cache primed → paths revalidated
 - **Routes**: `/learn/brief` redirects to `/learn/brief/[today]`. Past dates at `/learn/brief/YYYY-MM-DD`. All URLs are permanent for SEO.
+- **If the brief didn’t run**: See **[BRIEF-RUNBOOK.md](./BRIEF-RUNBOOK.md)** for debugging and manual trigger.
 
 ## LLM Synthesis
 
