@@ -278,6 +278,9 @@ export function STRForm({ onSubmit, isSubmitting }: STRFormProps) {
       </div>
 
       <div className="pt-6 opacity-0 animate-slide-up space-y-4" style={{ animationFillMode: "forwards", animationDelay: "220ms" }}>
+        <p className="text-sm text-label-secondary text-center">
+          $49 one-time. No subscription. No upsell. No calls. No pressure.
+        </p>
         <div className={`flex w-full transition-[justify-content] duration-300 ease-friction ${isSubmitting ? "justify-center" : "justify-stretch"}`}>
           <button
             type="submit"
@@ -291,7 +294,7 @@ export function STRForm({ onSubmit, isSubmitting }: STRFormProps) {
               style={{ opacity: isSubmitting ? 0 : 1 }}
               aria-hidden={isSubmitting}
             >
-              Run my deal. $49
+              Stress-test this deal · $49
             </span>
             <span
               className="absolute inset-0 flex items-center justify-center transition-opacity duration-200"

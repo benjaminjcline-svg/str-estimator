@@ -7,9 +7,9 @@ import { siteUrl } from "./site-config";
 
 export const seoConfig = {
   siteName: "STR Estimator",
-  defaultTitle: "STR Estimator | Is This Airbnb Worth Buying?",
+  defaultTitle: "STR Estimator | Short-Term Rental Cash Flow & Deal Analysis",
   defaultDescription:
-    "We stress-test your STR deal and tell you straight: Proceed, Borderline, or Walk Away. No hype. No made-up data. $49.",
+    "Stress-test your STR deal before you buy. Honest short-term rental cash flow analysis and Airbnb income reality check. Proceed, Borderline, or Walk Away. $49.",
   twitterHandle: "@strestimator",
   locale: "en_US",
 } as const;

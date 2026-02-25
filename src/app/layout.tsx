@@ -15,8 +15,10 @@ export const metadata: Metadata = {
   keywords: [
     "STR deal analysis",
     "short-term rental cash flow",
+    "Airbnb income reality",
     "Airbnb income assumptions",
     "is this Airbnb worth buying",
+    "Airbnb calculator vs reality",
     "STR underwriting",
     "vacation rental analysis",
     "short-term rental underwriting",
@@ -24,7 +26,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: seoConfig.defaultTitle,
-    description: "Stress-test your STR deal. Get a clear Proceed, Borderline, or Walk Away verdict.",
+    description: "Stress-test your short-term rental deal before you buy. Honest cash flow analysis. Proceed, Borderline, or Walk Away. $49.",
     type: "website",
     locale: seoConfig.locale,
   },

@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import {
+  PRODUCT_NAME,
+  LEGAL_NAME,
+  SUPPORT_EMAIL,
+  MAILING_ADDRESS,
+  GOVERNING_LAW,
+  LAST_UPDATED,
+} from "@/lib/legal";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -28,39 +36,53 @@ export default function TermsPage() {
           Terms of Service
         </h1>
         <p className="text-sm text-label-tertiary mb-8">
-          Last updated: {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+          Last updated: {LAST_UPDATED}
+        </p>
+
+        <p className="text-label-secondary leading-relaxed mb-6">
+          {PRODUCT_NAME} is operated by {LEGAL_NAME} (&quot;Company&quot;, &quot;we&quot;, &quot;us&quot;). These terms apply to your use of {PRODUCT_NAME} and any purchase of reports or subscriptions offered by the Company.
         </p>
 
         <section className="mb-10">
           <h2 className="text-xl font-semibold text-label-primary mb-4">1. Agreement to Terms</h2>
           <p className="text-label-secondary leading-relaxed mb-4">
-            By accessing or using STR Estimator (&quot;Service&quot;), you agree to be bound by these Terms of Service (&quot;Terms&quot;). If you do not agree to these Terms, do not use the Service.
+            By accessing or using {PRODUCT_NAME} (&quot;Service&quot;), you agree to be bound by these Terms of Service (&quot;Terms&quot;). If you do not agree to these Terms, do not use the Service.
           </p>
         </section>
 
         <section className="mb-10">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">2. Description of Service</h2>
+          <h2 className="text-xl font-semibold text-label-primary mb-4">2. Company Information</h2>
+          <ul className="list-disc pl-6 text-label-secondary space-y-2 mb-4">
+            <li>Legal name: {LEGAL_NAME}</li>
+            <li>Support email: <a href={`mailto:${SUPPORT_EMAIL}`} className="text-accent hover:text-accent-hover">{SUPPORT_EMAIL}</a></li>
+            <li>{MAILING_ADDRESS}</li>
+            <li>Governing law: {GOVERNING_LAW}</li>
+          </ul>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-xl font-semibold text-label-primary mb-4">3. Description of Service</h2>
           <p className="text-label-secondary leading-relaxed mb-4">
-            STR Estimator provides conservative underwriting analysis for short-term rental (STR) property purchases. You input property and financing details; we run them through stress-tested assumptions and deliver a report with a verdict (Proceed, Borderline, or Walk Away) and supporting analysis.
+            {PRODUCT_NAME} provides conservative underwriting analysis for short-term rental (STR) property purchases. You input property and financing details; we run them through stress-tested assumptions and deliver a report with a verdict (Proceed, Borderline, or Walk Away) and supporting analysis.
           </p>
         </section>
 
         <section className="mb-10">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">3. Not Financial, Legal, or Investment Advice</h2>
+          <h2 className="text-xl font-semibold text-label-primary mb-4">4. Not Financial, Legal, or Investment Advice</h2>
           <p className="text-label-secondary leading-relaxed mb-4">
             <strong>The Service is for informational purposes only.</strong> It does not constitute financial advice, investment advice, legal advice, real estate advice, or any other form of professional advice. We are not licensed financial advisors, attorneys, accountants, or real estate professionals. The reports, verdicts, and analysis we provide are based on assumptions and models; they are not a substitute for your own research, due diligence, or advice from qualified professionals. You should consult appropriate licensed professionals before making any investment or purchasing decisions. You rely on the Service at your own risk.
           </p>
         </section>
 
         <section className="mb-10">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">4. No Guarantee of Accuracy</h2>
+          <h2 className="text-xl font-semibold text-label-primary mb-4">5. No Guarantee of Accuracy</h2>
           <p className="text-label-secondary leading-relaxed mb-4">
             We do not verify the data you input (e.g., property addresses, purchase prices, market rates). Our analysis relies on conservative assumptions and industry averages where specific data is unavailable. Actual market performance, occupancy, rates, costs, and regulations may differ materially from our assumptions. We make no representation or warranty about the accuracy, completeness, or suitability of our analysis for any particular property or decision. Past performance and our models do not guarantee future results.
           </p>
         </section>
 
         <section className="mb-10">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">5. Payment and Refunds</h2>
+          <h2 className="text-xl font-semibold text-label-primary mb-4">6. Payment and Refunds</h2>
           <p className="text-label-secondary leading-relaxed mb-4">
             Payment is due in full at the time of purchase. Our refund policy is described at{" "}
             <Link href="/refund" className="text-accent hover:text-accent-hover">
@@ -71,7 +93,7 @@ export default function TermsPage() {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">6. Limitation of Liability</h2>
+          <h2 className="text-xl font-semibold text-label-primary mb-4">7. Limitation of Liability</h2>
           <p className="text-label-secondary leading-relaxed mb-4">
             <strong>TO THE MAXIMUM EXTENT PERMITTED BY LAW:</strong>
           </p>
@@ -85,32 +107,32 @@ export default function TermsPage() {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">7. Indemnification</h2>
+          <h2 className="text-xl font-semibold text-label-primary mb-4">8. Indemnification</h2>
           <p className="text-label-secondary leading-relaxed mb-4">
-            You agree to indemnify, defend, and hold harmless STR Estimator and its operators from any claims, damages, losses, or expenses (including reasonable attorneys&apos; fees) arising from your use of the Service, your violation of these Terms, or your violation of any third-party rights.
+            You agree to indemnify, defend, and hold harmless {LEGAL_NAME} and its affiliates, officers, and agents from any claims, damages, losses, or expenses (including reasonable attorneys&apos; fees) arising from your use of the Service, your violation of these Terms, or your violation of any third-party rights.
           </p>
         </section>
 
         <section className="mb-10">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">8. Dispute Resolution</h2>
+          <h2 className="text-xl font-semibold text-label-primary mb-4">9. Dispute Resolution</h2>
           <p className="text-label-secondary leading-relaxed mb-4">
             Any dispute arising from these Terms or the Service shall be resolved by binding arbitration in accordance with the rules of the American Arbitration Association, except that either party may seek relief in small claims court for disputes within that court&apos;s jurisdiction. You agree to waive any right to a jury trial and to participate in a class action. The prevailing party may recover reasonable attorneys&apos; fees.
           </p>
         </section>
 
         <section className="mb-10">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">9. Modifications</h2>
+          <h2 className="text-xl font-semibold text-label-primary mb-4">10. Modifications</h2>
           <p className="text-label-secondary leading-relaxed mb-4">
             We may modify these Terms at any time. We will post the updated Terms and update the &quot;Last updated&quot; date. Your continued use of the Service after changes constitutes acceptance of the modified Terms. If you do not agree, discontinue use and contact us for a refund if applicable under our refund policy.
           </p>
         </section>
 
         <section className="mb-10">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">10. Contact</h2>
+          <h2 className="text-xl font-semibold text-label-primary mb-4">11. Contact</h2>
           <p className="text-label-secondary leading-relaxed">
             Questions about these Terms? Contact us at{" "}
-            <a href="mailto:support@strestimator.com" className="text-accent hover:text-accent-hover">
-              support@strestimator.com
+            <a href={`mailto:${SUPPORT_EMAIL}`} className="text-accent hover:text-accent-hover">
+              {SUPPORT_EMAIL}
             </a>
             .
           </p>

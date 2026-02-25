@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Sample Report",
   description:
-    "See what you get. Real numbers, verdict, income scenarios, and where buyers go wrong. One bad deal can cost $50k+. This report costs $49.",
+    "See what your STR report looks like: verdict, numbers, income scenarios, and where the deal can break. Short-term rental cash flow reality check. $49.",
 };
 
 export default function SampleReportPage() {
@@ -29,10 +29,12 @@ export default function SampleReportPage() {
           <h1 className="font-sans text-2xl sm:text-3xl font-semibold text-label-primary tracking-tight mb-2">
             What your report looks like
           </h1>
-          <p className="text-sm text-label-tertiary mb-6">
+          <p className="text-sm text-label-tertiary mb-2">
             Sample: 3br SFH, Austin. $385k, 20% down
           </p>
-
+          <p className="text-sm text-label-secondary mb-6">
+            Verdict, numbers, three income scenarios, and where the deal can break. One bad assumption can cost more than an inspection. This report costs $49.
+          </p>
           <p className="text-sm text-label-tertiary mb-5">123 Example St, Austin, TX</p>
           <h2 className="font-sans text-xl font-semibold text-label-primary tracking-tight mb-4">
             Your verdict
@@ -71,6 +73,9 @@ export default function SampleReportPage() {
               <span className="sample-report-blur inline">
                 This deal lives or dies on hitting your occupancy and rate assumptions. A weak year? Meaningful stress. Only proceed if you&apos;ve got reserves and can stomach 6–12 months of break-even.
               </span>
+            </p>
+            <p className="text-sm text-label-tertiary leading-relaxed mt-3">
+              This conclusion reflects conservative assumptions based on typical STR performance. If your verified data materially exceeds these assumptions, outcomes could improve.
             </p>
             <p className="text-sm text-label-tertiary mt-4">
               <a href="#" className="text-accent hover:text-accent-hover">
@@ -214,15 +219,36 @@ export default function SampleReportPage() {
           </div>
         </section>
 
+        <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "520ms" }}>
+          <h2 className="font-sans text-xl font-semibold text-label-primary mb-4 tracking-tight">
+            Why this is still a good outcome
+          </h2>
+          <div className="relative p-6 rounded-2xl bg-surface-elevated border border-gray-100">
+            <div className="sample-report-blur space-y-3">
+              <p className="text-label-secondary leading-relaxed">
+                Avoiding a weak deal is often the most profitable move. Capital not tied up in a fragile property stays flexible. So does your time and attention.
+              </p>
+              <p className="text-label-secondary leading-relaxed">
+                Walking away with clarity beats moving forward on hope. You have a clear answer. That is a good outcome.
+              </p>
+            </div>
+            <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-surface-elevated/95">
+              <span className="text-sm font-medium text-label-secondary bg-white px-4 py-2 rounded-lg border border-gray-100">
+                In your full report
+              </span>
+            </div>
+          </div>
+        </section>
+
         <div className="pt-10 border-t border-gray-100 text-center space-y-6">
           <p className="text-label-secondary">
-            One bad STR deal can cost you $50k+. This report costs $49.
+            One bad assumption can cost more than an inspection. One bad deal can cost a lot more. $49 for a reality check before you commit.
           </p>
           <Link
             href="/#analyze"
             className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-medium transition-all duration-button ease-friction hover:bg-accent-hover active:scale-[0.94]"
           >
-            Run your deal. $49
+            Stress-test your deal · $49
           </Link>
         </div>
       </article>

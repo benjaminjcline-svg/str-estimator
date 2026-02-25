@@ -106,6 +106,9 @@ export const Report = forwardRef<
         <p className="text-label-secondary leading-relaxed text-lg">
           {report.verdictReasoning}
         </p>
+        <p className="text-sm text-label-tertiary leading-relaxed mt-3">
+          This conclusion reflects conservative assumptions based on typical STR performance. If your verified data materially exceeds these assumptions, outcomes could improve.
+        </p>
         {address && (
           <p className="text-sm text-label-tertiary">
             <a
@@ -228,8 +231,30 @@ export const Report = forwardRef<
         </div>
       </section>
 
+      <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "520ms" }}>
+        <h2 className="font-sans text-xl font-semibold text-label-primary mb-4 tracking-tight">
+          Why this is still a good outcome
+        </h2>
+        <div className="p-6 rounded-2xl bg-surface-elevated border border-gray-100 space-y-3">
+          {report.verdict === "Proceed" ? (
+            <p className="text-label-secondary leading-relaxed">
+              Clarity before you commit is valuable. You can proceed with due diligence or pause with confidence. Either way, you decided from data, not hope.
+            </p>
+          ) : (
+            <>
+              <p className="text-label-secondary leading-relaxed">
+                Avoiding a weak deal is often the most profitable move. Capital not tied up in a fragile property stays flexible. So does your time and attention.
+              </p>
+              <p className="text-label-secondary leading-relaxed">
+                Walking away with clarity beats moving forward on hope. You have a clear answer. That is a good outcome.
+              </p>
+            </>
+          )}
+        </div>
+      </section>
+
       {report.metadata.conservativeOverrides.length > 0 && (
-        <aside className="p-5 rounded-xl bg-gray-50 border border-gray-100 opacity-0 animate-fade-in" style={{ animationFillMode: "forwards", animationDelay: "560ms" }}>
+        <aside className="p-5 rounded-xl bg-gray-50 border border-gray-100 opacity-0 animate-fade-in" style={{ animationFillMode: "forwards", animationDelay: "600ms" }}>
           <h3 className="text-sm font-medium text-label-secondary mb-2">
             What we assumed (you didn’t provide)
           </h3>

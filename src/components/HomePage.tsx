@@ -61,15 +61,22 @@ export function HomePage() {
           <div className="order-1 min-[1025px]:col-start-1 min-[1025px]:row-start-1 min-[1025px]:row-span-2 min-[1025px]:sticky min-[1025px]:top-24 min-[1025px]:self-start space-y-6">
             <header className="text-left opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
               <h1 className="text-display sm:text-display-lg text-[36px] font-semibold text-label-primary tracking-tight mb-5">
-                Is this Airbnb worth buying?
-                <br />
-                <span className="text-label-tertiary">One question. One answer. Proceed, Borderline, or Walk Away.</span>
+                Before you buy an Airbnb, stress-test the numbers. Most STR deals look good on paper. This checks reality.
               </h1>
             </header>
 
             <section className="text-left opacity-0 animate-slide-up mt-10 min-[1025px]:mt-14" style={{ animationFillMode: "forwards", animationDelay: "300ms" }}>
+              <p className="text-label-secondary leading-relaxed mb-4 max-w-md">
+                <strong>What this does:</strong> You enter the property and financing details. We run them through conservative underwriting and give you a clear verdict: Proceed, Borderline, or Walk Away.
+              </p>
+              <p className="text-label-secondary leading-relaxed mb-4 max-w-md">
+                <strong>Who it&apos;s for:</strong> Anyone seriously considering buying a short-term rental, especially a first or second property. The kind of buyer who wants a second opinion before writing an offer.
+              </p>
+              <p className="text-label-secondary leading-relaxed mb-4 max-w-md">
+                <strong>When to use it:</strong> Before you commit capital or get too far down the road. A sanity check, not a crystal ball.
+              </p>
               <p className="text-label-secondary leading-relaxed mb-6 max-w-md">
-                Most income projections overstate what you&apos;ll earn. We run three scenarios: strong year, typical year, weak year. We show you where the deal breaks. Then we give you a verdict.
+                <strong>Why it exists:</strong> Most STR income projections are optimistic. Calculators oversimplify. It&apos;s easy to talk yourself into a deal. We don&apos;t. We show you where it breaks.
               </p>
               <div className="flex flex-col gap-2 mt-10 min-[1025px]:mt-20">
                 <Link
@@ -83,14 +90,14 @@ export function HomePage() {
                   href="/sample-report"
                   className="group text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-button ease-friction inline-flex items-center gap-1"
                 >
-                  See a sample
+                  See a sample report
                   <span className="transform transition-transform duration-button ease-friction group-hover:translate-x-0.5">→</span>
                 </Link>
                 <Link
                   href="/learn"
                   className="group text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-button ease-friction inline-flex items-center gap-1"
                 >
-                  Learn the traps
+                  Why STR calculators mislead
                   <span className="transform transition-transform duration-button ease-friction group-hover:translate-x-0.5">→</span>
                 </Link>
               </div>
@@ -115,7 +122,7 @@ export function HomePage() {
               <STRForm onSubmit={handleSubmit} isSubmitting={isSubmitting} />
             </div>
             <p className="text-sm text-label-tertiary text-center opacity-0 animate-slide-up mt-10" style={{ animationFillMode: "forwards", animationDelay: "200ms" }}>
-              Worth it even when we say no. You&apos;ll learn why.
+              A &quot;no&quot; is a good outcome. The report is valuable even when we tell you to walk away.
             </p>
           </div>
         </div>

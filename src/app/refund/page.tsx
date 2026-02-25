@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PRODUCT_NAME, LEGAL_NAME, SUPPORT_EMAIL, LAST_UPDATED } from "@/lib/legal";
 
 export const metadata: Metadata = {
   title: "Refund Policy",
@@ -28,7 +29,14 @@ export default function RefundPage() {
           Refund Policy
         </h1>
         <p className="text-sm text-label-tertiary mb-8">
-          Last updated: {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+          Last updated: {LAST_UPDATED}
+        </p>
+
+        <p className="text-label-secondary leading-relaxed mb-6">
+          {PRODUCT_NAME} is operated by {LEGAL_NAME} (&quot;Company&quot;, &quot;we&quot;, &quot;us&quot;). This policy applies to your use of {PRODUCT_NAME} and any purchase of reports or subscriptions offered by the Company.
+        </p>
+        <p className="text-label-secondary leading-relaxed mb-8">
+          Refunds are issued by {LEGAL_NAME} for purchases made on {PRODUCT_NAME}.
         </p>
 
         <section className="mb-10">
@@ -61,8 +69,8 @@ export default function RefundPage() {
           <h2 className="text-xl font-semibold text-label-primary mb-4">How to Request a Refund</h2>
           <p className="text-label-secondary leading-relaxed mb-4">
             Email us at{" "}
-            <a href="mailto:support@strestimator.com" className="text-accent hover:text-accent-hover">
-              support@strestimator.com
+            <a href={`mailto:${SUPPORT_EMAIL}`} className="text-accent hover:text-accent-hover">
+              {SUPPORT_EMAIL}
             </a>
             {" "}with:
           </p>
@@ -87,8 +95,8 @@ export default function RefundPage() {
           <h2 className="text-xl font-semibold text-label-primary mb-4">Contact</h2>
           <p className="text-label-secondary leading-relaxed">
             Questions? Contact us at{" "}
-            <a href="mailto:support@strestimator.com" className="text-accent hover:text-accent-hover">
-              support@strestimator.com
+            <a href={`mailto:${SUPPORT_EMAIL}`} className="text-accent hover:text-accent-hover">
+              {SUPPORT_EMAIL}
             </a>
             .
           </p>

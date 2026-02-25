@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "How It Works",
   description:
-    "We stress-test your numbers and tell you straight. Proceed, Borderline, or Walk Away. Here's what goes into it.",
+    "Enter your property details. We stress-test the assumptions. You get a clear verdict. Fast, low effort, no pressure.",
 };
 
 export default function HowItWorksPage() {
@@ -15,46 +15,40 @@ export default function HowItWorksPage() {
           How it works
         </h1>
         <p className="text-lg text-label-secondary leading-relaxed mb-8">
-          You enter your numbers. We run them through conservative underwriting. You get one of three verdicts: <strong>Proceed</strong>, <strong>Borderline</strong>, or <strong>Walk Away</strong>. That&apos;s it.
+          Three steps. No jargon. No long forms.
         </p>
 
         <section className="mb-12">
           <h2 className="text-xl font-semibold text-label-primary mb-4">
-            What you enter
+            1. Enter the property details
           </h2>
           <p className="text-label-secondary mb-4">
-            Property and financing details. Price, down payment, rate, term, type (SFH, condo, duplex), and whether you&apos;ll self-manage. You can add your expected nightly rate and occupancy. We cap the optimistic stuff.
+            Price, down payment, rate, term, property type (house, condo, duplex), and whether you&apos;ll self-manage. Optional: your expected nightly rate and occupancy. We cap optimistic assumptions either way.
           </p>
           <p className="text-label-secondary">
-            We don't invent comps or market data. When something's unknown, we say
-            so. That uncertainty? It's in the analysis.
+            We don&apos;t invent comps or market data. When something&apos;s unknown, we say so. That uncertainty shows up in the analysis.
           </p>
         </section>
 
         <section className="mb-12">
           <h2 className="text-xl font-semibold text-label-primary mb-4">
-            How we run it
+            2. We stress-test the assumptions
           </h2>
           <p className="text-label-secondary mb-4">
-            Occupancy above ~65%? We treat it as fragile. Seasonality? We assume
-            it. Cleaning? Per-stay. Insurance? STR premiums. Vacancy? Non-zero,
-            every market. CapEx? Ongoing, not one-time.
-          </p>
-          <p className="text-label-secondary">
-            You get three income scenarios: strong year, typical year, weak year. Plus where buyers underestimate costs, the one assumption that could kill the deal, and what a bad year actually feels like.
+            High occupancy? We treat it as fragile. We factor in seasonality, per-stay cleaning, STR insurance, vacancy, and ongoing CapEx. You get three income scenarios: strong year, typical year, weak year. Plus where buyers underestimate costs, the one assumption that could kill the deal, and what a bad year actually feels like.
           </p>
         </section>
 
         <section className="mb-12">
           <h2 className="text-xl font-semibold text-label-primary mb-4">
-            Your verdict
+            3. You get a clear verdict
           </h2>
           <p className="text-label-secondary mb-4">
-            Every report ends with a verdict. No hedging. Something you can act on. Or forward to a partner.
+            Every report ends with one of three verdicts. No hedging. Something you can act on or share with a partner.
           </p>
           <ul className="list-disc pl-6 text-label-secondary space-y-2">
             <li>
-              <strong>Proceed.</strong> Numbers hold. Do due diligence.
+              <strong>Proceed.</strong> Numbers hold. Do your due diligence.
             </li>
             <li>
               <strong>Borderline.</strong> Thin margins. Only proceed if you&apos;ve got reserves and can stomach break-even.
@@ -65,18 +59,33 @@ export default function HowItWorksPage() {
           </ul>
         </section>
 
+        <section className="mb-12">
+          <h2 className="text-xl font-semibold text-label-primary mb-4">
+            Why this exists
+          </h2>
+          <p className="text-label-secondary mb-4">
+            Most STR calculators are built to make deals look good. Plug in 70% occupancy and a dream rate, and everything turns green. Reality is messier. Seasonality, competition, and one bad year can wipe out the margin. It&apos;s easy to talk yourself into a deal when the spreadsheet says yes.
+          </p>
+          <p className="text-label-secondary mb-4">
+            Optimism is dangerous in short-term rentals. A single bad assumption can cost you more than an inspection. Conservative analysis isn&apos;t about being negative. It&apos;s about knowing where the deal breaks before you&apos;re in too deep.
+          </p>
+          <p className="text-label-secondary">
+            We don&apos;t maximize upside. We don&apos;t talk you into a deal. If the report helps you walk away from a bad one, we&apos;ve done our job.
+          </p>
+        </section>
+
         <section>
           <h2 className="text-xl font-semibold text-label-primary mb-4">
-            Simple. Honest. Useful.
+            Low effort. Low risk.
           </h2>
           <p className="text-label-secondary mb-8">
-            We don&apos;t maximize upside. We don&apos;t talk you into a deal. We give you the truth. If the report helps you walk away from a bad one, we&apos;ve done our job.
+            One-time payment. No subscription. No upsell. No calls. No pressure. Just a second look before you commit.
           </p>
           <Link
-            href="/"
+            href="/#analyze"
             className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-medium transition-all duration-button ease-friction hover:bg-accent-hover active:scale-[0.94]"
           >
-            Run your deal. $49
+            Stress-test this deal · $49
           </Link>
         </section>
       </article>

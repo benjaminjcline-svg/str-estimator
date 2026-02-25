@@ -79,10 +79,10 @@ export default function FAQPage() {
 
         <div className="mt-12 pt-8 border-t border-gray-100">
           <Link
-            href="/"
+            href="/#analyze"
             className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-medium transition-all duration-button ease-friction hover:bg-accent-hover active:scale-[0.94]"
           >
-            Run your deal. $49
+            Stress-test this deal · $49
           </Link>
         </div>
       </article>
