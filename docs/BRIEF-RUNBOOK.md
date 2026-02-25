@@ -2,6 +2,18 @@
 
 Use this when the daily STR brief didn’t run or you need to trigger it manually.
 
+## Local vs live: deploy first
+
+**Local changes do not affect the live site until you deploy.** If you fixed the cron auth, list alignment, or any brief logic locally, the live site will still show the old behavior until you:
+
+1. **Commit and push** your changes (e.g. `git add -A && git commit -m "Brief fixes" && git push`).
+2. **Let Vercel build and deploy** (if your repo is connected to Vercel, pushing to the production branch triggers a deploy; wait for it to finish).
+3. Or run **`vercel --prod`** from the project root if you deploy via CLI.
+
+After the new deployment is live, the cron route will use the updated code (e.g. Bearer auth), and the Learn page will use the updated list UI. Then follow “When the brief doesn’t run” below to fix cron/env and get briefs generating.
+
+---
+
 ## When the brief doesn’t run
 
 ### 1. Confirm it didn’t run
