@@ -18,19 +18,27 @@ export default function IsThisAirbnbWorthBuyingPage() {
   };
 
   return (
-    <main className="max-w-2xl mx-auto px-6 py-16 sm:py-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <article className="prose prose-gray max-w-none opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
-        <Link
-          href="/learn"
-          className="text-sm text-accent hover:text-accent-hover mb-6 inline-block"
-        >
-          ← Back to Learn
-        </Link>
-        <h1 className="font-sans text-3xl font-semibold text-label-primary tracking-tight mb-6">
+    <main className="min-h-screen bg-surface">
+      <div className="border-b border-gray-100/80 bg-surface-elevated/80 backdrop-blur-sm py-6">
+        <div className="max-w-2xl mx-auto px-6 flex items-center justify-between">
+          <Link
+            href="/learn"
+            className="text-sm font-medium text-accent hover:text-accent-hover transition-colors duration-button ease-friction"
+          >
+            ← Back to Learn
+          </Link>
+          <span className="text-sm font-medium text-label-secondary">
+            STR Buying Guide
+          </span>
+        </div>
+      </div>
+      <div className="max-w-2xl mx-auto px-6 py-12 sm:py-16">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <article className="prose prose-gray max-w-none opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
+          <h1 className="font-sans text-3xl font-semibold text-label-primary tracking-tight mb-6">
           Proceed, pause, or walk away?
         </h1>
         <p className="text-lg text-label-secondary leading-relaxed mb-8">
@@ -47,8 +55,7 @@ export default function IsThisAirbnbWorthBuyingPage() {
             got room for occupancy or rate to dip without the whole thing collapsing.
           </p>
           <p className="text-label-secondary">
-            Next: due diligence. Zoning, HOA rules, local demand, regulatory risk.
-            The analysis says it can work—now confirm the details.
+            Next: due diligence. Zoning, HOA rules, local demand, regulatory risk. The analysis says it can work. Now confirm the details.
           </p>
         </section>
 
@@ -61,8 +68,7 @@ export default function IsThisAirbnbWorthBuyingPage() {
             your assumptions. A weak year? Meaningful stress.
           </p>
           <p className="text-label-secondary">
-            Only proceed if you've got 6–12 months of reserves and can stomach
-            break-even. Otherwise—pass. Find something stronger.
+            Only proceed if you&apos;ve got 6–12 months of reserves and can stomach break-even. Otherwise, pass. Find something stronger.
           </p>
         </section>
 
@@ -71,9 +77,7 @@ export default function IsThisAirbnbWorthBuyingPage() {
             Walk away
           </h2>
           <p className="text-label-secondary mb-4">
-            The deal fails under conservative assumptions. Revenue vs. costs—
-            gap's too big. Walking away means you're not subsidizing a property or
-            hoping optimistic projections pan out.
+            The deal fails under conservative assumptions. Revenue vs. costs. The gap&apos;s too big. Walking away means you&apos;re not subsidizing a property or hoping optimistic projections pan out.
           </p>
           <p className="text-label-secondary">
             Reasonable call. Most disciplined buyers wouldn't take on something
@@ -94,12 +98,13 @@ export default function IsThisAirbnbWorthBuyingPage() {
         <div className="pt-8 border-t border-gray-100">
           <Link
             href="/"
-            className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-medium transition-all duration-200 hover:bg-accent-hover active:scale-[0.98]"
+            className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-medium transition-all duration-button ease-friction hover:bg-accent-hover active:scale-[0.94]"
           >
-            Run your deal — $49
+            Run your deal. $49
           </Link>
         </div>
       </article>
+      </div>
     </main>
   );
 }

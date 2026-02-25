@@ -55,6 +55,29 @@ export async function getStoredBriefDates(): Promise<string[]> {
   }
 }
 
+export type BriefListItem = { date: string; headline: string };
+
+export async function getStoredBriefList(): Promise<BriefListItem[]> {
+  const redis = getRedis();
+  if (!redis) return [];
+  try {
+    const dates = await redis.smembers(DATES_KEY);
+    if (dates.length === 0) return [];
+    const keys = dates.map((d) => `${PREFIX}${d}`);
+    const articles = (await redis.mget(...keys)) as ((DailyArticle & { headline?: string }) | string | null)[];
+    return articles
+      .map((a, i) => {
+        const date = dates[i]!;
+        if (a == null) return { date, headline: "STR news" };
+        const art = typeof a === "object" ? (a as DailyArticle) : (JSON.parse(a as string) as DailyArticle);
+        return { date, headline: art.headline ?? "STR news" };
+      })
+      .sort((a, b) => b.date.localeCompare(a.date));
+  } catch {
+    return [];
+  }
+}
+
 export function isStorageConfigured(): boolean {
   return !!(process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN);
 }

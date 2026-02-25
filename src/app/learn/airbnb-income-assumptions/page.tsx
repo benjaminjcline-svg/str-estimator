@@ -20,24 +20,31 @@ export default function AirbnbIncomeAssumptionsPage() {
   };
 
   return (
-    <main className="max-w-2xl mx-auto px-6 py-16 sm:py-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <article className="prose prose-gray max-w-none opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
-        <Link
-          href="/learn"
-          className="text-sm text-accent hover:text-accent-hover mb-6 inline-block"
-        >
-          ← Back to Learn
-        </Link>
-        <h1 className="font-sans text-3xl font-semibold text-label-primary tracking-tight mb-6">
+    <main className="min-h-screen bg-surface">
+      <div className="border-b border-gray-100/80 bg-surface-elevated/80 backdrop-blur-sm py-6">
+        <div className="max-w-2xl mx-auto px-6 flex items-center justify-between">
+          <Link
+            href="/learn"
+            className="text-sm font-medium text-accent hover:text-accent-hover transition-colors duration-button ease-friction"
+          >
+            ← Back to Learn
+          </Link>
+          <span className="text-sm font-medium text-label-secondary">
+            STR Buying Guide
+          </span>
+        </div>
+      </div>
+      <div className="max-w-2xl mx-auto px-6 py-12 sm:py-16">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <article className="prose prose-gray max-w-none opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
+          <h1 className="font-sans text-3xl font-semibold text-label-primary tracking-tight mb-6">
           The two numbers that kill most STR deals
         </h1>
         <p className="text-lg text-label-secondary leading-relaxed mb-8">
-          Occupancy and nightly rate. That's where optimism meets reality—and where
-          most buyers screw up. Here's what gets people in trouble.
+          Occupancy and nightly rate. That&apos;s where optimism meets reality. And where most buyers go wrong. Here&apos;s what gets people in trouble.
         </p>
 
         <section className="mb-8">
@@ -45,8 +52,7 @@ export default function AirbnbIncomeAssumptionsPage() {
             The 70% occupancy trap
           </h2>
           <p className="text-label-secondary mb-4">
-            Everyone assumes 70%+ year-round. Peak season? Maybe. Full year? Most
-            owners see 50–60%. Seasonality, competition, vacancy—it adds up.
+            Everyone assumes 70%+ year-round. Peak season? Maybe. Full year? Most owners see 50–60%. Seasonality, competition, vacancy. It adds up.
             Assuming higher without real local data? Fragile.
           </p>
           <p className="text-label-secondary">
@@ -64,8 +70,7 @@ export default function AirbnbIncomeAssumptionsPage() {
             demand. Using comps without stress-testing lower? You're exposed.
           </p>
           <p className="text-label-secondary">
-            We don't invent comps. We apply conservative defaults when you can't
-            verify—and we tell you what we assumed.
+            We don&apos;t invent comps. We apply conservative defaults when you can&apos;t verify. And we tell you what we assumed.
           </p>
         </section>
 
@@ -74,9 +79,7 @@ export default function AirbnbIncomeAssumptionsPage() {
             Stress-test it yourself
           </h2>
           <p className="text-label-secondary mb-4">
-            Run the numbers at 55% occupancy. Drop the rate 15%. See what breaks.
-            If the deal collapses—you're banking on best case. Smart buyers pause
-            or walk.
+            Run the numbers at 55% occupancy. Drop the rate 15%. See what breaks. If the deal collapses, you&apos;re banking on best case. Smart buyers pause or walk.
           </p>
           <p className="text-label-secondary">
             We do this automatically. Conservative caps, three scenarios (strong,
@@ -87,12 +90,13 @@ export default function AirbnbIncomeAssumptionsPage() {
         <div className="pt-8 border-t border-gray-100">
           <Link
             href="/"
-            className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-medium transition-all duration-200 hover:bg-accent-hover active:scale-[0.98]"
+            className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-medium transition-all duration-button ease-friction hover:bg-accent-hover active:scale-[0.94]"
           >
-            Run your deal — $49
+            Run your deal. $49
           </Link>
         </div>
       </article>
+      </div>
     </main>
   );
 }

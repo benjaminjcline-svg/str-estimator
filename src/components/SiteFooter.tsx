@@ -19,8 +19,7 @@ export function SiteFooter() {
           <div className="min-[1025px]:col-span-1">
             <p className="font-semibold text-label-primary mb-4">STR Estimator</p>
             <p className="text-sm text-label-secondary">
-              We stress-test your STR deal and tell you straight: proceed, pause, or
-              walk away. No fabricated data.
+              The numbers. The verdict. No hype.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-8 min-[1025px]:gap-16">
@@ -31,7 +30,7 @@ export function SiteFooter() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm font-semibold text-accent hover:text-accent-hover transition-colors duration-200"
+                      className="text-sm font-medium text-accent hover:text-accent-hover transition-colors duration-button ease-friction"
                     >
                       {link.label}
                     </Link>
@@ -39,14 +38,14 @@ export function SiteFooter() {
                 ))}
               </ul>
             </div>
-            <div>
+            <div className="min-[1025px]:ml-[240px]">
               <p className="font-semibold text-label-primary mb-4">Resources</p>
               <ul className="space-y-2">
                 {footerLinks.slice(4).map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm font-semibold text-accent hover:text-accent-hover transition-colors duration-200"
+                      className="text-sm font-medium text-accent hover:text-accent-hover transition-colors duration-button ease-friction"
                     >
                       {link.label}
                     </Link>
@@ -56,9 +55,22 @@ export function SiteFooter() {
             </div>
           </div>
         </div>
-        <p className="mt-12 pt-8 border-t border-gray-100 text-sm text-label-tertiary">
-          © {new Date().getFullYear()} STR Estimator. Know before you buy.
-        </p>
+        <div className="mt-12 pt-8 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <p className="text-sm text-label-tertiary">
+            © {new Date().getFullYear()} STR Estimator. Know before you buy.
+          </p>
+          <div className="flex flex-wrap gap-x-6 gap-y-1">
+            <Link href="/terms" className="text-sm text-label-tertiary hover:text-label-secondary transition-colors duration-button ease-friction">
+              Terms of Service
+            </Link>
+            <Link href="/privacy" className="text-sm text-label-tertiary hover:text-label-secondary transition-colors duration-button ease-friction">
+              Privacy Policy
+            </Link>
+            <Link href="/refund" className="text-sm text-label-tertiary hover:text-label-secondary transition-colors duration-button ease-friction">
+              Refund Policy
+            </Link>
+          </div>
+        </div>
       </div>
     </footer>
   );

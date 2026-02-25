@@ -14,33 +14,43 @@ function applyConservativeDefaults(input: STRInput): {
   overrides: string[];
 } {
   const overrides: string[] = [];
-  const downPayment = (input.purchase_price * input.down_payment_percent) / 100;
-  const loanAmount = input.purchase_price - downPayment;
+  const downPct = Math.max(0, Math.min(100, input.down_payment_percent));
+  const downPayment = (input.purchase_price * downPct) / 100;
+  const loanAmount = Math.max(0, input.purchase_price - downPayment);
+
   const rate =
     input.interest_rate === "current market"
       ? DEFAULT_INTEREST_RATE
       : Number(input.interest_rate);
+  const effectiveRate = Number.isFinite(rate) && rate >= 0 ? rate : DEFAULT_INTEREST_RATE;
   if (input.interest_rate === "current market") {
     overrides.push(
-      `Interest rate assumed ${rate}% (current market) — verify against actual quote`
+      `Interest rate assumed ${effectiveRate}% (current market). Verify against actual quote.`
     );
   }
-  const term = input.loan_term ?? DEFAULT_LOAN_TERM;
-  const monthlyRate = rate / 100 / 12;
+  const term = Math.max(1, Math.min(30, input.loan_term ?? DEFAULT_LOAN_TERM));
   const n = term * 12;
+  const monthlyRate = effectiveRate / 100 / 12;
   const monthlyPI =
-    loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, n)) / (Math.pow(1 + monthlyRate, n) - 1);
+    loanAmount === 0
+      ? 0
+      : monthlyRate === 0
+        ? loanAmount / n
+        : (loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, n))) /
+          (Math.pow(1 + monthlyRate, n) - 1);
 
-  let appliedOccupancy = input.estimated_occupancy ?? TYPICAL_OCCUPANCY;
+  const rawOcc = input.estimated_occupancy ?? TYPICAL_OCCUPANCY;
+  const saneOcc = Number.isFinite(rawOcc) ? Math.max(0, Math.min(100, rawOcc)) : CONSERVATIVE_OCCUPANCY;
+  let appliedOccupancy = saneOcc;
   if (input.estimated_occupancy !== undefined && input.estimated_occupancy > CONSERVATIVE_OCCUPANCY_CAP) {
-    appliedOccupancy = Math.min(input.estimated_occupancy, CONSERVATIVE_OCCUPANCY_CAP);
+    appliedOccupancy = Math.min(saneOcc, CONSERVATIVE_OCCUPANCY_CAP);
     overrides.push(
-      `Occupancy capped at ${CONSERVATIVE_OCCUPANCY_CAP}% — assumptions above ~65% are fragile`
+      `Occupancy capped at ${CONSERVATIVE_OCCUPANCY_CAP}%. Assumptions above ~65% are fragile.`
     );
   } else if (input.estimated_occupancy === undefined) {
     appliedOccupancy = CONSERVATIVE_OCCUPANCY;
     overrides.push(
-      `Occupancy assumed ${CONSERVATIVE_OCCUPANCY}% — no data provided; this materially affects outcome`
+      `Occupancy assumed ${CONSERVATIVE_OCCUPANCY}%. No data provided. This materially affects outcome.`
     );
   }
 
@@ -49,11 +59,13 @@ function applyConservativeDefaults(input: STRInput): {
     condo: 140,
     duplex: 155,
   };
+  const defaultRate = baseRateByType[input.property_type] ?? 175;
+  const rawRate = input.estimated_nightly_rate ?? defaultRate;
   const appliedNightlyRate =
-    input.estimated_nightly_rate ?? baseRateByType[input.property_type];
+    Number.isFinite(rawRate) && rawRate > 0 ? rawRate : defaultRate;
   if (!input.estimated_nightly_rate) {
     overrides.push(
-      `Nightly rate assumed $${appliedNightlyRate} (${input.property_type}) — cannot verify; increases risk`
+      `Nightly rate assumed $${appliedNightlyRate} (${input.property_type}). Cannot verify. Increases risk.`
     );
   }
 
@@ -105,9 +117,9 @@ export function analyzeSTR(input: STRInput): AnalysisReport {
   let verdict: Verdict;
   let verdictReasoning: string;
 
-  if (netMonthly >= 200 && appliedOccupancy >= 50 && overrides.length <= 2) {
+  if (netMonthly >= 200 && appliedOccupancy >= 50) {
     verdict = "Proceed";
-    verdictReasoning = `At ${appliedOccupancy}% occupancy and conservative costs, the deal works. Numbers hold under typical STR conditions. Do due diligence—zoning, HOA rules, local demand—and you're good to go.`;
+    verdictReasoning = `At ${appliedOccupancy}% occupancy and conservative costs, the deal works. Numbers hold under typical STR conditions. Do due diligence: zoning, HOA rules, local demand. You're good to go.`;
   } else if (
     netMonthly >= -300 &&
     netMonthly < 200 &&
@@ -125,12 +137,12 @@ export function analyzeSTR(input: STRInput): AnalysisReport {
       title: "Strong Year",
       conditions: `Peak demand, limited competition, rates at or above $${appliedNightlyRate}/night, 70–75% occupancy.`,
       caveat: "Don't bank on this. It's not typical.",
-      description: `Gross revenue could run 20–25% above baseline. Cash flow gets comfortable. But you can't count on this—favorable conditions don't last forever.`,
+      description: `Gross revenue could run 20–25% above baseline. Cash flow gets comfortable. But you can't count on this. Favorable conditions don't last forever.`,
     },
     typicalYear: {
       title: "Typical Year",
       conditions: `Seasonality. Vacancy gaps. Rate pressure.`,
-      description: `Most owners see 50–60% occupancy in established markets. Shoulder season? Discounts. Cleaning, turnover, platform fees—they eat into gross. Typical year usually underperforms the hype.`,
+      description: `Most owners see 50–60% occupancy in established markets. Shoulder season? Discounts. Cleaning, turnover, platform fees. They eat into gross. Typical year usually underperforms the hype.`,
     },
     weakYear: {
       title: "Weak Year",
@@ -143,7 +155,7 @@ export function analyzeSTR(input: STRInput): AnalysisReport {
     {
       area: "Fixed vs variable",
       description:
-        "Mortgage, tax, insurance—fixed. Revenue? Variable. A 10% occupancy drop can wipe months of thin profit.",
+        "Mortgage, tax, insurance: fixed. Revenue? Variable. A 10% occupancy drop can wipe months of thin profit.",
     },
     {
       area: "Turnover and cleaning",
@@ -152,16 +164,16 @@ export function analyzeSTR(input: STRInput): AnalysisReport {
     {
       area: "Utilities, consumables, wear",
       description:
-        "STRs burn more utilities and supplies than LTR. Furnishings, linens, finishes—wear accelerates. Budget 4–6% of revenue.",
+        "STRs burn more utilities and supplies than LTR. Furnishings, linens, finishes. Wear accelerates. Budget 4–6% of revenue.",
     },
     {
       area: "Insurance and tax",
       description:
-        "STR insurance keeps going up. Some cities are adding STR taxes. These costs move—often without much warning.",
+        "STR insurance keeps going up. Some cities are adding STR taxes. These costs move. Often without much warning.",
     },
     {
       area: "CapEx creep",
-      description: `Roof, HVAC, appliances age. $${Math.round(capexMonthly)}/month feels low now—compounds over 5–10 years.`,
+      description: `Roof, HVAC, appliances age. $${Math.round(capexMonthly)}/month feels low now. Compounds over 5–10 years.`,
     },
   ];
 
@@ -179,17 +191,17 @@ export function analyzeSTR(input: STRInput): AnalysisReport {
   const monthlyBleed =
     netMonthly < 0
       ? `Roughly $${Math.abs(Math.round(netMonthly))}–$${Math.abs(Math.round(netMonthly * 1.3))}/month depending on actual performance.`
-      : `Break-even to small positive in a weak year — could swing to $${Math.round(totalMonthlyCosts * 0.15)}/month negative if occupancy drops 10+ points.`;
+      : `Break-even to small positive in a weak year. Could swing to $${Math.round(totalMonthlyCosts * 0.15)}/month negative if occupancy drops 10+ points.`;
 
   const downsideReality = {
     monthlyBleed,
     duration:
       "Stress lasts 6–18 months. Markets don't bounce overnight.",
     emotionalImpact:
-      "Carrying a negative-cash-flow STR is draining. Financial and mental load—right when you hoped for passive income.",
+      "Carrying a negative-cash-flow STR is draining. Financial and mental load. Right when you hoped for passive income.",
     survivability:
       netMonthly < -200
-        ? "The downside compounds. Without reserves—not survivable."
+        ? "The downside compounds. Without reserves, not survivable."
         : netMonthly < 0
           ? "Survivable with reserves. Not comfortable. Every negative month erodes your cushion."
           : "Survivable with 6–12 months of reserves. Weak years happen.",
@@ -224,7 +236,11 @@ export function analyzeSTR(input: STRInput): AnalysisReport {
       monthlyPrincipalInterest: monthlyPI,
       appliedOccupancy,
       appliedNightlyRate,
+      grossMonthlyRevenue,
+      totalMonthlyCosts,
+      netMonthly,
       conservativeOverrides: overrides,
+      address: input.address,
     },
   };
 }

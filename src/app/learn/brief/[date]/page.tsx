@@ -49,31 +49,36 @@ export default async function DailyBriefPage({ params }: Props) {
   ]);
 
   return (
-    <main className="max-w-2xl mx-auto px-6 py-16 sm:py-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "Article", headline: article?.title ?? `STR Brief ${date}`, datePublished: date }) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
-      />
-      <article className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
-        <Link
-          href="/learn"
-          className="text-sm text-accent hover:text-accent-hover mb-6 inline-block"
-        >
-          ← Back to Learn
-        </Link>
-        {date !== today && (
+    <main className="min-h-screen bg-surface">
+      <div className="border-b border-gray-100/80 bg-surface-elevated/80 backdrop-blur-sm py-6">
+        <div className="max-w-2xl mx-auto px-6 flex items-center justify-between">
           <Link
-            href="/learn/brief"
-            className="text-sm text-accent hover:text-accent-hover mb-2 block"
+            href="/learn"
+            className="text-sm font-medium text-accent hover:text-accent-hover transition-colors duration-button ease-friction"
           >
-            ← Latest brief
+            ← Back to Learn
           </Link>
-        )}
-
+          <span className="text-sm font-medium text-label-secondary">
+            {date !== today ? (
+              <Link href="/learn/brief" className="text-accent hover:text-accent-hover">
+                Latest brief →
+              </Link>
+            ) : (
+              "Market Brief"
+            )}
+          </span>
+        </div>
+      </div>
+      <div className="max-w-2xl mx-auto px-6 py-12 sm:py-16">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "Article", headline: article?.headline ?? article?.title ?? `STR Brief ${date}`, datePublished: date }) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+        />
+        <article className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
         {!article ? (
           <div className="py-12">
             <h1 className="font-sans text-3xl font-semibold text-label-primary mb-4">
@@ -81,7 +86,7 @@ export default async function DailyBriefPage({ params }: Props) {
             </h1>
             <p className="text-label-secondary">
               No brief for this date yet. The daily brief runs at 8:00 UTC.{" "}
-              {date === today && "Check back shortly—we're generating it."}
+              {date === today && "Check back shortly. We're generating it."}
             </p>
             <Link
               href="/learn/brief"
@@ -93,7 +98,7 @@ export default async function DailyBriefPage({ params }: Props) {
         ) : (
           <>
             <h1 className="font-sans text-3xl sm:text-4xl font-semibold text-label-primary tracking-tight mb-2">
-              {article.title}
+              {article.headline}
             </h1>
             <p className="text-sm text-label-tertiary mb-8">
               {date} · North America focus · Top 200 markets
@@ -140,14 +145,15 @@ export default async function DailyBriefPage({ params }: Props) {
             <div className="mt-12 pt-8 border-t border-gray-100">
               <Link
                 href="/"
-                className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-medium transition-all duration-200 hover:bg-accent-hover active:scale-[0.98]"
+                className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-medium transition-all duration-button ease-friction hover:bg-accent-hover active:scale-[0.94]"
               >
-                Run your deal — $49
+                Run your deal. $49
               </Link>
             </div>
           </>
         )}
       </article>
+      </div>
     </main>
   );
 }

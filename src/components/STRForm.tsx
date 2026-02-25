@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { STRInput, PropertyType } from "@/lib/types";
+import { AddressAutocomplete } from "./AddressAutocomplete";
 
 interface STRFormProps {
   onSubmit: (email: string, input: STRInput) => Promise<void>;
@@ -9,7 +10,7 @@ interface STRFormProps {
 }
 
 const inputBase =
-  "w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white text-label-primary placeholder:text-label-tertiary transition-all duration-200 ease-smooth hover:border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20";
+  "w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white text-label-primary placeholder:text-label-tertiary transition-all duration-button ease-friction hover:border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20";
 
 export function STRForm({ onSubmit, isSubmitting }: STRFormProps) {
   const [email, setEmail] = useState("");
@@ -26,16 +27,39 @@ export function STRForm({ onSubmit, isSubmitting }: STRFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    const rawPrice = parseInt(purchasePrice.replace(/\D/g, ""), 10);
+    const purchase_price = Number.isNaN(rawPrice) ? 0 : rawPrice;
+
+    const downPct = parseFloat(downPayment);
+    const down_payment_percent = Number.isNaN(downPct)
+      ? 20
+      : Math.max(0, Math.min(100, downPct));
+
+    const ir = interestRate.trim() ? parseFloat(interestRate) : NaN;
+    const interest_rate: number | "current market" =
+      Number.isNaN(ir) ? "current market" : ir;
+
+    const term = parseInt(loanTerm, 10);
+    const loan_term = Number.isNaN(term) || term < 1 ? 30 : Math.max(15, Math.min(30, term));
+
+    const nightRate = parseFloat(nightlyRate);
+    const estimated_nightly_rate =
+      nightlyRate.trim() !== "" && !Number.isNaN(nightRate) && nightRate > 0 ? nightRate : undefined;
+
+    const occ = parseFloat(occupancy);
+    const estimated_occupancy =
+      occupancy.trim() !== "" && !Number.isNaN(occ) && occ >= 0 && occ <= 100 ? occ : undefined;
+
     const input: STRInput = {
-      address: address || undefined,
-      purchase_price: parseInt(purchasePrice.replace(/\D/g, ""), 10) || 0,
-      down_payment_percent: parseFloat(downPayment) || 20,
-      interest_rate: interestRate ? parseFloat(interestRate) : "current market",
-      loan_term: parseInt(loanTerm, 10) || 30,
+      address: address.trim() || undefined,
+      purchase_price,
+      down_payment_percent,
+      interest_rate,
+      loan_term,
       property_type: propertyType,
       self_managed: selfManaged,
-      estimated_nightly_rate: nightlyRate ? parseFloat(nightlyRate) : undefined,
-      estimated_occupancy: occupancy ? parseFloat(occupancy) : undefined,
+      estimated_nightly_rate,
+      estimated_occupancy,
     };
 
     if (!input.purchase_price || input.purchase_price < 10000) {
@@ -51,8 +75,8 @@ export function STRForm({ onSubmit, isSubmitting }: STRFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-10">
-      <div className="space-y-6 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
+    <form onSubmit={handleSubmit} className="space-y-10 overflow-visible isolation isolate">
+      <div className="space-y-6 opacity-0 animate-slide-up overflow-visible relative z-[100]" style={{ animationFillMode: "forwards" }}>
         <h2 className="text-lg font-semibold text-label-primary tracking-tight">
           Your details
         </h2>
@@ -72,22 +96,31 @@ export function STRForm({ onSubmit, isSubmitting }: STRFormProps) {
           />
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2 overflow-visible">
           <label htmlFor="address" className="block text-sm font-medium text-label-secondary">
             Address <span className="text-label-tertiary font-normal">(optional)</span>
           </label>
-          <input
-            id="address"
-            type="text"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            placeholder="123 Main St, City, State"
-            className={inputBase}
-          />
+          {process.env.NEXT_PUBLIC_GEOAPIFY_API_KEY ? (
+            <AddressAutocomplete
+              id="address"
+              value={address}
+              onChange={setAddress}
+              placeholder="123 Main St, City, State"
+            />
+          ) : (
+            <input
+              id="address"
+              type="text"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              placeholder="123 Main St, City, State"
+              className={inputBase}
+            />
+          )}
         </div>
       </div>
 
-      <div className="space-y-6 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "80ms" }}>
+      <div className="space-y-6 opacity-0 animate-slide-up relative z-0" style={{ animationFillMode: "forwards", animationDelay: "80ms" }}>
         <h2 className="text-lg font-semibold text-label-primary tracking-tight">
           Property & financing
         </h2>
@@ -166,10 +199,10 @@ export function STRForm({ onSubmit, isSubmitting }: STRFormProps) {
                 key={type}
                 type="button"
                 onClick={() => setPropertyType(type)}
-                className={`px-4 py-3.5 rounded-xl border text-sm font-medium transition-all duration-200 ease-smooth ${
+                className={`px-4 py-3.5 rounded-xl border text-sm font-medium transition-all duration-button ease-friction ${
                   propertyType === type
                     ? "border-accent bg-accent/5 text-accent"
-                    : "border-gray-200 bg-white text-label-secondary hover:border-gray-300 active:scale-[0.98]"
+                    : "border-gray-200 bg-white text-label-secondary hover:border-gray-300 active:scale-[0.94]"
                 }`}
               >
                 {type === "SFH" ? "Single Family" : type.charAt(0).toUpperCase() + type.slice(1)}
@@ -184,12 +217,12 @@ export function STRForm({ onSubmit, isSubmitting }: STRFormProps) {
             role="switch"
             aria-checked={selfManaged}
             onClick={() => setSelfManaged(!selfManaged)}
-            className={`relative w-12 h-7 rounded-full transition-all duration-300 ease-smooth ${
+            className={`relative w-12 h-7 rounded-full transition-all duration-card ease-friction ${
               selfManaged ? "bg-accent" : "bg-gray-200"
             }`}
           >
             <span
-              className={`absolute top-1 left-1 w-5 h-5 rounded-full bg-white shadow-md transition-all duration-300 ease-snappy ${
+              className={`absolute top-1 left-1 w-5 h-5 rounded-full bg-white transition-all duration-card ease-friction ${
                 selfManaged ? "translate-x-5" : "translate-x-0"
               }`}
             />
@@ -244,24 +277,45 @@ export function STRForm({ onSubmit, isSubmitting }: STRFormProps) {
         </div>
       </div>
 
-      <div className="pt-6 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "220ms" }}>
-        <button
-          type="submit"
-          disabled={isSubmitting || !purchasePrice}
-          className="group w-full py-4 px-6 rounded-2xl bg-accent text-white font-semibold text-lg transition-all duration-200 ease-smooth hover:bg-accent-hover active:bg-accent-pressed active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:active:scale-100 shadow-soft"
-        >
-          {isSubmitting ? (
-            <span className="flex items-center justify-center gap-3">
-              <svg className="w-5 h-5 animate-loader-spin" viewBox="0 0 24 24" fill="none">
+      <div className="pt-6 opacity-0 animate-slide-up space-y-4" style={{ animationFillMode: "forwards", animationDelay: "220ms" }}>
+        <div className={`flex w-full transition-[justify-content] duration-300 ease-friction ${isSubmitting ? "justify-center" : "justify-stretch"}`}>
+          <button
+            type="submit"
+            disabled={isSubmitting || !purchasePrice}
+            className={`group relative h-14 overflow-hidden rounded-2xl bg-accent text-white font-semibold text-lg transition-all duration-300 ease-friction hover:bg-accent-hover active:bg-accent-pressed active:scale-[0.95] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:active:scale-100 flex items-center justify-center min-w-0 px-6 ${
+              isSubmitting ? "w-14 rounded-full" : "w-full"
+            }`}
+          >
+            <span
+              className="transition-opacity duration-200"
+              style={{ opacity: isSubmitting ? 0 : 1 }}
+              aria-hidden={isSubmitting}
+            >
+              Run my deal. $49
+            </span>
+            <span
+              className="absolute inset-0 flex items-center justify-center transition-opacity duration-200"
+              style={{ opacity: isSubmitting ? 1 : 0 }}
+              aria-hidden={!isSubmitting}
+            >
+              <svg className="w-6 h-6 animate-loader-spin" viewBox="0 0 24 24" fill="none" aria-label="Analyzing">
                 <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2.5" strokeOpacity="0.25" />
                 <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
               </svg>
-              <span className="animate-pulse-soft">Analyzing your deal…</span>
             </span>
-          ) : (
-            "Run my deal — $49"
-          )}
-        </button>
+          </button>
+        </div>
+        <p className="text-xs text-label-tertiary leading-relaxed text-center">
+          By clicking above, you agree to our{" "}
+          <a href="/terms" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent-hover underline">
+            Terms of Service
+          </a>
+          {" "}and{" "}
+          <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent-hover underline">
+            Privacy Policy
+          </a>
+          , and understand this is not financial or investment advice.
+        </p>
       </div>
     </form>
   );

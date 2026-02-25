@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { Report } from "@/components/Report";
+import { ReportWithDownload } from "@/components/ReportWithDownload";
 import { analyzeSTR } from "@/lib/analyze";
 import type { STRInput } from "@/lib/types";
 import type { AnalysisReport } from "@/lib/types";
@@ -39,6 +39,8 @@ export function ReportPageClient() {
   const dataParam = searchParams.get("data");
   const sessionId = searchParams.get("session_id");
 
+  const router = useRouter();
+
   useEffect(() => {
     async function loadReport() {
       if (dataParam) {
@@ -56,14 +58,28 @@ export function ReportPageClient() {
 
       if (sessionId) {
         try {
-          const res = await fetch(`/api/session?session_id=${sessionId}`);
+          const res = await fetch("/api/report/claim", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ session_id: sessionId }),
+          });
           const json = await res.json();
 
           if (!res.ok) {
             throw new Error(json.error ?? "Failed to load report");
           }
 
-          setReport(json.report);
+          if (json.reportId) {
+            router.replace(`/report/${json.reportId}`);
+            return;
+          }
+
+          if (json.fallbackRedirectUrl) {
+            router.replace(json.fallbackRedirectUrl);
+            return;
+          }
+
+          setError("Could not create report link");
         } catch (err) {
           setError(err instanceof Error ? err.message : "Failed to load report");
         }
@@ -76,7 +92,7 @@ export function ReportPageClient() {
     }
 
     loadReport();
-  }, [dataParam, sessionId]);
+  }, [dataParam, sessionId, router]);
 
   if (loading) {
     return <ReportLoader />;
@@ -92,7 +108,7 @@ export function ReportPageClient() {
           <p className="text-label-secondary mb-8">{error}</p>
           <Link
             href="/"
-            className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-medium transition-all duration-200 hover:bg-accent-hover active:scale-[0.98]"
+            className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-medium transition-all duration-button ease-friction hover:bg-accent-hover active:scale-[0.94]"
           >
             Start over
           </Link>
@@ -103,16 +119,17 @@ export function ReportPageClient() {
 
   return (
     <main className="min-h-screen bg-surface py-16 sm:py-24 px-6">
-      <Report report={report} />
-      <div className="max-w-2xl mx-auto mt-14 text-center opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "560ms" }}>
-        <Link
-          href="/"
-          className="group inline-flex items-center gap-1.5 text-accent font-medium transition-all duration-200 hover:text-accent-hover"
-        >
-          Run another deal
-          <span className="transform transition-transform duration-200 group-hover:translate-x-0.5">→</span>
-        </Link>
-      </div>
+      <ReportWithDownload report={report}>
+        <div className="max-w-2xl mx-auto mt-14 text-center opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "560ms" }}>
+          <Link
+            href="/"
+            className="group inline-flex items-center gap-1.5 text-accent font-medium transition-all duration-button ease-friction hover:text-accent-hover"
+          >
+            Run another deal
+            <span className="transform transition-transform duration-button ease-friction group-hover:translate-x-0.5">→</span>
+          </Link>
+        </div>
+      </ReportWithDownload>
     </main>
   );
 }

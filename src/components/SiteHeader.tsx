@@ -14,11 +14,11 @@ export function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-100/80 bg-surface/50 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-gray-100/80 bg-surface/0 backdrop-blur-md">
       <div className="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between gap-4">
         <Link
           href="/"
-          className="text-lg font-semibold text-label-primary hover:text-accent transition-colors duration-200 shrink-0"
+          className="text-lg font-semibold text-label-primary hover:text-accent transition-colors duration-button ease-friction shrink-0"
           onClick={() => setMobileMenuOpen(false)}
         >
           STR Estimator
@@ -29,30 +29,30 @@ export function SiteHeader() {
             <Link
               key={link.href}
               href={link.href}
-              className="px-3 py-2 text-sm font-semibold text-accent hover:text-accent-hover transition-colors duration-200 rounded-lg hover:bg-gray-100/80"
+              className="px-3 py-2 text-sm font-medium text-accent hover:text-accent-hover transition-colors duration-button ease-friction rounded-lg hover:bg-accent/10"
             >
               {link.label}
             </Link>
           ))}
           <Link
             href="/#analyze"
-            className="ml-3 px-4 py-2.5 rounded-xl bg-accent text-white text-sm font-medium transition-all duration-200 hover:bg-accent-hover hover:shadow-soft active:scale-[0.98]"
+            className="ml-3 px-4 py-2.5 rounded-xl bg-accent text-white text-sm font-medium transition-all duration-button ease-friction hover:bg-accent-hover active:scale-[0.94]"
           >
-            Run your deal — $49
+            Get started
           </Link>
         </nav>
 
         <div className="flex sm:hidden items-center gap-2">
           <Link
             href="/"
-            className="px-3 py-2 rounded-lg bg-accent text-white text-sm font-medium transition-all duration-200 hover:bg-accent-hover active:scale-[0.98]"
+            className="px-3 py-2 rounded-lg bg-accent text-white text-sm font-medium transition-all duration-button ease-friction hover:bg-accent-hover active:scale-[0.94]"
           >
-            Run your deal — $49
+            Get started
           </Link>
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2.5 -mr-2 rounded-xl text-label-secondary hover:text-label-primary hover:bg-gray-100 transition-all duration-200 active:scale-[0.96]"
+            className="p-2.5 -mr-2 rounded-xl text-label-secondary hover:text-label-primary hover:bg-gray-100 transition-all duration-button ease-friction active:scale-[0.92]"
             aria-expanded={mobileMenuOpen}
             aria-label="Toggle menu"
           >
@@ -78,7 +78,7 @@ export function SiteHeader() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="block py-3 font-semibold text-accent hover:text-accent-hover transition-colors"
+                  className="block py-3 font-semibold text-accent hover:text-accent-hover transition-colors duration-button ease-friction"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}
@@ -91,7 +91,7 @@ export function SiteHeader() {
                 className="block py-3 text-accent font-semibold"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Run your deal — $49 →
+                Get started →
               </Link>
             </li>
           </ul>

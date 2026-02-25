@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "What is this?",
-    a: "We run your STR deal through stress-tested underwriting and give you one of three verdicts: Proceed, Borderline, or Walk Away. Built for buyers evaluating 1–3 properties. No fluff.",
+    a: "We run your STR deal through stress-tested underwriting and give you one of three verdicts: Proceed, Borderline, or Walk Away. Built for buyers evaluating one to three properties. No fluff.",
   },
   {
     q: "How much?",
@@ -18,11 +18,11 @@ const faqs = [
   },
   {
     q: "Do you make up market data?",
-    a: "No. We don't invent comps, occupancy stats, or local laws. When something's unknown, we say so. We cap optimistic assumptions and tell you exactly what we assumed.",
+    a: "No. We don&apos;t invent comps, occupancy stats, or local laws. When something&apos;s unknown, we say so. We cap optimistic assumptions and tell you exactly what we assumed.",
   },
   {
     q: "What if I think occupancy will be higher?",
-    a: "We cap it. Occupancy above ~65% is treated as fragile—because it usually is. We factor in seasonality, per-stay cleaning, STR insurance, and vacancy. Real-world stuff.",
+    a: "We cap it. Occupancy above ~65% is treated as fragile. Because it usually is. We factor in seasonality, per-stay cleaning, STR insurance, and vacancy. Real-world stuff.",
   },
   {
     q: "Long-term or mid-term rentals?",
@@ -80,9 +80,9 @@ export default function FAQPage() {
         <div className="mt-12 pt-8 border-t border-gray-100">
           <Link
             href="/"
-            className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-medium transition-all duration-200 hover:bg-accent-hover active:scale-[0.98]"
+            className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-medium transition-all duration-button ease-friction hover:bg-accent-hover active:scale-[0.94]"
           >
-            Run your deal — $49
+            Run your deal. $49
           </Link>
         </div>
       </article>

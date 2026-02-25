@@ -11,6 +11,7 @@ import {
   getStoredBrief,
   setStoredBrief,
   getStoredBriefDates,
+  getStoredBriefList,
   isStorageConfigured,
 } from "./brief-storage";
 
@@ -62,6 +63,17 @@ export function getCachedBriefDates(): Promise<string[]> {
   return unstable_cache(
     () => getStoredBriefDates(),
     ["brief-dates"],
+    { revalidate: 3600 }
+  )();
+}
+
+/**
+ * List of briefs with dates and headlines. For the Learn page.
+ */
+export function getCachedBriefList(): Promise<{ date: string; headline: string }[]> {
+  return unstable_cache(
+    () => getStoredBriefList(),
+    ["brief-list"],
     { revalidate: 3600 }
   )();
 }

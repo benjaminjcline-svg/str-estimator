@@ -5,14 +5,16 @@
 :root {
   --surface: #fafafa;
   --surface-elevated: #ffffff;
+  /* AA contrast: primary headings; secondary/tertiary body copy ≥4.5:1 on surface & elevated */
   --label-primary: #1d1d1f;
-  --label-secondary: #6e6e73;
-  --label-tertiary: #86868b;
+  --label-secondary: #595959;
+  --label-tertiary: #595959;
   --accent: #0071e3;
   --accent-hover: #0077ed;
   --accent-pressed: #006edb;
   --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-friction: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 html {
@@ -33,9 +35,9 @@ textarea,
 [role="switch"] {
   outline: none;
   transition:
-    border-color 0.2s var(--ease-smooth),
-    box-shadow 0.2s var(--ease-smooth),
-    transform 0.15s var(--ease-smooth);
+    border-color 0.28s var(--ease-friction),
+    box-shadow 0.28s var(--ease-friction),
+    transform 0.21s var(--ease-friction);
 }
 
 input:focus,
@@ -48,6 +50,48 @@ textarea:focus {
 button:focus-visible {
   outline: none;
   box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.4);
+}
+
+/* Address autocomplete - match form input styling */
+.address-autocomplete-wrapper .geoapify-geocoder-autocomplete-container {
+  width: 100%;
+}
+.address-autocomplete-wrapper .geoapify-autocomplete-input {
+  width: 100% !important;
+  height: auto !important;
+  padding: 0.875rem 1rem !important;
+  line-height: 1.5 !important;
+  border-radius: 0.75rem !important;
+  border: 1px solid rgb(229 231 235) !important;
+  background: white !important;
+  font-size: inherit !important;
+}
+.address-autocomplete-wrapper .geoapify-autocomplete-items {
+  z-index: 9999 !important;
+  border-radius: 0 0 0.75rem 0.75rem;
+  border-color: rgb(229 231 235);
+  background: #fff !important;
+}
+
+/* Page content transition - opacity, scale, blur 8 → 0 */
+@keyframes contentIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Sample report blur - locks premium content */
+.sample-report-blur {
+  filter: blur(0.35rem);
+  user-select: none;
+  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

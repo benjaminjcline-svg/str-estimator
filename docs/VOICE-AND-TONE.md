@@ -1,4 +1,4 @@
-# STR Estimator — Voice & Tone Ruleset
+# STR Estimator: Voice and Tone
 
 Use this for **all copy** across the product: marketing, learn content, CTAs, FAQs, and LLM-generated analysis. The goal: writing so engaging and human that it's next to impossible to tell it's AI.
 
@@ -22,7 +22,7 @@ Avoid: "We're here to help," "At the end of the day," "It goes without saying," 
 
 ## Do use
 
-- **You** and **your** — direct address
+- **You** and **your** (direct address)
 - Contractions: we're, it's, don't, can't, you'll, that's
 - Imperatives: "Run the numbers." "Skip the hype." "Stress-test it."
 - Concrete examples: "A $300k purchase at 6%"
@@ -32,7 +32,7 @@ Avoid: "We're here to help," "At the end of the day," "It goes without saying," 
 
 ## CTAs and conversion
 
-- Enticing, not pushy. "Get your analysis — $49" works because it's clear and cheap.
+- Enticing, not pushy. "Run your deal. $49" works because it's clear and cheap.
 - Emphasize the outcome: "See if it's worth it" / "Know before you buy"
 - Learning hook: "Worth $49 even if you walk away. You'll learn something."
 

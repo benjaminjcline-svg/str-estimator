@@ -60,6 +60,10 @@ export interface AnalysisReport {
     monthlyPrincipalInterest: number;
     appliedOccupancy: number;
     appliedNightlyRate: number;
+    grossMonthlyRevenue: number;
+    totalMonthlyCosts: number;
+    netMonthly: number;
     conservativeOverrides: string[];
+    address?: string;
   };
 }

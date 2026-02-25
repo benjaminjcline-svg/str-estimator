@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isTestAccount } from "@/lib/test-accounts";
+import { analyzeSTR } from "@/lib/analyze";
+import { storeReport, isStorageConfigured } from "@/lib/report-storage";
+import { sendReportEmail } from "@/lib/send-report-email";
 import type { STRInput } from "@/lib/types";
 
 const REPORT_PRICE_CENTS = 4900; // $49.00
@@ -23,6 +26,19 @@ export async function POST(req: NextRequest) {
     }
 
     if (isTestAccount(email)) {
+      if (isStorageConfigured()) {
+        try {
+          const report = analyzeSTR(input);
+          const reportId = await storeReport(email, report);
+          await sendReportEmail(email, reportId);
+          return NextResponse.json({
+            testAccount: true,
+            redirectUrl: `/report/${reportId}`,
+          });
+        } catch {
+          // Fall through to legacy URL if storage fails
+        }
+      }
       return NextResponse.json({
         testAccount: true,
         redirectUrl: encodeReportUrl(input),

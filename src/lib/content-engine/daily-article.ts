@@ -10,6 +10,8 @@ import { getCitiesContextForPrompt } from "./cities";
 export type DailyArticle = {
   date: string; // YYYY-MM-DD
   title: string;
+  /** Short contextual headline for the list (e.g. "Austin regs, rate pressure") */
+  headline: string;
   content: string; // Markdown
   citiesMentioned: string[];
   sources: { title: string; url: string; sourceName: string }[];
@@ -30,7 +32,7 @@ RULES:
 - ORIGINAL WRITING ONLY. Never copy or paraphrase source text. Your own analysis.
 - NO INVENTED FACTS. Only interpret what the sources report. No fabricated numbers.
 - STRUCTURE: Intro (hook) → 2–4 sections by theme or city → Closing takeaway
-- OUTPUT: Valid markdown. Use ## for section headers, **bold** for emphasis, bullet lists when listing cities or points.`;
+- OUTPUT: First line must be HEADLINE: followed by a short contextual title (5–10 words) capturing what the article covers—e.g. "Austin regs tighten, rate pressure builds" or "Miami crackdown, demand shifts south." Then a blank line. Then the markdown article. Use ## for section headers, **bold** for emphasis.`;
 
 function buildUserPrompt(
   date: string,
@@ -53,7 +55,7 @@ Today's headlines from our feeds:
 
 ${headlinesBlock}
 
-Write the daily STR brief for ${date}. Synthesize these into one article. Call out North American cities when they're mentioned. Focus on what STR buyers need to know. Output only the markdown article—no preamble.`;
+Write the daily STR brief for ${date}. Synthesize these into one article. Call out North American cities when they're mentioned. Focus on what STR buyers need to know. First line: HEADLINE: [your 5–10 word contextual title]. Then blank line. Then the article.`;
 }
 
 export async function generateDailyArticle(
@@ -76,8 +78,16 @@ export async function generateDailyArticle(
       temperature: 0.4,
     });
 
-    const content = completion.choices[0]?.message?.content?.trim();
+    let content = completion.choices[0]?.message?.content?.trim();
     if (!content) return null;
+
+    // Parse HEADLINE: from first line if present
+    let headline = "STR news";
+    const headlineMatch = content.match(/^HEADLINE:\s*(.+?)(?:\n|$)/i);
+    if (headlineMatch) {
+      headline = headlineMatch[1].trim();
+      content = content.replace(/^HEADLINE:.*?\n\n?/i, "").trim();
+    }
 
     // Extract cities mentioned (simple heuristic: look for city names in content)
     const { TOP_NA_CITIES } = await import("./cities");
@@ -88,6 +98,7 @@ export async function generateDailyArticle(
     return {
       date,
       title: `STR Brief: ${date}`,
+      headline,
       content,
       citiesMentioned: Array.from(new Set(citiesMentioned)).slice(0, 15),
       sources: items.slice(0, 15).map((i) => ({

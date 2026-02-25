@@ -23,6 +23,7 @@ export async function GET(req: Request) {
   try {
     const today = getTodayDateString();
     const article = await getCachedDailyArticle(today);
+    revalidatePath("/learn");
     revalidatePath("/learn/brief");
     revalidatePath(`/learn/brief/${today}`);
     return NextResponse.json({
