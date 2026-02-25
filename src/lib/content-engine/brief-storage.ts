@@ -57,22 +57,23 @@ export async function getStoredBriefDates(): Promise<string[]> {
 
 export type BriefListItem = { date: string; headline: string };
 
+/** Returns all stored briefs (newest first). No limit—older briefs stay accessible on the Learn page. */
 export async function getStoredBriefList(): Promise<BriefListItem[]> {
   const redis = getRedis();
   if (!redis) return [];
   try {
-    const dates = await redis.smembers(DATES_KEY);
-    if (dates.length === 0) return [];
+    const datesSet = await redis.smembers(DATES_KEY);
+    if (datesSet.length === 0) return [];
+    // Sort descending so order is deterministic and we pair each date with the correct article.
+    const dates = [...datesSet].sort((a, b) => b.localeCompare(a));
     const keys = dates.map((d) => `${PREFIX}${d}`);
     const articles = (await redis.mget(...keys)) as ((DailyArticle & { headline?: string }) | string | null)[];
-    return articles
-      .map((a, i) => {
-        const date = dates[i]!;
-        if (a == null) return { date, headline: "STR news" };
-        const art = typeof a === "object" ? (a as DailyArticle) : (JSON.parse(a as string) as DailyArticle);
-        return { date, headline: art.headline ?? "STR news" };
-      })
-      .sort((a, b) => b.date.localeCompare(a.date));
+    return dates.map((date, i) => {
+      const a = articles[i];
+      if (a == null) return { date, headline: "STR news" };
+      const art = typeof a === "object" ? (a as DailyArticle) : (JSON.parse(a as string) as DailyArticle);
+      return { date, headline: art.headline ?? "STR news" };
+    });
   } catch {
     return [];
   }

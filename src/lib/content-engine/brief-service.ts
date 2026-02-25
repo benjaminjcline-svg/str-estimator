@@ -69,6 +69,7 @@ export function getCachedBriefDates(): Promise<string[]> {
 
 /**
  * List of briefs with dates and headlines. For the Learn page.
+ * Only real stored data—list and detail page must show the same date and headline per article.
  */
 export function getCachedBriefList(): Promise<{ date: string; headline: string }[]> {
   return unstable_cache(

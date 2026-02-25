@@ -43,8 +43,11 @@ function formatBriefDate(dateStr: string): string {
 export default async function LearnPage() {
   const today = getTodayDateString();
   const briefList = await getCachedBriefList();
-  const todayBrief = briefList.find((b) => b.date === today);
-  const pastBriefs = briefList.filter((b) => b.date !== today);
+  // Show all stored briefs, newest first. No limit—older briefs stay accessible.
+  const listRows =
+    briefList.length > 0
+      ? briefList
+      : [{ date: today, headline: "STR news" }];
 
   return (
     <main className="max-w-2xl mx-auto px-6 py-16 sm:py-24">
@@ -68,28 +71,23 @@ export default async function LearnPage() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-gray-100">
+          <h2 className="text-sm font-medium text-label-secondary mb-3">Daily market briefs</h2>
+          <p className="text-sm text-label-tertiary mb-4">Newest first. Older briefs stay in the list.</p>
           <div className="overflow-hidden">
-            <Link
-              href={`/learn/brief/${today}`}
-              className="flex items-center justify-between py-3.5 border-b border-gray-100 last:border-b-0 hover:text-accent transition-colors duration-button ease-friction group"
-            >
-              <span className="text-label-primary group-hover:text-accent transition-colors duration-button ease-friction">
-                {formatBriefDate(today)} · {todayBrief?.headline ?? "STR news"}
-              </span>
-              <svg className="w-5 h-5 text-label-tertiary shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-            {pastBriefs.map(({ date, headline }) => (
+            {listRows.map(({ date, headline }) => (
               <Link
                 key={date}
                 href={`/learn/brief/${date}`}
-                className="flex items-center justify-between py-3.5 border-b border-gray-100 last:border-b-0 hover:text-accent transition-colors duration-button ease-friction group"
+                className="flex items-center gap-2 py-3.5 border-b border-gray-100 last:border-b-0 hover:text-accent transition-colors duration-button ease-friction group min-w-0"
               >
-                <span className="text-label-primary group-hover:text-accent transition-colors duration-button ease-friction">
-                  {formatBriefDate(date)} · {headline}
+                <span className="shrink-0 w-[11rem] text-label-primary group-hover:text-accent transition-colors duration-button ease-friction">
+                  {formatBriefDate(date)}
                 </span>
-                <svg className="w-5 h-5 text-label-tertiary shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span className="shrink-0 text-label-tertiary" aria-hidden>·</span>
+                <span className="min-w-0 flex-1 truncate text-label-primary group-hover:text-accent transition-colors duration-button ease-friction">
+                  {headline}
+                </span>
+                <svg className="w-5 h-5 text-label-tertiary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </Link>
