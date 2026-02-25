@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { isWaitlistMode } from "@/lib/paymentsMode";
 
 const navLinks = [
   { href: "/how-it-works", label: "How It Works" },
@@ -12,6 +13,7 @@ const navLinks = [
 
 export function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const waitlist = isWaitlistMode();
 
   return (
     <header className="sticky top-0 z-50 border-b border-gray-100/80 bg-surface/0 backdrop-blur-md">
@@ -38,16 +40,16 @@ export function SiteHeader() {
             href="/#analyze"
             className="ml-3 px-4 py-2.5 rounded-xl bg-accent text-white text-sm font-medium transition-all duration-button ease-friction hover:bg-accent-hover active:scale-[0.94]"
           >
-            Get started
+            {waitlist ? "Reserve early access" : "Get started"}
           </Link>
         </nav>
 
         <div className="flex sm:hidden items-center gap-2">
           <Link
-            href="/"
+            href="/#analyze"
             className="px-3 py-2 rounded-lg bg-accent text-white text-sm font-medium transition-all duration-button ease-friction hover:bg-accent-hover active:scale-[0.94]"
           >
-            Get started
+            {waitlist ? "Reserve early access" : "Get started"}
           </Link>
           <button
             type="button"
@@ -87,11 +89,11 @@ export function SiteHeader() {
             ))}
             <li className="pt-3 mt-3 border-t border-gray-100">
               <Link
-                href="/"
+                href="/#analyze"
                 className="block py-3 text-accent font-semibold"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Get started →
+                {waitlist ? "Reserve early access" : "Get started"} →
               </Link>
             </li>
           </ul>

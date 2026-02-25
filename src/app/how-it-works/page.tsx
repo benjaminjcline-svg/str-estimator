@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PrimaryCTA } from "@/components/PrimaryCTA";
 
 export const metadata: Metadata = {
   title: "How It Works",
@@ -81,12 +82,14 @@ export default function HowItWorksPage() {
           <p className="text-label-secondary mb-8">
             One-time payment. No subscription. No upsell. No calls. No pressure. Just a second look before you commit.
           </p>
+          <PrimaryCTA sourcePath="/how-it-works">
           <Link
             href="/#analyze"
             className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-medium transition-all duration-button ease-friction hover:bg-accent-hover active:scale-[0.94]"
           >
             Stress-test this deal · $49
           </Link>
+        </PrimaryCTA>
         </section>
       </article>
     </main>

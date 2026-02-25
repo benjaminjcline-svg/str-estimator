@@ -1,4 +1,9 @@
+/**
+ * Checkout session creation. When PAYMENTS_MODE != "live", returns 403.
+ * Local testing: PAYMENTS_MODE=waitlist (no checkout) | PAYMENTS_MODE=live (full flow).
+ */
 import { NextRequest, NextResponse } from "next/server";
+import { isLiveMode } from "@/lib/paymentsMode";
 import { isTestAccount } from "@/lib/test-accounts";
 import { analyzeSTR } from "@/lib/analyze";
 import { storeReport, isStorageConfigured } from "@/lib/report-storage";
@@ -14,6 +19,13 @@ function encodeReportUrl(input: STRInput): string {
 }
 
 export async function POST(req: NextRequest) {
+  if (!isLiveMode()) {
+    return NextResponse.json(
+      { error: "Payments are temporarily unavailable. Join the waitlist to be notified when reports are live." },
+      { status: 403 }
+    );
+  }
+
   try {
     const body = await req.json();
     const { email, input } = body as { email: string; input: STRInput };

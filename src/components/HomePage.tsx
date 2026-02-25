@@ -3,7 +3,9 @@
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { isLiveMode } from "@/lib/paymentsMode";
 import { STRForm } from "@/components/STRForm";
+import { WaitlistCTA } from "@/components/WaitlistCTA";
 import type { STRInput } from "@/lib/types";
 
 export function HomePage() {
@@ -11,12 +13,13 @@ export function HomePage() {
   const searchParams = useSearchParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const liveMode = isLiveMode();
 
   useEffect(() => {
-    if (searchParams.get("canceled") === "1") {
+    if (liveMode && searchParams.get("canceled") === "1") {
       setError("Payment was canceled. You can try again when ready.");
     }
-  }, [searchParams]);
+  }, [liveMode, searchParams]);
 
   const handleSubmit = async (email: string, input: STRInput) => {
     setIsSubmitting(true);
@@ -110,20 +113,28 @@ export function HomePage() {
               className="rounded-none min-[1025px]:rounded-3xl bg-surface-elevated border-0 min-[1025px]:border min-[1025px]:border-gray-100 p-8 sm:p-10 scroll-mt-24 opacity-0 animate-slide-up overflow-visible"
               style={{ animationFillMode: "forwards", animationDelay: "100ms" }}
             >
-              {error && (
-                <div
-                  className="mb-6 p-4 rounded-xl bg-rose-50 text-rose-800 text-sm border border-rose-100 opacity-0 animate-fade-in"
-                  style={{ animationFillMode: "forwards" }}
-                  role="alert"
-                >
-                  {error}
-                </div>
+              {liveMode ? (
+                <>
+                  {error && (
+                    <div
+                      className="mb-6 p-4 rounded-xl bg-rose-50 text-rose-800 text-sm border border-rose-100 opacity-0 animate-fade-in"
+                      style={{ animationFillMode: "forwards" }}
+                      role="alert"
+                    >
+                      {error}
+                    </div>
+                  )}
+                  <STRForm onSubmit={handleSubmit} isSubmitting={isSubmitting} />
+                </>
+              ) : (
+                <WaitlistCTA sourcePath="/" showBadge={true} variant="block" />
               )}
-              <STRForm onSubmit={handleSubmit} isSubmitting={isSubmitting} />
             </div>
-            <p className="text-sm text-label-tertiary text-center opacity-0 animate-slide-up mt-10" style={{ animationFillMode: "forwards", animationDelay: "200ms" }}>
-              A &quot;no&quot; is a good outcome. The report is valuable even when we tell you to walk away.
-            </p>
+            {liveMode && (
+              <p className="text-sm text-label-tertiary text-center opacity-0 animate-slide-up mt-10" style={{ animationFillMode: "forwards", animationDelay: "200ms" }}>
+                A &quot;no&quot; is a good outcome. The report is valuable even when we tell you to walk away.
+              </p>
+            )}
           </div>
         </div>
       </div>

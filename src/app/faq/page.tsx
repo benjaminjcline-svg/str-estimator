@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PrimaryCTA } from "@/components/PrimaryCTA";
 
 export const metadata: Metadata = {
   title: "FAQ",
@@ -78,12 +79,14 @@ export default function FAQPage() {
         </dl>
 
         <div className="mt-12 pt-8 border-t border-gray-100">
+          <PrimaryCTA sourcePath="/faq">
           <Link
             href="/#analyze"
             className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-medium transition-all duration-button ease-friction hover:bg-accent-hover active:scale-[0.94]"
           >
             Stress-test this deal · $49
           </Link>
+        </PrimaryCTA>
         </div>
       </article>
     </main>

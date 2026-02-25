@@ -26,6 +26,9 @@ Conservative short-term rental underwriting for individual buyers evaluating 1�
    - `UNSPLASH_ACCESS_KEY` — From [Unsplash Developers](https://unsplash.com/developers) for dynamic background images (optional; uses default without it)
    - `NEXT_PUBLIC_SITE_URL` — Your live URL (for sitemap, Open Graph). Example: `https://yourdomain.com`
    - `TEST_BYPASS_EMAILS` — Comma-separated emails that skip payment (e.g. `test@str-estimator.com,demo@example.com`)
+   - `PAYMENTS_MODE` — `waitlist` (default) or `live`. See "Payments mode and waitlist" below.
+   - `ADMIN_TOKEN` — Secret for waitlist CSV export at `/api/admin/waitlist?token=...` (optional; required to export waitlist)
+   - Waitlist mode requires **Upstash Redis** (same as report storage). Set `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`.
 
 3. **Run locally**
 
@@ -43,6 +46,24 @@ Example:
 ```
 TEST_BYPASS_EMAILS=test@str-estimator.com,qa@yourcompany.com
 ```
+
+## Payments mode and waitlist
+
+The app supports two modes controlled by **one** environment variable:
+
+- **`PAYMENTS_MODE=waitlist`** (default if missing or invalid)  
+  Homepage and CTAs show "Get notified when reports open". No purchase buttons. Emails are stored in Redis and can be exported via the admin route. Checkout API returns 403.
+
+- **`PAYMENTS_MODE=live`**  
+  Full purchase flow: Stripe checkout, report delivery, and all existing CTAs ("Stress-test this deal · $49").
+
+**To switch:** Set `PAYMENTS_MODE` to `waitlist` or `live`, then deploy. No code changes.
+
+**Local testing:**
+- `PAYMENTS_MODE=waitlist` — Waitlist form and modal; no checkout.
+- `PAYMENTS_MODE=live` — Full flow (requires Stripe and Redis for report storage).
+
+**Waitlist admin export:** `GET /api/admin/waitlist?token=YOUR_ADMIN_TOKEN` or `Authorization: Bearer YOUR_ADMIN_TOKEN`. Returns CSV. Not linked publicly; use only with `ADMIN_TOKEN` set.
 
 ## Stripe Setup
 

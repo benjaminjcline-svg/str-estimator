@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { LearnCard } from "@/components/LearnCard";
+import { PrimaryCTA } from "@/components/PrimaryCTA";
 import { getCachedBriefList, getTodayDateString } from "@/lib/content-engine/brief-service";
 
 export const metadata: Metadata = {
@@ -97,12 +98,14 @@ export default async function LearnPage() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-gray-100">
+          <PrimaryCTA sourcePath="/learn">
           <Link
             href="/#analyze"
             className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-medium transition-all duration-button ease-friction hover:bg-accent-hover active:scale-[0.94]"
           >
             Check the numbers before you buy · $49
           </Link>
+        </PrimaryCTA>
         </div>
       </article>
     </main>

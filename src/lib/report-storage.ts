@@ -10,12 +10,22 @@ const PREFIX = "report:";
 const SESSION_PREFIX = "report:by_session:";
 const TTL_SECONDS = 365 * 24 * 60 * 60; // 1 year
 
-function getRedis(): Redis | null {
-  const url = process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+function getRedisConfig(): { url: string; token: string } | null {
+  const url =
+    process.env.UPSTASH_REDIS_REST_URL ||
+    process.env.KV_REST_API_URL;
+  const token =
+    process.env.UPSTASH_REDIS_REST_TOKEN ||
+    process.env.KV_REST_API_TOKEN;
   if (!url || !token) return null;
+  return { url, token };
+}
+
+function getRedis(): Redis | null {
+  const config = getRedisConfig();
+  if (!config) return null;
   try {
-    return new Redis({ url, token });
+    return new Redis({ url: config.url, token: config.token });
   } catch {
     return null;
   }
@@ -72,5 +82,5 @@ export async function claimBySessionId(sessionId: string): Promise<string | null
 }
 
 export function isStorageConfigured(): boolean {
-  return !!(process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN);
+  return !!getRedisConfig();
 }

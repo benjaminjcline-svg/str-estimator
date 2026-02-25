@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PrimaryCTA } from "@/components/PrimaryCTA";
 
 export const metadata: Metadata = {
   title: "Sample Report",
@@ -244,12 +245,14 @@ export default function SampleReportPage() {
           <p className="text-label-secondary">
             One bad assumption can cost more than an inspection. One bad deal can cost a lot more. $49 for a reality check before you commit.
           </p>
+          <PrimaryCTA sourcePath="/sample-report">
           <Link
             href="/#analyze"
             className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-medium transition-all duration-button ease-friction hover:bg-accent-hover active:scale-[0.94]"
           >
             Stress-test your deal · $49
           </Link>
+        </PrimaryCTA>
         </div>
       </article>
     </main>
