@@ -81,7 +81,7 @@ export default async function DailyBriefPage({ params }: Props) {
         <article className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
         {!article ? (
           <div className="py-12">
-            <h1 className="text-2xl font-semibold text-label-primary mb-4">
+            <h1 className="text-4xl font-semibold text-label-primary mb-4">
               STR Brief for {date}
             </h1>
             <p className="text-sm text-label-secondary">
@@ -97,7 +97,7 @@ export default async function DailyBriefPage({ params }: Props) {
           </div>
         ) : (
           <>
-            <h1 className="text-2xl font-semibold text-label-primary tracking-tight mb-2">
+            <h1 className="text-4xl font-semibold text-label-primary tracking-tight mb-2">
               {article.headline}
             </h1>
             <p className="text-sm text-label-tertiary mb-8">

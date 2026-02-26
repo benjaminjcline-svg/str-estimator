@@ -29,7 +29,7 @@ export default function SampleReportPage() {
 
       <article className="max-w-2xl mx-auto px-6 py-12 sm:py-16 space-y-14">
         <header className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
-          <h1 className="text-2xl font-semibold text-label-primary tracking-tight mb-2">
+          <h1 className="text-4xl font-semibold text-label-primary tracking-tight mb-2">
             What your report looks like
           </h1>
           <p className="text-sm text-label-tertiary mb-2">

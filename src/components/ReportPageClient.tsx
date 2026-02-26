@@ -102,7 +102,7 @@ export function ReportPageClient() {
     return (
       <main className="min-h-[60vh] flex items-center justify-center px-6">
         <div className="text-center max-w-md opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
-          <h1 className="text-xl font-semibold text-label-primary mb-2">
+          <h1 className="text-3xl font-semibold text-label-primary mb-2">
             Unable to load report
           </h1>
           <p className="text-label-secondary mb-8">{error}</p>

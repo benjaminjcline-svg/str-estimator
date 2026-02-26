@@ -43,7 +43,7 @@ export default function WhyStrCalculatorsOverestimatePage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <article className="prose prose-gray max-w-none opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
-          <h1 className="text-2xl font-semibold text-label-primary tracking-tight mb-6">
+          <h1 className="text-4xl font-semibold text-label-primary tracking-tight mb-6">
             Why STR calculators overestimate revenue
           </h1>
           <p className="text-sm text-label-secondary leading-relaxed mb-8">

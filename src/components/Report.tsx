@@ -49,7 +49,7 @@ export const Report = forwardRef<
     <article ref={ref} className="max-w-2xl mx-auto space-y-14 pb-24">
       <header className="space-y-6 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <h1 className="text-2xl font-semibold text-label-primary tracking-tight">
+          <h1 className="text-4xl font-semibold text-label-primary tracking-tight">
             Your verdict
           </h1>
           <div className="flex items-center gap-2">

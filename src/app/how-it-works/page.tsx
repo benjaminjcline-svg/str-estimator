@@ -14,7 +14,7 @@ export default function HowItWorksPage() {
   return (
     <main className="max-w-2xl mx-auto px-6 py-16 sm:py-24">
       <article className="prose prose-gray max-w-none opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
-        <h1 className="text-2xl font-semibold text-label-primary tracking-tight mb-6">
+        <h1 className="text-4xl font-semibold text-label-primary tracking-tight mb-6">
           How it works
         </h1>
         <p className="text-sm text-label-secondary leading-relaxed mb-8">

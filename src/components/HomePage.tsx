@@ -82,7 +82,7 @@ export function HomePage() {
       <div className="max-w-[1440px] mx-auto px-5 sm:px-6 py-14 sm:py-20 min-[1025px]:py-24">
         <div className="max-w-2xl mx-auto flex flex-col gap-14">
           <header className="text-left opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
-            <h1 className="text-2xl font-semibold text-label-primary tracking-tight mb-6">
+            <h1 className="text-4xl font-semibold text-label-primary tracking-tight mb-6">
               Conservative STR revenue reality check before you buy
             </h1>
             <p className="text-sm text-label-secondary leading-relaxed mb-5">
