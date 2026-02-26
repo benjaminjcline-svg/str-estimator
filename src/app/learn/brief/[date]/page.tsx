@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
+import { PrimaryCTA } from "@/components/PrimaryCTA";
 import { getCachedDailyArticle, getTodayDateString } from "@/lib/content-engine/brief-service";
 import { canonicalUrl, breadcrumbSchema } from "@/lib/seo";
 
@@ -143,12 +144,14 @@ export default async function DailyBriefPage({ params }: Props) {
             )}
 
             <div className="mt-12 pt-8 border-t border-gray-100">
-              <Link
-                href="/"
-                className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-medium transition-all duration-button ease-friction hover:bg-accent-hover active:scale-[0.94]"
-              >
-                Run your deal. $49
-              </Link>
+              <PrimaryCTA sourcePath="/learn/brief">
+                <Link
+                  href="/#analyze"
+                  className="inline-flex items-center min-h-[48px] px-6 py-3 rounded-xl bg-accent text-white font-semibold shadow-button transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_2px_8px_rgba(0,113,227,0.25)] active:scale-[0.98]"
+                >
+                  Stress-test this deal · $49
+                </Link>
+              </PrimaryCTA>
             </div>
           </>
         )}

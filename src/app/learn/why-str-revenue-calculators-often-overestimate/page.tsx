@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PrimaryCTA } from "@/components/PrimaryCTA";
 import { canonicalUrl } from "@/lib/seo";
 import { articleSchema } from "@/lib/seo";
 
@@ -113,12 +114,14 @@ export default function WhyStrRevenueCalculatorsOftenOverestimatePage() {
           </section>
 
           <div className="pt-8 border-t border-gray-100">
-            <Link
-              href="/"
-              className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-medium transition-all duration-button ease-friction hover:bg-accent-hover active:scale-[0.94]"
-            >
-              Run your deal. $49
-            </Link>
+            <PrimaryCTA sourcePath="/learn/why-str-revenue-calculators-often-overestimate">
+              <Link
+                href="/#analyze"
+                className="inline-flex items-center min-h-[48px] px-6 py-3 rounded-xl bg-accent text-white font-semibold shadow-button transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_2px_8px_rgba(0,113,227,0.25)] active:scale-[0.98]"
+              >
+                Stress-test this deal · $49
+              </Link>
+            </PrimaryCTA>
           </div>
         </article>
       </div>
