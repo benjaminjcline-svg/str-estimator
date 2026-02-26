@@ -7,9 +7,9 @@ import { siteUrl } from "./site-config";
 
 export const seoConfig = {
   siteName: "STR Estimator",
-  defaultTitle: "Conservative STR Calculator & Deal Analysis Before You Buy | STR Estimator",
+  defaultTitle: "Stress-Test Your STR Deal Before You Buy | Conservative Reality Check | STR Estimator",
   defaultDescription:
-    "Conservative STR calculator and Airbnb investment reality check. STR deal analysis with stress tests, fragility flags, and a clear verdict. Proceed, Borderline, or Walk Away.",
+    "A conservative reality check for STR deals. Not a revenue prediction. Downside-first stress test, scenario ranges, and a clear verdict. Proceed, Borderline, or Walk Away.",
   twitterHandle: "@strestimator",
   locale: "en_US",
 } as const;

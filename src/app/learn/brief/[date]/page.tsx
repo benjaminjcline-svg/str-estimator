@@ -81,10 +81,10 @@ export default async function DailyBriefPage({ params }: Props) {
         <article className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
         {!article ? (
           <div className="py-12">
-            <h1 className="font-sans text-3xl font-semibold text-label-primary mb-4">
+            <h1 className="text-2xl font-semibold text-label-primary mb-4">
               STR Brief for {date}
             </h1>
-            <p className="text-label-secondary">
+            <p className="text-sm text-label-secondary">
               No brief for this date yet. The daily brief runs at 8:00 UTC.{" "}
               {date === today && "Check back shortly."}
             </p>
@@ -97,14 +97,14 @@ export default async function DailyBriefPage({ params }: Props) {
           </div>
         ) : (
           <>
-            <h1 className="font-sans text-3xl sm:text-4xl font-semibold text-label-primary tracking-tight mb-2">
+            <h1 className="text-2xl font-semibold text-label-primary tracking-tight mb-2">
               {article.headline}
             </h1>
             <p className="text-sm text-label-tertiary mb-8">
               {date} · North America focus · Top 200 markets
             </p>
 
-            <div className="brief-content [&_h2]:mt-8 [&_h2]:mb-3 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-label-primary [&_p]:mb-4 [&_p]:text-label-secondary [&_p]:leading-relaxed [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_li]:mb-1 [&_a]:text-accent [&_a]:no-underline hover:[&_a]:underline [&_strong]:font-semibold [&_strong]:text-label-primary">
+            <div className="brief-content [&_h2]:mt-8 [&_h2]:mb-3 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-label-primary [&_p]:mb-4 [&_p]:text-sm [&_p]:text-label-secondary [&_p]:leading-relaxed [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_li]:mb-1 [&_a]:text-accent [&_a]:no-underline hover:[&_a]:underline [&_strong]:font-semibold [&_strong]:text-label-primary">
               <ReactMarkdown>{article.content}</ReactMarkdown>
             </div>
 

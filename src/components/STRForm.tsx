@@ -77,7 +77,7 @@ export function STRForm({ onSubmit, isSubmitting }: STRFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-10 overflow-visible isolation isolate">
       <div className="space-y-6 opacity-0 animate-slide-up overflow-visible relative z-[100]" style={{ animationFillMode: "forwards" }}>
-        <h2 className="text-lg font-semibold text-label-primary tracking-tight">
+        <h2 className="text-base font-semibold text-label-primary tracking-tight">
           Your details
         </h2>
 
@@ -121,7 +121,7 @@ export function STRForm({ onSubmit, isSubmitting }: STRFormProps) {
       </div>
 
       <div className="space-y-6 opacity-0 animate-slide-up relative z-0" style={{ animationFillMode: "forwards", animationDelay: "80ms" }}>
-        <h2 className="text-lg font-semibold text-label-primary tracking-tight">
+        <h2 className="text-base font-semibold text-label-primary tracking-tight">
           Property & financing
         </h2>
 
@@ -234,7 +234,7 @@ export function STRForm({ onSubmit, isSubmitting }: STRFormProps) {
       </div>
 
       <div className="space-y-6 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "160ms" }}>
-        <h2 className="text-lg font-semibold text-label-primary tracking-tight">
+        <h2 className="text-base font-semibold text-label-primary tracking-tight">
           STR assumptions <span className="text-label-tertiary font-normal">(optional)</span>
         </h2>
         <p className="text-sm text-label-secondary -mt-2">
@@ -285,7 +285,7 @@ export function STRForm({ onSubmit, isSubmitting }: STRFormProps) {
           <button
             type="submit"
             disabled={isSubmitting || !purchasePrice}
-            className={`group relative h-14 overflow-hidden rounded-2xl bg-accent text-white font-semibold text-lg transition-all duration-300 ease-friction hover:bg-accent-hover active:bg-accent-pressed active:scale-[0.95] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:active:scale-100 flex items-center justify-center min-w-0 px-6 ${
+            className={`group relative h-14 overflow-hidden rounded-2xl bg-accent text-white font-semibold text-base transition-all duration-300 ease-friction hover:bg-accent-hover active:bg-accent-pressed active:scale-[0.95] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:active:scale-100 flex items-center justify-center min-w-0 px-6 ${
               isSubmitting ? "w-14 rounded-full" : "w-full"
             }`}
           >
@@ -308,7 +308,7 @@ export function STRForm({ onSubmit, isSubmitting }: STRFormProps) {
             </span>
           </button>
         </div>
-        <p className="text-xs text-label-tertiary leading-relaxed text-center">
+        <p className="text-sm text-label-tertiary leading-relaxed text-center">
           By clicking above, you agree to our{" "}
           <a href="/terms" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent-hover underline">
             Terms of Service

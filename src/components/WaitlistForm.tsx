@@ -58,7 +58,7 @@ export function WaitlistForm({ sourcePath, mode, onClose }: WaitlistFormProps) {
   if (status === "success") {
     return (
       <div className={mode === "modal" ? "text-center py-4" : ""}>
-        <p className="text-lg font-medium text-label-primary">
+        <p className="text-base font-medium text-label-primary">
           You're on the list. We'll email you as soon as reports are live.
         </p>
         {mode === "modal" && onClose && (
@@ -78,7 +78,7 @@ export function WaitlistForm({ sourcePath, mode, onClose }: WaitlistFormProps) {
     <>
       {mode === "modal" && (
         <>
-          <h2 id="waitlist-modal-title" className="text-xl font-semibold text-label-primary mb-2 pr-8">
+          <h2 id="waitlist-modal-title" className="text-2xl font-semibold text-label-primary mb-2 pr-8">
             Get notified when reports open
           </h2>
           <p className="text-sm text-label-secondary mb-6">

@@ -38,58 +38,58 @@ export default function IsThisAirbnbWorthBuyingPage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <article className="prose prose-gray max-w-none opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
-          <h1 className="font-sans text-3xl font-semibold text-label-primary tracking-tight mb-6">
+          <h1 className="text-2xl font-semibold text-label-primary tracking-tight mb-6">
           Proceed, pause, or walk away?
         </h1>
-        <p className="text-lg text-label-secondary leading-relaxed mb-8">
+        <p className="text-sm text-label-secondary leading-relaxed mb-8">
           Every deal comes down to this. Here's a framework that actually works
           when the numbers get fuzzy.
         </p>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">
+          <h2 className="text-2xl font-semibold text-label-primary mb-4">
             Proceed
           </h2>
-          <p className="text-label-secondary mb-4">
+          <p className="text-sm text-label-secondary mb-4">
             Numbers hold. Cash flow's positive or comfortably break-even. You've
             got room for occupancy or rate to dip without the whole thing collapsing.
           </p>
-          <p className="text-label-secondary">
+          <p className="text-sm text-label-secondary">
             Next: due diligence. Zoning, HOA rules, local demand, regulatory risk. The analysis says it can work. Now confirm the details.
           </p>
         </section>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">
+          <h2 className="text-2xl font-semibold text-label-primary mb-4">
             Pause (Borderline)
           </h2>
-          <p className="text-label-secondary mb-4">
+          <p className="text-sm text-label-secondary mb-4">
             Cash flow's thin or slightly negative. The deal lives or dies on hitting
             your assumptions. A weak year? Meaningful stress.
           </p>
-          <p className="text-label-secondary">
+          <p className="text-sm text-label-secondary">
             Only proceed if you've got 6–12 months of reserves and can stomach break-even. Otherwise, pass. Find something stronger.
           </p>
         </section>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">
+          <h2 className="text-2xl font-semibold text-label-primary mb-4">
             Walk away
           </h2>
-          <p className="text-label-secondary mb-4">
+          <p className="text-sm text-label-secondary mb-4">
             The deal fails under conservative assumptions. Revenue vs. costs. The gap's too big. Walking away means you're not subsidizing a property or hoping optimistic projections pan out.
           </p>
-          <p className="text-label-secondary">
+          <p className="text-sm text-label-secondary">
             Reasonable call. Most disciplined buyers wouldn't take on something
             that fails under stress-tested numbers.
           </p>
         </section>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">
+          <h2 className="text-2xl font-semibold text-label-primary mb-4">
             No hedging
           </h2>
-          <p className="text-label-secondary">
+          <p className="text-sm text-label-secondary">
             The framework works because it's binary. Every deal gets one verdict.
             No "it depends." No caveats. You get a clear answer you can act on.
           </p>

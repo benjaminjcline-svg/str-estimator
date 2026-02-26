@@ -21,18 +21,18 @@ export function WaitlistCTA({
   if (variant === "block") {
     return (
       <div className={className}>
-        <h2 className="text-lg font-semibold text-label-primary tracking-tight mb-4">
+        <h2 className="text-base font-semibold text-label-primary tracking-tight mb-4">
           Get a conservative reality check
         </h2>
         <p className="text-sm text-label-secondary mb-4 max-w-md">
-          Stress-test your deal. We'll email you when reports are live.
+          No hype, no promises. Stress-test your deal with downside scenarios. We will email you when reports are live.
         </p>
         <WaitlistForm sourcePath={sourcePath} mode="inline" />
-        <p className="text-xs text-label-tertiary mt-4 max-w-md">
-          Payments are temporarily unavailable while we complete standard business verification. Join the list and we'll email you when reports are live.
+        <p className="text-sm text-label-tertiary mt-4 max-w-md">
+          Payments are temporarily unavailable while we complete standard business verification. Join the list and we will email you when reports are live.
         </p>
         {showBadge && (
-          <p className="text-xs text-label-tertiary mt-2">Payments temporarily unavailable</p>
+          <p className="text-sm text-label-tertiary mt-2">Payments temporarily unavailable</p>
         )}
       </div>
     );

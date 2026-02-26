@@ -40,48 +40,48 @@ export default function AirbnbIncomeAssumptionsPage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <article className="prose prose-gray max-w-none opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
-          <h1 className="font-sans text-3xl font-semibold text-label-primary tracking-tight mb-6">
+          <h1 className="text-2xl font-semibold text-label-primary tracking-tight mb-6">
           The two numbers that kill most STR deals
         </h1>
-        <p className="text-lg text-label-secondary leading-relaxed mb-8">
+        <p className="text-sm text-label-secondary leading-relaxed mb-8">
           Occupancy and nightly rate. That's where optimism meets reality. And where most buyers go wrong. Here's what gets people in trouble.
         </p>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">
+          <h2 className="text-2xl font-semibold text-label-primary mb-4">
             The 70% occupancy trap
           </h2>
-          <p className="text-label-secondary mb-4">
+          <p className="text-sm text-label-secondary mb-4">
             Everyone assumes 70%+ year-round. Peak season? Maybe. Full year? Most owners see 50–60%. Seasonality, competition, vacancy. It adds up.
             Assuming higher without real local data? Fragile.
           </p>
-          <p className="text-label-secondary">
+          <p className="text-sm text-label-secondary">
             If your deal only works at 75% occupancy, you're walking a tightrope.
           </p>
         </section>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">
+          <h2 className="text-2xl font-semibold text-label-primary mb-4">
             Stale comps, stale rates
           </h2>
-          <p className="text-label-secondary mb-4">
+          <p className="text-sm text-label-secondary mb-4">
             That "similar" listing at $200/night? Could've been booked months ago.
             Or in a better spot. Supply goes up, rates compress. New regs cut
             demand. Using comps without stress-testing lower? You're exposed.
           </p>
-          <p className="text-label-secondary">
+          <p className="text-sm text-label-secondary">
             We don't invent comps. We apply conservative defaults when you can't verify. And we tell you what we assumed.
           </p>
         </section>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">
+          <h2 className="text-2xl font-semibold text-label-primary mb-4">
             Stress-test it yourself
           </h2>
-          <p className="text-label-secondary mb-4">
+          <p className="text-sm text-label-secondary mb-4">
             Run the numbers at 55% occupancy. Drop the rate 15%. See what breaks. If the deal collapses, you're banking on best case. Smart buyers pause or walk.
           </p>
-          <p className="text-label-secondary">
+          <p className="text-sm text-label-secondary">
             We do this automatically. Conservative caps, three scenarios (strong,
             typical, weak year), and a verdict. No hand-waving.
           </p>

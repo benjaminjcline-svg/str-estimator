@@ -20,9 +20,10 @@ const whyCalculatorsDisagree = [
 ];
 
 const assumptionsList = [
-  "Occupancy: we cap optimistic occupancy and treat high occupancy as fragile.",
-  "Expenses: we include management, cleaning, utilities, STR insurance, maintenance, and reserves.",
-  "Vacancy and seasonality: we stress for weak months and don't assume best-case year-round.",
+  "Occupancy haircut and seasonality stress: we cap optimistic occupancy and do not assume peak year-round.",
+  "Expense realism: cleaning, utilities, maintenance, supplies, platform fees, STR insurance, and reserves.",
+  "Management and turnover friction: we factor in vacancy between guests and per-stay costs.",
+  "Reserves and downside buffer: we stress for weak months and treat high occupancy as fragile.",
   "We do not claim perfect market data. When something is unknown, we say so.",
 ];
 
@@ -80,27 +81,48 @@ export function HomePage() {
       <div className="max-w-[1440px] mx-auto px-5 sm:px-6 py-14 sm:py-20 min-[1025px]:py-24">
         <div className="max-w-2xl mx-auto flex flex-col gap-14">
           <header className="text-left opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
-            <h1 className="text-display sm:text-display-lg font-semibold text-label-primary tracking-tight mb-6">
-              A conservative STR reality check before you buy
+            <h1 className="text-2xl font-semibold text-label-primary tracking-tight mb-6">
+              Stress-test your STR deal before you buy: a conservative reality check
             </h1>
-            <p className="text-lg text-label-secondary leading-relaxed mb-5 max-w-md">
-              This is not a predictive promise. It is a conservative stress test: we show how your deal holds up under downside assumptions and give you a clear verdict before you buy.
+            <p className="text-sm text-label-secondary leading-relaxed mb-5">
+              This is not a revenue prediction. It is a downside-first stress test of your assumptions. We show how your deal holds up under conservative scenarios and give you a clear verdict before you commit.
             </p>
-            <p className="text-base text-label-secondary leading-relaxed max-w-md">
-              STR calculators often disagree widely. Tiny changes in occupancy and rate assumptions swing outcomes a lot. This tool focuses on downside and fragility. We show you where the deal breaks, not a best-case headline number.
+            <p className="text-sm text-label-secondary leading-relaxed">
+              Most STR calculators disagree because small changes in occupancy, seasonality, and costs swing results. This tool focuses on downside and fragility so you see where the deal breaks, not a best-case headline number.
             </p>
           </header>
 
           <section className="text-left opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "300ms" }}>
-            <p className="text-label-secondary leading-relaxed mb-4 max-w-md">
+            <p className="text-sm text-label-secondary leading-relaxed mb-4">
               <strong>What this does:</strong> You enter the property and financing details. We run them through conservative underwriting and give you a clear verdict.
             </p>
-            <p className="text-label-secondary leading-relaxed mb-4 max-w-md">
+            <p className="text-sm text-label-secondary leading-relaxed mb-4">
               <strong>Who it's for:</strong> Anyone seriously considering buying a short-term rental who wants a second opinion before writing an offer.
             </p>
-            <p className="text-label-secondary leading-relaxed mb-4 max-w-md">
+            <p className="text-sm text-label-secondary leading-relaxed mb-4">
               <strong>When to use it:</strong> Before you commit capital. A sanity check, not a crystal ball.
             </p>
+            <section className="opacity-0 animate-slide-up mt-10" style={{ animationFillMode: "forwards", animationDelay: "200ms" }}>
+              <h2 className="text-2xl font-semibold text-label-primary tracking-tight mb-4">
+                Why this is credible
+              </h2>
+              <p className="text-sm text-label-secondary mb-4">
+                Methodology, in plain English. What we do and what we do not do.
+              </p>
+              <ul className="list-disc pl-5 space-y-2 text-sm text-label-secondary leading-relaxed mb-6">
+                <li>Conservative defaults and haircuts on optimistic occupancy and rates</li>
+                <li>Ranges and scenarios: strong, typical, and weak year so you see downside</li>
+                <li>Fragility flags: what breaks first and the one assumption that could kill the deal</li>
+                <li>Explicit expense realism: management, cleaning, utilities, insurance, maintenance, reserves</li>
+              </ul>
+              <p className="text-sm font-medium text-label-primary mb-2">What we do not do</p>
+              <ul className="list-disc pl-5 space-y-2 text-sm text-label-secondary leading-relaxed">
+                <li>We do not promise perfect market forecasts. When something is unknown, we say so.</li>
+                <li>Outcomes depend on your assumptions and management quality. Garbage in, garbage out.</li>
+                <li>Regulations and seasonality can change results. We do not guarantee future conditions.</li>
+              </ul>
+            </section>
+
             <div className="flex flex-col gap-3 mt-8">
               <Link
                 href="/how-it-works"
@@ -159,10 +181,10 @@ export function HomePage() {
 
         <div className="max-w-2xl mx-auto pt-20 sm:pt-28 pb-12 sm:pb-16 border-t border-gray-200/70 space-y-20 sm:space-y-24">
           <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "400ms" }}>
-            <h2 className="text-2xl min-[1200px]:text-[1.75rem] font-semibold text-label-primary tracking-tight mb-6">
-              Why most STR calculators disagree
+            <h2 className="text-2xl font-semibold text-label-primary tracking-tight mb-6">
+            Why most STR calculators disagree
             </h2>
-            <ul className="list-disc pl-5 space-y-3 text-label-secondary leading-relaxed">
+            <ul className="list-disc pl-5 space-y-3 text-sm text-label-secondary leading-relaxed">
               {whyCalculatorsDisagree.map((item, i) => (
                 <li key={i}>{item}</li>
               ))}
@@ -170,49 +192,49 @@ export function HomePage() {
           </section>
 
           <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "450ms" }}>
-            <h2 className="text-2xl min-[1200px]:text-[1.75rem] font-semibold text-label-primary tracking-tight mb-8">
+            <h2 className="text-2xl font-semibold text-label-primary tracking-tight mb-8">
               How STR Estimator is different
             </h2>
             <div className="grid gap-5 sm:grid-cols-2 items-stretch">
               <div className="flex flex-col p-6 rounded-2xl bg-surface-elevated border border-gray-200/60 shadow-card hover:shadow-card-hover hover:border-gray-200 transition-all duration-300 ease-out hover:-translate-y-0.5">
-                <h3 className="text-[1.0625rem] font-semibold text-label-primary mb-2">Conservative defaults</h3>
-                <p className="text-label-secondary text-sm leading-relaxed flex-1 min-h-0">
+                <h3 className="text-base font-semibold text-label-primary mb-2">Conservative defaults</h3>
+                <p className="text-sm text-label-secondary leading-relaxed flex-1 min-h-0">
                   We cap optimistic occupancy and rates. No best-case revenue promises. You get ranges and stress tests, not a single headline number.
                 </p>
-                <p className="text-xs text-label-tertiary mt-3 shrink-0">Output: strong / typical / weak year scenarios.</p>
+                <p className="text-sm text-label-tertiary mt-3 shrink-0">Output: strong / typical / weak year scenarios.</p>
               </div>
               <div className="flex flex-col p-6 rounded-2xl bg-surface-elevated border border-gray-200/60 shadow-card hover:shadow-card-hover hover:border-gray-200 transition-all duration-300 ease-out hover:-translate-y-0.5">
-                <h3 className="text-[1.0625rem] font-semibold text-label-primary mb-2">Downside scenarios</h3>
-                <p className="text-label-secondary text-sm leading-relaxed flex-1 min-h-0">
+                <h3 className="text-base font-semibold text-label-primary mb-2">Downside scenarios</h3>
+                <p className="text-sm text-label-secondary leading-relaxed flex-1 min-h-0">
                   We show weak-year and typical-year outcomes so you see how the deal holds up when things go wrong.
                 </p>
-                <p className="text-xs text-label-tertiary mt-3 shrink-0">Output: stress-tested income ranges.</p>
+                <p className="text-sm text-label-tertiary mt-3 shrink-0">Output: stress-tested income ranges.</p>
               </div>
               <div className="flex flex-col p-6 rounded-2xl bg-surface-elevated border border-gray-200/60 shadow-card hover:shadow-card-hover hover:border-gray-200 transition-all duration-300 ease-out hover:-translate-y-0.5">
-                <h3 className="text-[1.0625rem] font-semibold text-label-primary mb-2">Fragility flags</h3>
-                <p className="text-label-secondary text-sm leading-relaxed flex-1 min-h-0">
+                <h3 className="text-base font-semibold text-label-primary mb-2">Fragility flags</h3>
+                <p className="text-sm text-label-secondary leading-relaxed flex-1 min-h-0">
                   We flag what breaks first and call out the one assumption that could kill the deal. You know where the risk is.
                 </p>
-                <p className="text-xs text-label-tertiary mt-3 shrink-0">Output: fragility narrative and deal-breaker callout.</p>
+                <p className="text-sm text-label-tertiary mt-3 shrink-0">Output: fragility narrative and deal-breaker callout.</p>
               </div>
               <div className="flex flex-col p-6 rounded-2xl bg-surface-elevated border border-gray-200/60 shadow-card hover:shadow-card-hover hover:border-gray-200 transition-all duration-300 ease-out hover:-translate-y-0.5">
-                <h3 className="text-[1.0625rem] font-semibold text-label-primary mb-2">Expense realism</h3>
-                <p className="text-label-secondary text-sm leading-relaxed flex-1 min-h-0">
+                <h3 className="text-base font-semibold text-label-primary mb-2">Expense realism</h3>
+                <p className="text-sm text-label-secondary leading-relaxed flex-1 min-h-0">
                   We include management, cleaning, utilities, STR insurance, maintenance, and reserves. No bare-bones expense assumptions.
                 </p>
-                <p className="text-xs text-label-tertiary mt-3 shrink-0">Output: full expense breakdown and what we assumed.</p>
+                <p className="text-sm text-label-tertiary mt-3 shrink-0">Output: full expense breakdown and what we assumed.</p>
               </div>
             </div>
           </section>
 
           <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "500ms" }}>
-            <h2 className="text-2xl min-[1200px]:text-[1.75rem] font-semibold text-label-primary tracking-tight mb-4">
+            <h2 className="text-2xl font-semibold text-label-primary tracking-tight mb-4">
               What we assume
             </h2>
-            <p className="text-label-secondary leading-relaxed mb-6">
+            <p className="text-sm text-label-secondary leading-relaxed mb-6">
               This analysis is intentionally conservative. If your verified numbers are materially stronger, outcomes could improve.
             </p>
-            <ul className="list-disc pl-5 space-y-2 text-label-secondary leading-relaxed">
+            <ul className="list-disc pl-5 space-y-2 text-sm text-label-secondary leading-relaxed">
               {assumptionsList.map((item, i) => (
                 <li key={i}>{item}</li>
               ))}
@@ -220,37 +242,39 @@ export function HomePage() {
           </section>
 
           <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "550ms" }}>
-            <h2 className="text-2xl min-[1200px]:text-[1.75rem] font-semibold text-label-primary tracking-tight mb-8">
+            <h2 className="text-2xl font-semibold text-label-primary tracking-tight mb-8">
               A quick comparison
             </h2>
             <div className="grid gap-5 sm:grid-cols-2">
               <div className="p-6 rounded-2xl bg-surface-elevated border border-gray-200/60 shadow-card">
-                <h3 className="text-[1rem] font-semibold text-label-primary mb-3">Typical calculator output</h3>
+                <h3 className="text-base font-semibold text-label-primary mb-3">Typical calculators</h3>
                 <ul className="text-sm text-label-secondary space-y-2.5 leading-relaxed">
                   <li>Single point estimate (one number)</li>
                   <li>Optimistic defaults (high occupancy, strong rates)</li>
+                  <li>Comp-based generalization; you may not know what was assumed</li>
                   <li>No verdict; you interpret the number</li>
                 </ul>
               </div>
               <div className="p-6 rounded-2xl bg-surface-elevated border-2 border-accent/25 shadow-card ring-1 ring-accent/10">
-                <h3 className="text-[1rem] font-semibold text-label-primary mb-3">STR Estimator output</h3>
+                <h3 className="text-base font-semibold text-label-primary mb-3">STR Estimator</h3>
                 <ul className="text-sm text-label-secondary space-y-2.5 leading-relaxed">
-                  <li>Ranges and stress tests (strong, typical, weak year)</li>
+                  <li>Scenario ranges and stress tests (strong, typical, weak year)</li>
                   <li>Conservative defaults; we cap optimism</li>
-                  <li>Clear verdict plus fragility explanation</li>
+                  <li>You enter assumptions; we show what we used and where it breaks</li>
+                  <li>Clear verdict (Proceed, Borderline, Walk Away) plus fragility explanation</li>
                 </ul>
               </div>
             </div>
           </section>
 
           <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "600ms" }}>
-            <h2 className="text-2xl min-[1200px]:text-[1.75rem] font-semibold text-label-primary tracking-tight mb-8">
+            <h2 className="text-2xl font-semibold text-label-primary tracking-tight mb-8">
               FAQ
             </h2>
             <dl className="space-y-7">
               {homeFaqs.map((faq, i) => (
                 <div key={i} className="border-b border-gray-100 last:border-0 pb-7 last:pb-0">
-                  <dt className="text-[1rem] font-semibold text-label-primary mb-1.5">
+                  <dt className="text-base font-semibold text-label-primary mb-1.5">
                     {faq.q}
                   </dt>
                   <dd className="text-label-secondary text-sm leading-relaxed">
@@ -271,10 +295,10 @@ export function HomePage() {
           </section>
 
           <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "650ms" }}>
-            <h2 className="text-2xl min-[1200px]:text-[1.75rem] font-semibold text-label-primary tracking-tight mb-4">
+            <h2 className="text-2xl font-semibold text-label-primary tracking-tight mb-4">
               About this tool
             </h2>
-            <p className="text-label-secondary mb-4">
+            <p className="text-sm text-label-secondary mb-4">
               STR Estimator is built by Fjord & Field Studio LLC. We built it to avoid overpaying: a conservative lens and stress tests before you commit. Not a crystal ball.
             </p>
             <p className="text-sm font-medium text-label-primary mb-2">Limitations</p>
@@ -286,28 +310,34 @@ export function HomePage() {
           </section>
 
           <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "700ms" }}>
-            <h2 className="text-2xl min-[1200px]:text-[1.75rem] font-semibold text-label-primary tracking-tight mb-4">
+            <h2 className="text-2xl font-semibold text-label-primary tracking-tight mb-4">
               Further reading
             </h2>
-            <p className="text-label-secondary text-sm mb-6 leading-relaxed">
-              Deep dives on why calculators vary, seasonality, and what breaks first in tight deals.
+            <p className="text-sm text-label-secondary mb-6 leading-relaxed">
+              Deep dives on why calculators disagree, conservative underwriting, and what breaks first in tight deals.
             </p>
             <ul className="space-y-3">
               <li>
-                <Link href="/learn/why-str-calculators-overestimate" className="inline-flex items-center gap-1.5 text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-200 ease-out group">
-                  Why STR calculators overestimate revenue
+                <Link href="/learn/why-str-calculators-disagree" className="inline-flex items-center gap-1.5 text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-200 ease-out group">
+                  Why STR calculators disagree by tens of thousands of dollars
                   <span className="text-label-tertiary group-hover:translate-x-0.5 transition-transform duration-200">→</span>
                 </Link>
               </li>
               <li>
-                <Link href="/learn/str-seasonality-reality-check" className="inline-flex items-center gap-1.5 text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-200 ease-out group">
-                  STR seasonality reality check for underwriting
+                <Link href="/learn/conservative-str-underwriting" className="inline-flex items-center gap-1.5 text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-200 ease-out group">
+                  Conservative STR underwriting: how to stress-test a deal before you buy
                   <span className="text-label-tertiary group-hover:translate-x-0.5 transition-transform duration-200">→</span>
                 </Link>
               </li>
               <li>
                 <Link href="/learn/str-fragility-checklist" className="inline-flex items-center gap-1.5 text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-200 ease-out group">
-                  STR fragility checklist: what breaks first
+                  STR fragility checklist: what breaks first in tight deals
+                  <span className="text-label-tertiary group-hover:translate-x-0.5 transition-transform duration-200">→</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/sample-report" className="inline-flex items-center gap-1.5 text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-200 ease-out group">
+                  See a sample report (verdict, numbers, scenarios)
                   <span className="text-label-tertiary group-hover:translate-x-0.5 transition-transform duration-200">→</span>
                 </Link>
               </li>

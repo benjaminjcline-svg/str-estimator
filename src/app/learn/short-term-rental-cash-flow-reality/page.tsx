@@ -38,52 +38,52 @@ export default function ShortTermRentalCashFlowRealityPage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <article className="prose prose-gray max-w-none opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
-          <h1 className="font-sans text-3xl font-semibold text-label-primary tracking-tight mb-6">
+          <h1 className="text-2xl font-semibold text-label-primary tracking-tight mb-6">
           Where the gap between projected income and your bank account kills deals
         </h1>
-        <p className="text-lg text-label-secondary leading-relaxed mb-8">
+        <p className="text-sm text-label-secondary leading-relaxed mb-8">
           Projected STR income vs. what actually hits. That's where most deals die. Here's what breaks first. And how to plan for it.
         </p>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">
+          <h2 className="text-2xl font-semibold text-label-primary mb-4">
             Fixed costs. Variable revenue.
           </h2>
-          <p className="text-label-secondary mb-4">
+          <p className="text-sm text-label-secondary mb-4">
             Mortgage, taxes, insurance: fixed. STR revenue? Wildly variable. A 10%
             occupancy drop can wipe months of thin profit. First thing that breaks
             in a weak year: cash flow. It goes negative fast.
           </p>
-          <p className="text-label-secondary">
+          <p className="text-sm text-label-secondary">
             Plan for vacancy in every market. Assume seasonality. Plan for the weak year. Not the strong one.
           </p>
         </section>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">
+          <h2 className="text-2xl font-semibold text-label-primary mb-4">
             Where buyers go wrong
           </h2>
-          <p className="text-label-secondary mb-4">
+          <p className="text-sm text-label-secondary mb-4">
             Cleaning's per-stay, not monthly. Every turnover costs time and money.
             Utilities run higher than LTR. STR insurance keeps going up. CapEx?
             Roof, HVAC, appliances age. These costs pile up.
           </p>
-          <p className="text-label-secondary">
+          <p className="text-sm text-label-secondary">
             Conservative underwriting builds them in. Optimistic projections skip
             them.
           </p>
         </section>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">
+          <h2 className="text-2xl font-semibold text-label-primary mb-4">
             What a bad year feels like
           </h2>
-          <p className="text-label-secondary mb-4">
+          <p className="text-sm text-label-secondary mb-4">
             Monthly bleed. Stress for 6–18 months. The emotional load of carrying
             a negative-cash-flow property. Recovery? Slow. Markets don't bounce
             overnight.
           </p>
-          <p className="text-label-secondary">
+          <p className="text-sm text-label-secondary">
             The question isn't whether a weak year can happen. It's whether you survive it. If the deal only works in a strong year, it's not built to last.
           </p>
         </section>

@@ -4,17 +4,17 @@ import { HomePage } from "@/components/HomePage";
 import { homeFaqs } from "@/lib/home-faq";
 import { siteUrl } from "@/lib/site-config";
 
-// Keyword-to-page: conservative STR calculator, STR deal analysis, Airbnb investment reality check (primary).
-// Supporting: why STR calculators vary, Airbnb revenue calculator inaccurate, seasonality STR occupancy (sections/FAQs).
+// Keyword-to-page: stress-test STR deal, conservative reality check, why STR calculators disagree (skeptical intent).
+// Supporting: STR deal analysis, downside-first, Proceed Borderline Walk Away.
 
 export const metadata: Metadata = {
-  title: "Conservative STR Calculator & Deal Analysis Before You Buy | STR Estimator",
+  title: "Stress-Test Your STR Deal Before You Buy | Conservative Reality Check | STR Estimator",
   description:
-    "Conservative STR calculator and Airbnb investment reality check. STR deal analysis with stress tests, fragility flags, and a clear verdict. Proceed, Borderline, or Walk Away.",
+    "A conservative reality check for short-term rental deals. Not a revenue prediction. Downside-first stress test, scenario ranges, and a clear verdict. Proceed, Borderline, or Walk Away.",
   openGraph: {
-    title: "Conservative STR Calculator & Deal Analysis Before You Buy | STR Estimator",
+    title: "Stress-Test Your STR Deal Before You Buy | Conservative Reality Check | STR Estimator",
     description:
-      "Conservative STR calculator and Airbnb investment reality check. Stress-test your deal. Proceed, Borderline, or Walk Away.",
+      "Conservative STR reality check. Downside-first stress test, no hype. Clear verdict before you commit.",
     url: siteUrl,
   },
   alternates: {

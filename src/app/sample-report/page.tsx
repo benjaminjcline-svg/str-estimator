@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PrimaryCTA } from "@/components/PrimaryCTA";
+import { canonicalUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Sample Report",
   description:
-    "See what your STR report looks like: verdict, numbers, income scenarios, and where the deal can break. Short-term rental cash flow reality check. $49.",
+    "See what your STR report looks like: verdict, numbers, income scenarios, and where the deal can break. Conservative reality check. $49.",
+  alternates: { canonical: canonicalUrl("/sample-report") },
 };
 
 export default function SampleReportPage() {
@@ -27,7 +29,7 @@ export default function SampleReportPage() {
 
       <article className="max-w-2xl mx-auto px-6 py-12 sm:py-16 space-y-14">
         <header className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
-          <h1 className="font-sans text-2xl sm:text-3xl font-semibold text-label-primary tracking-tight mb-2">
+          <h1 className="text-2xl font-semibold text-label-primary tracking-tight mb-2">
             What your report looks like
           </h1>
           <p className="text-sm text-label-tertiary mb-2">
@@ -37,16 +39,16 @@ export default function SampleReportPage() {
             Verdict, numbers, three income scenarios, and where the deal can break. One bad assumption can cost more than an inspection. This report costs $49.
           </p>
           <p className="text-sm text-label-tertiary mb-5">123 Example St, Austin, TX</p>
-          <h2 className="font-sans text-xl font-semibold text-label-primary tracking-tight mb-4">
+          <h2 className="text-2xl font-semibold text-label-primary tracking-tight mb-4">
             Your verdict
           </h2>
-          <div className="inline-flex items-center gap-2.5 px-5 py-3 rounded-2xl border-2 border-amber-200 bg-amber-50 text-amber-800 font-semibold text-lg mb-6">
-            <span className="text-xl leading-none">◐</span>
+          <div className="inline-flex items-center gap-2.5 px-5 py-3 rounded-2xl border-2 border-amber-200 bg-amber-50 text-amber-800 font-semibold text-base mb-6">
+            <span className="text-base leading-none">◐</span>
             Borderline
           </div>
 
           <div className="p-5 rounded-2xl bg-surface-elevated border border-gray-100 mb-6">
-            <h3 className="text-sm font-semibold text-label-primary mb-4">By the numbers</h3>
+            <h3 className="text-base font-semibold text-label-primary mb-4">By the numbers</h3>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
               <div>
                 <p className="text-label-tertiary text-sm">Monthly revenue</p>
@@ -69,7 +71,7 @@ export default function SampleReportPage() {
           </div>
 
           <div className="relative">
-            <p className="text-label-secondary leading-relaxed text-lg">
+            <p className="text-sm text-label-secondary leading-relaxed">
               Cash flow's thin or slightly negative.{" "}
               <span className="sample-report-blur inline">
                 This deal lives or dies on hitting your occupancy and rate assumptions. A weak year? Meaningful stress. Only proceed if you've got reserves and can stomach 6–12 months of break-even.
@@ -87,7 +89,7 @@ export default function SampleReportPage() {
         </header>
 
         <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "80ms" }}>
-          <h2 className="font-sans text-xl font-semibold text-label-primary mb-6 tracking-tight">
+          <h2 className="text-2xl font-semibold text-label-primary mb-6 tracking-tight">
             Income reality: how it actually performs
           </h2>
           <div className="space-y-4">
@@ -116,7 +118,7 @@ export default function SampleReportPage() {
         </section>
 
         <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "160ms" }}>
-          <h2 className="font-sans text-xl font-semibold text-label-primary mb-6 tracking-tight">
+          <h2 className="text-2xl font-semibold text-label-primary mb-6 tracking-tight">
             Where buyers go wrong on costs
           </h2>
           <div className="space-y-4">
@@ -137,7 +139,7 @@ export default function SampleReportPage() {
         </section>
 
         <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "240ms" }}>
-          <h2 className="font-sans text-xl font-semibold text-label-primary mb-6 tracking-tight">
+          <h2 className="text-2xl font-semibold text-label-primary mb-6 tracking-tight">
             The one assumption that could kill the deal
           </h2>
           <div className="relative p-6 rounded-2xl bg-amber-50/50 border-2 border-amber-200">
@@ -158,7 +160,7 @@ export default function SampleReportPage() {
         </section>
 
         <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "320ms" }}>
-          <h2 className="font-sans text-xl font-semibold text-label-primary mb-6 tracking-tight">
+          <h2 className="text-2xl font-semibold text-label-primary mb-6 tracking-tight">
             What a bad year feels like
           </h2>
           <div className="relative p-6 rounded-2xl bg-rose-50/50 border-2 border-rose-200">
@@ -177,7 +179,7 @@ export default function SampleReportPage() {
         </section>
 
         <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "400ms" }}>
-          <h2 className="font-sans text-xl font-semibold text-label-primary mb-6 tracking-tight">
+          <h2 className="text-2xl font-semibold text-label-primary mb-6 tracking-tight">
             What would need to be true for this to work
           </h2>
           <div className="relative">
@@ -203,12 +205,12 @@ export default function SampleReportPage() {
         </section>
 
         <section className="opacity-0 animate-slide-up pt-10 border-t-2 border-gray-200" style={{ animationFillMode: "forwards", animationDelay: "480ms" }}>
-          <h2 className="font-sans text-xl font-semibold text-label-primary mb-4 tracking-tight">
+          <h2 className="text-2xl font-semibold text-label-primary mb-4 tracking-tight">
             My take
           </h2>
           <div className="relative p-6 rounded-2xl bg-accent/5 border border-accent/20">
             <div className="sample-report-blur">
-              <p className="text-label-primary leading-relaxed text-lg font-medium">
+              <p className="text-sm text-label-primary leading-relaxed font-medium">
                 My take: pause unless you've got strong reserves and conviction. Most disciplined buyers pass on borderline when better deals exist. Reasonable to walk.
               </p>
             </div>
@@ -221,7 +223,7 @@ export default function SampleReportPage() {
         </section>
 
         <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "520ms" }}>
-          <h2 className="font-sans text-xl font-semibold text-label-primary mb-4 tracking-tight">
+          <h2 className="text-2xl font-semibold text-label-primary mb-4 tracking-tight">
             Why this is still a good outcome
           </h2>
           <div className="relative p-6 rounded-2xl bg-surface-elevated border border-gray-100">

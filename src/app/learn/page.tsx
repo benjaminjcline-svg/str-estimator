@@ -3,14 +3,34 @@ import Link from "next/link";
 import { LearnCard } from "@/components/LearnCard";
 import { PrimaryCTA } from "@/components/PrimaryCTA";
 import { getCachedBriefList, getTodayDateString } from "@/lib/content-engine/brief-service";
+import { canonicalUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "STR Buying Guide",
   description:
-    "What most buyers get wrong. Occupancy traps, stale comps, and the real numbers behind STR cash flow. Learn before you buy.",
+    "What most buyers get wrong. Why STR calculators disagree, occupancy traps, stale comps, and the real numbers behind STR cash flow. Learn before you buy.",
+  alternates: { canonical: canonicalUrl("/learn") },
 };
 
 const evergreenArticles = [
+  {
+    href: "/learn/why-str-calculators-disagree",
+    title: "Why STR Calculators Disagree by Tens of Thousands of Dollars",
+    excerpt:
+      "Seasonality, comp selection, data lag, amenities, management, regulations, and cost blind spots. Why tools give wildly different numbers.",
+  },
+  {
+    href: "/learn/conservative-str-underwriting",
+    title: "Conservative STR Underwriting: How to Stress-Test a Deal Before You Buy",
+    excerpt:
+      "Scenario ranges, downside buffers, expense realism, and decision thresholds. How to run a conservative reality check.",
+  },
+  {
+    href: "/learn/str-fragility-checklist",
+    title: "STR Fragility Checklist: What Breaks First in Tight Deals",
+    excerpt:
+      "What breaks first when margins are thin. Occupancy, rate, expenses, and how to stress-test.",
+  },
   {
     href: "/learn/why-str-calculators-overestimate",
     title: "Why STR Calculators Overestimate Revenue",
@@ -22,12 +42,6 @@ const evergreenArticles = [
     title: "STR Seasonality Reality Check for Underwriting",
     excerpt:
       "Why seasonality breaks deals. How to stress-test for slow months instead of assuming peak year-round.",
-  },
-  {
-    href: "/learn/str-fragility-checklist",
-    title: "STR Fragility Checklist: What Breaks First in Tight Deals",
-    excerpt:
-      "What breaks first when margins are thin. Occupancy, rate, expenses, and how to stress-test.",
   },
   {
     href: "/learn/airbnb-income-assumptions",
@@ -70,10 +84,10 @@ export default async function LearnPage() {
   return (
     <main className="max-w-2xl mx-auto px-5 sm:px-6 py-14 sm:py-20 min-[1025px]:py-24">
       <article className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
-        <h1 className="font-sans text-3xl sm:text-4xl min-[1200px]:text-[2.25rem] font-semibold text-label-primary tracking-tight mb-5">
+        <h1 className="text-2xl font-semibold text-label-primary tracking-tight mb-5">
           What most buyers never learn
         </h1>
-        <p className="text-lg text-label-secondary leading-relaxed mb-14">
+        <p className="text-sm text-label-secondary leading-relaxed mb-14">
           Occupancy traps. Stale comps. Where the hype falls apart. Read this before you run your numbers.
         </p>
 
@@ -89,7 +103,7 @@ export default async function LearnPage() {
         </div>
 
         <div className="mt-14 pt-10 border-t border-gray-200/60">
-          <h2 className="text-xs font-semibold text-label-secondary uppercase tracking-wider mb-3">Daily market briefs</h2>
+          <h2 className="text-sm font-semibold text-label-secondary uppercase tracking-wider mb-3">Daily market briefs</h2>
           <p className="text-sm text-label-tertiary mb-4 leading-relaxed">Newest first. Older briefs stay in the list.</p>
           <div className="overflow-hidden rounded-xl border border-gray-200/60 bg-surface-elevated shadow-card">
             {listRows.map(({ date, headline }) => (

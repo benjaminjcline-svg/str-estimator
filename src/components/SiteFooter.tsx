@@ -17,14 +17,14 @@ export function SiteFooter() {
       <div className="max-w-[1440px] mx-auto px-5 sm:px-6 py-14 sm:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 min-[1025px]:grid-cols-[min(100%,380px)_1fr] min-[1200px]:grid-cols-[min(100%,520px)_1fr] gap-10 min-[1025px]:gap-20">
           <div className="min-[1025px]:col-span-1">
-            <p className="font-semibold text-label-primary mb-3 text-[1.0625rem]">{PRODUCT_NAME}</p>
+            <p className="text-base font-semibold text-label-primary mb-3">{PRODUCT_NAME}</p>
             <p className="text-sm text-label-secondary leading-relaxed max-w-sm">
               A sober second look at short-term rental income. The numbers. The verdict. No hype.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-10 min-[1025px]:gap-20">
             <div>
-              <p className="font-semibold text-label-primary mb-3 text-[0.8125rem] uppercase tracking-wider">Product</p>
+              <p className="text-xs font-semibold text-label-primary mb-3 uppercase tracking-wider">Product</p>
               <ul className="space-y-2.5">
                 {footerLinks.slice(0, 4).map((link) => (
                   <li key={link.href}>
@@ -39,7 +39,7 @@ export function SiteFooter() {
               </ul>
             </div>
             <div className="min-[1025px]:ml-[200px]">
-              <p className="font-semibold text-label-primary mb-3 text-[0.8125rem] uppercase tracking-wider">Resources</p>
+              <p className="text-xs font-semibold text-label-primary mb-3 uppercase tracking-wider">Resources</p>
               <ul className="space-y-2.5">
                 {footerLinks.slice(4).map((link) => (
                   <li key={link.href}>

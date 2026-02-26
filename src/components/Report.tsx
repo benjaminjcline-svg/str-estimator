@@ -49,7 +49,7 @@ export const Report = forwardRef<
     <article ref={ref} className="max-w-2xl mx-auto space-y-14 pb-24">
       <header className="space-y-6 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <h1 className="font-sans text-2xl sm:text-3xl font-semibold text-label-primary tracking-tight">
+          <h1 className="text-2xl font-semibold text-label-primary tracking-tight">
             Your verdict
           </h1>
           <div className="flex items-center gap-2">
@@ -70,7 +70,7 @@ export const Report = forwardRef<
 
         {hasSummaryNumbers && (
           <div className="p-5 rounded-2xl bg-surface-elevated border border-gray-100">
-            <h3 className="text-sm font-semibold text-label-primary mb-4">By the numbers</h3>
+            <h3 className="text-base font-semibold text-label-primary mb-4">By the numbers</h3>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
               <div>
                 <p className="text-label-tertiary text-sm">Monthly revenue</p>
@@ -103,7 +103,7 @@ export const Report = forwardRef<
           </div>
         )}
 
-        <p className="text-label-secondary leading-relaxed text-lg">
+        <p className="text-sm text-label-secondary leading-relaxed">
           {report.verdictReasoning}
         </p>
         <p className="text-sm text-label-tertiary leading-relaxed mt-3">
@@ -124,7 +124,7 @@ export const Report = forwardRef<
       </header>
 
       <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "80ms" }}>
-        <h2 className="font-sans text-xl font-semibold text-label-primary mb-6 tracking-tight">
+        <h2 className="text-2xl font-semibold text-label-primary mb-6 tracking-tight">
           Income reality: how it actually performs
         </h2>
         <div className="space-y-4">
@@ -157,7 +157,7 @@ export const Report = forwardRef<
       </section>
 
       <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "160ms" }}>
-        <h2 className="font-sans text-xl font-semibold text-label-primary mb-6 tracking-tight">
+        <h2 className="text-2xl font-semibold text-label-primary mb-6 tracking-tight">
           Where buyers go wrong on costs
         </h2>
         <div className="space-y-4">
@@ -178,7 +178,7 @@ export const Report = forwardRef<
       </section>
 
       <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "240ms" }}>
-        <h2 className="font-sans text-xl font-semibold text-label-primary mb-6 tracking-tight">
+        <h2 className="text-2xl font-semibold text-label-primary mb-6 tracking-tight">
           The one assumption that could kill the deal
         </h2>
         <div className="p-6 rounded-2xl bg-amber-50/50 border-2 border-amber-200 space-y-3 transition-all duration-button ease-friction">
@@ -191,7 +191,7 @@ export const Report = forwardRef<
       </section>
 
       <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "320ms" }}>
-        <h2 className="font-sans text-xl font-semibold text-label-primary mb-6 tracking-tight">
+        <h2 className="text-2xl font-semibold text-label-primary mb-6 tracking-tight">
           What a bad year feels like
         </h2>
         <div className="p-6 rounded-2xl bg-rose-50/50 border-2 border-rose-200 space-y-3 transition-all duration-button ease-friction">
@@ -207,7 +207,7 @@ export const Report = forwardRef<
       </section>
 
       <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "400ms" }}>
-        <h2 className="font-sans text-xl font-semibold text-label-primary mb-6 tracking-tight">
+        <h2 className="text-2xl font-semibold text-label-primary mb-6 tracking-tight">
           What would need to be true for this to work
         </h2>
         <ul className="space-y-3">
@@ -221,18 +221,18 @@ export const Report = forwardRef<
       </section>
 
       <section className="pt-10 pb-6 border-t-2 border-gray-200 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "480ms" }}>
-        <h2 className="font-sans text-xl font-semibold text-label-primary mb-4 tracking-tight">
+        <h2 className="text-2xl font-semibold text-label-primary mb-4 tracking-tight">
           My take
         </h2>
         <div className="p-6 rounded-2xl bg-accent/5 border border-accent/20">
-          <p className="text-label-primary leading-relaxed text-lg font-medium">
+          <p className="text-sm text-label-primary leading-relaxed font-medium">
             {report.finalPerspective}
           </p>
         </div>
       </section>
 
       <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "520ms" }}>
-        <h2 className="font-sans text-xl font-semibold text-label-primary mb-4 tracking-tight">
+        <h2 className="text-2xl font-semibold text-label-primary mb-4 tracking-tight">
           Why this is still a good outcome
         </h2>
         <div className="p-6 rounded-2xl bg-surface-elevated border border-gray-100 space-y-3">

@@ -14,10 +14,10 @@ export function LearnCard({ href, title, excerpt }: LearnCardProps) {
       href={href}
       className="block group p-6 rounded-2xl bg-surface-elevated border border-gray-200/60 shadow-card hover:shadow-card-hover hover:border-gray-200 hover:-translate-y-0.5 transition-all duration-300 ease-out active:scale-[0.99]"
     >
-      <h2 className="text-[1.125rem] font-semibold text-label-primary group-hover:text-accent transition-colors duration-200 mb-2">
+      <h2 className="text-base font-semibold text-label-primary group-hover:text-accent transition-colors duration-200 mb-2">
         {title}
       </h2>
-      <p className="text-label-secondary text-[0.9375rem] leading-relaxed">{excerpt}</p>
+      <p className="text-sm text-label-secondary leading-relaxed">{excerpt}</p>
     </Link>
   );
 }

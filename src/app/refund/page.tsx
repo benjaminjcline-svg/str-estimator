@@ -25,26 +25,26 @@ export default function RefundPage() {
       </div>
       <div className="max-w-2xl mx-auto px-6 py-16 sm:py-24">
       <article className="prose prose-gray max-w-none opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
-        <h1 className="font-sans text-3xl sm:text-4xl font-semibold text-label-primary tracking-tight mb-2">
+        <h1 className="text-2xl font-semibold text-label-primary tracking-tight mb-2">
           Refund Policy
         </h1>
         <p className="text-sm text-label-tertiary mb-8">
           Last updated: {LAST_UPDATED}
         </p>
 
-        <p className="text-label-secondary leading-relaxed mb-6">
+        <p className="text-sm text-label-secondary leading-relaxed mb-6">
           {PRODUCT_NAME} is operated by {LEGAL_NAME} ({"(\"Company\", \"we\", \"us\")"}). This policy applies to your use of {PRODUCT_NAME} and any purchase of reports or subscriptions offered by the Company.
         </p>
-        <p className="text-label-secondary leading-relaxed mb-8">
+        <p className="text-sm text-label-secondary leading-relaxed mb-8">
           Refunds are issued by {LEGAL_NAME} for purchases made on {PRODUCT_NAME}.
         </p>
 
         <section className="mb-10">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">When You Can Request a Refund</h2>
-          <p className="text-label-secondary leading-relaxed mb-4">
+          <h2 className="text-2xl font-semibold text-label-primary mb-4">When You Can Request a Refund</h2>
+          <p className="text-sm text-label-secondary leading-relaxed mb-4">
             You may request a full refund within 7 days of purchase if:
           </p>
-          <ul className="list-disc pl-6 text-label-secondary space-y-2 mb-4">
+          <ul className="list-disc pl-6 text-sm text-label-secondary space-y-2 mb-4">
             <li>You did not receive your report (e.g., delivery failure, link broken, report inaccessible)</li>
             <li>The Service failed to function as described (e.g., report did not generate, critical error)</li>
             <li>You canceled payment before the report was delivered (e.g., closed Stripe checkout before completing payment)</li>
@@ -52,11 +52,11 @@ export default function RefundPage() {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">When Refunds Are Not Offered</h2>
-          <p className="text-label-secondary leading-relaxed mb-4">
+          <h2 className="text-2xl font-semibold text-label-primary mb-4">When Refunds Are Not Offered</h2>
+          <p className="text-sm text-label-secondary leading-relaxed mb-4">
             We do not offer refunds when:
           </p>
-          <ul className="list-disc pl-6 text-label-secondary space-y-2 mb-4">
+          <ul className="list-disc pl-6 text-sm text-label-secondary space-y-2 mb-4">
             <li>You received and accessed your report. The Service is a one-time deliverable. Once delivered, the transaction is complete.</li>
             <li>You disagree with the verdict or analysis. Our analysis is based on conservative assumptions and models. Differing opinions or outcomes do not qualify for a refund.</li>
             <li>You made an error in your inputs (e.g., wrong purchase price). Please verify your inputs before submitting.</li>
@@ -66,34 +66,34 @@ export default function RefundPage() {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">How to Request a Refund</h2>
-          <p className="text-label-secondary leading-relaxed mb-4">
+          <h2 className="text-2xl font-semibold text-label-primary mb-4">How to Request a Refund</h2>
+          <p className="text-sm text-label-secondary leading-relaxed mb-4">
             Email us at{" "}
             <a href={`mailto:${SUPPORT_EMAIL}`} className="text-accent hover:text-accent-hover">
               {SUPPORT_EMAIL}
             </a>
             {" "}with:
           </p>
-          <ul className="list-disc pl-6 text-label-secondary space-y-2 mb-4">
+          <ul className="list-disc pl-6 text-sm text-label-secondary space-y-2 mb-4">
             <li>The email address used for purchase</li>
             <li>The date of purchase (approximate is fine)</li>
             <li>A brief reason for the refund request</li>
           </ul>
-          <p className="text-label-secondary leading-relaxed mb-4">
+          <p className="text-sm text-label-secondary leading-relaxed mb-4">
             We will respond within 3 business days. Approved refunds will be processed within 5–10 business days to your original payment method.
           </p>
         </section>
 
         <section className="mb-10">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">Stripe Refunds</h2>
-          <p className="text-label-secondary leading-relaxed mb-4">
+          <h2 className="text-2xl font-semibold text-label-primary mb-4">Stripe Refunds</h2>
+          <p className="text-sm text-label-secondary leading-relaxed mb-4">
             Refunds are processed through Stripe. Stripe's refund policies apply. Refunds may appear as a credit on your card statement; timing depends on your bank.
           </p>
         </section>
 
         <section className="mb-10">
-          <h2 className="text-xl font-semibold text-label-primary mb-4">Contact</h2>
-          <p className="text-label-secondary leading-relaxed">
+          <h2 className="text-2xl font-semibold text-label-primary mb-4">Contact</h2>
+          <p className="text-sm text-label-secondary leading-relaxed">
             Questions? Contact us at{" "}
             <a href={`mailto:${SUPPORT_EMAIL}`} className="text-accent hover:text-accent-hover">
               {SUPPORT_EMAIL}

@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PrimaryCTA } from "@/components/PrimaryCTA";
+import { canonicalUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "FAQ",
   description:
-    "Straight answers on STR Estimator: how it works, what you get, and why we don't make up numbers.",
+    "Straight answers on STR Estimator: how it works, what you get, and why we do not make up numbers. Conservative reality check, no hype.",
+  alternates: { canonical: canonicalUrl("/faq") },
 };
 
 const faqs = [
@@ -60,20 +62,20 @@ export default function FAQPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <article className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
-        <h1 className="font-sans text-3xl sm:text-4xl min-[1200px]:text-[2.25rem] font-semibold text-label-primary tracking-tight mb-5">
+        <h1 className="text-2xl font-semibold text-label-primary tracking-tight mb-5">
           Questions? Answers.
         </h1>
-        <p className="text-label-secondary leading-relaxed mb-14">
+        <p className="text-sm text-label-secondary leading-relaxed mb-14">
           No corporate speak. Just what you need to know.
         </p>
 
         <dl className="space-y-10">
           {faqs.map((faq, i) => (
             <div key={i} className="border-b border-gray-100 last:border-0 pb-10 last:pb-0">
-              <dt className="text-[1.0625rem] font-semibold text-label-primary mb-2">
+              <dt className="text-base font-semibold text-label-primary mb-2">
                 {faq.q}
               </dt>
-              <dd className="text-label-secondary leading-relaxed text-[0.9375rem] sm:text-base">{faq.a}</dd>
+              <dd className="text-sm text-label-secondary leading-relaxed">{faq.a}</dd>
             </div>
           ))}
         </dl>
