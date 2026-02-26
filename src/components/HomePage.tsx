@@ -78,60 +78,58 @@ export function HomePage() {
   return (
     <main className="min-h-screen bg-surface">
       <div className="max-w-[1440px] mx-auto px-5 sm:px-6 py-14 sm:py-20 min-[1025px]:py-24">
-        <div className="grid grid-cols-1 min-[1025px]:grid-cols-[min(100%,400px)_1fr] min-[1200px]:grid-cols-[min(100%,520px)_1fr] min-[1025px]:gap-20 min-[1025px]:items-start gap-14">
-          <div className="order-1 min-[1025px]:col-start-1 min-[1025px]:row-start-1 min-[1025px]:row-span-2 min-[1025px]:sticky min-[1025px]:top-28 min-[1025px]:self-start space-y-8">
-            <header className="text-left opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
-              <h1 className="text-display sm:text-display-lg min-[1200px]:text-display-xl font-semibold text-label-primary tracking-tight mb-6 min-[1200px]:mb-7">
-                A conservative STR reality check before you buy
-              </h1>
-              <p className="text-lg min-[1200px]:text-xl text-label-secondary leading-relaxed mb-5 max-w-md min-[1200px]:leading-snug">
-                This is not a predictive promise. It is a conservative stress test: we show how your deal holds up under downside assumptions and give you a clear verdict before you buy.
-              </p>
-              <p className="text-base text-label-secondary leading-relaxed max-w-md">
-                STR calculators often disagree widely. Tiny changes in occupancy and rate assumptions swing outcomes a lot. This tool focuses on downside and fragility. We show you where the deal breaks, not a best-case headline number.
-              </p>
-            </header>
+        <div className="max-w-2xl mx-auto flex flex-col gap-14">
+          <header className="text-left opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
+            <h1 className="text-display sm:text-display-lg font-semibold text-label-primary tracking-tight mb-6">
+              A conservative STR reality check before you buy
+            </h1>
+            <p className="text-lg text-label-secondary leading-relaxed mb-5 max-w-md">
+              This is not a predictive promise. It is a conservative stress test: we show how your deal holds up under downside assumptions and give you a clear verdict before you buy.
+            </p>
+            <p className="text-base text-label-secondary leading-relaxed max-w-md">
+              STR calculators often disagree widely. Tiny changes in occupancy and rate assumptions swing outcomes a lot. This tool focuses on downside and fragility. We show you where the deal breaks, not a best-case headline number.
+            </p>
+          </header>
 
-            <section className="text-left opacity-0 animate-slide-up mt-6 min-[1025px]:mt-12" style={{ animationFillMode: "forwards", animationDelay: "300ms" }}>
-              <p className="text-label-secondary leading-relaxed mb-4 max-w-md">
-                <strong>What this does:</strong> You enter the property and financing details. We run them through conservative underwriting and give you a clear verdict.
-              </p>
-              <p className="text-label-secondary leading-relaxed mb-4 max-w-md">
-                <strong>Who it's for:</strong> Anyone seriously considering buying a short-term rental who wants a second opinion before writing an offer.
-              </p>
-              <p className="text-label-secondary leading-relaxed mb-4 max-w-md">
-                <strong>When to use it:</strong> Before you commit capital. A sanity check, not a crystal ball.
-              </p>
-              <div className="flex flex-col gap-3 mt-8 min-[1025px]:mt-16">
-                <Link
-                  href="/how-it-works"
-                  className="group text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-200 ease-out inline-flex items-center gap-1.5"
-                >
-                  How it works
-                  <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
-                </Link>
-                <Link
-                  href="/sample-report"
-                  className="group text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-200 ease-out inline-flex items-center gap-1.5"
-                >
-                  See a sample report
-                  <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
-                </Link>
-                <Link
-                  href="/learn"
-                  className="group text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-200 ease-out inline-flex items-center gap-1.5"
-                >
-                  Learn
-                  <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
-                </Link>
-              </div>
-            </section>
-          </div>
+          <section className="text-left opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "300ms" }}>
+            <p className="text-label-secondary leading-relaxed mb-4 max-w-md">
+              <strong>What this does:</strong> You enter the property and financing details. We run them through conservative underwriting and give you a clear verdict.
+            </p>
+            <p className="text-label-secondary leading-relaxed mb-4 max-w-md">
+              <strong>Who it's for:</strong> Anyone seriously considering buying a short-term rental who wants a second opinion before writing an offer.
+            </p>
+            <p className="text-label-secondary leading-relaxed mb-4 max-w-md">
+              <strong>When to use it:</strong> Before you commit capital. A sanity check, not a crystal ball.
+            </p>
+            <div className="flex flex-col gap-3 mt-8">
+              <Link
+                href="/how-it-works"
+                className="group text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-200 ease-out inline-flex items-center gap-1.5"
+              >
+                How it works
+                <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+              </Link>
+              <Link
+                href="/sample-report"
+                className="group text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-200 ease-out inline-flex items-center gap-1.5"
+              >
+                See a sample report
+                <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+              </Link>
+              <Link
+                href="/learn"
+                className="group text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-200 ease-out inline-flex items-center gap-1.5"
+              >
+                Learn
+                <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+              </Link>
+            </div>
+          </section>
 
-          <div className="order-2 min-[1025px]:col-start-2 min-[1025px]:row-start-1 min-[1025px]:row-span-2 min-w-0 overflow-visible -mx-5 min-[1025px]:mx-0 min-[1025px]:pb-32 sm:px-0 min-[1025px]:px-0">
+          <div className="min-w-0 overflow-visible">
             <div
               id="analyze"
-              className="rounded-2xl min-[1025px]:rounded-3xl bg-surface-elevated border border-gray-200/70 min-[1025px]:border-gray-200/50 shadow-card min-[1025px]:shadow-elevated p-7 sm:p-9 min-[1025px]:p-10 scroll-mt-28 opacity-0 animate-slide-up overflow-visible"
+              className="rounded-2xl bg-surface-elevated border border-gray-200/70 shadow-card p-7 sm:p-9 scroll-mt-28 opacity-0 animate-slide-up overflow-visible"
               style={{ animationFillMode: "forwards", animationDelay: "100ms" }}
             >
               {liveMode ? (
@@ -159,7 +157,7 @@ export function HomePage() {
           </div>
         </div>
 
-        <div className="max-w-2xl mx-auto pt-20 sm:pt-28 min-[1025px]:pt-32 pb-12 sm:pb-16 border-t border-gray-200/70 space-y-20 sm:space-y-24">
+        <div className="max-w-2xl mx-auto pt-20 sm:pt-28 pb-12 sm:pb-16 border-t border-gray-200/70 space-y-20 sm:space-y-24">
           <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "400ms" }}>
             <h2 className="text-2xl min-[1200px]:text-[1.75rem] font-semibold text-label-primary tracking-tight mb-6">
               Why most STR calculators disagree
@@ -175,34 +173,34 @@ export function HomePage() {
             <h2 className="text-2xl min-[1200px]:text-[1.75rem] font-semibold text-label-primary tracking-tight mb-8">
               How STR Estimator is different
             </h2>
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              <div className="p-6 rounded-2xl bg-surface-elevated border border-gray-200/60 shadow-card hover:shadow-card-hover hover:border-gray-200 transition-all duration-300 ease-out hover:-translate-y-0.5">
+            <div className="grid gap-5 sm:grid-cols-2 items-stretch">
+              <div className="flex flex-col p-6 rounded-2xl bg-surface-elevated border border-gray-200/60 shadow-card hover:shadow-card-hover hover:border-gray-200 transition-all duration-300 ease-out hover:-translate-y-0.5">
                 <h3 className="text-[1.0625rem] font-semibold text-label-primary mb-2">Conservative defaults</h3>
-                <p className="text-label-secondary text-sm leading-relaxed">
+                <p className="text-label-secondary text-sm leading-relaxed flex-1 min-h-0">
                   We cap optimistic occupancy and rates. No best-case revenue promises. You get ranges and stress tests, not a single headline number.
                 </p>
-                <p className="text-xs text-label-tertiary mt-3">Output: strong / typical / weak year scenarios.</p>
+                <p className="text-xs text-label-tertiary mt-3 shrink-0">Output: strong / typical / weak year scenarios.</p>
               </div>
-              <div className="p-6 rounded-2xl bg-surface-elevated border border-gray-200/60 shadow-card hover:shadow-card-hover hover:border-gray-200 transition-all duration-300 ease-out hover:-translate-y-0.5">
+              <div className="flex flex-col p-6 rounded-2xl bg-surface-elevated border border-gray-200/60 shadow-card hover:shadow-card-hover hover:border-gray-200 transition-all duration-300 ease-out hover:-translate-y-0.5">
                 <h3 className="text-[1.0625rem] font-semibold text-label-primary mb-2">Downside scenarios</h3>
-                <p className="text-label-secondary text-sm leading-relaxed">
+                <p className="text-label-secondary text-sm leading-relaxed flex-1 min-h-0">
                   We show weak-year and typical-year outcomes so you see how the deal holds up when things go wrong.
                 </p>
-                <p className="text-xs text-label-tertiary mt-3">Output: stress-tested income ranges.</p>
+                <p className="text-xs text-label-tertiary mt-3 shrink-0">Output: stress-tested income ranges.</p>
               </div>
-              <div className="p-6 rounded-2xl bg-surface-elevated border border-gray-200/60 shadow-card hover:shadow-card-hover hover:border-gray-200 transition-all duration-300 ease-out hover:-translate-y-0.5">
+              <div className="flex flex-col p-6 rounded-2xl bg-surface-elevated border border-gray-200/60 shadow-card hover:shadow-card-hover hover:border-gray-200 transition-all duration-300 ease-out hover:-translate-y-0.5">
                 <h3 className="text-[1.0625rem] font-semibold text-label-primary mb-2">Fragility flags</h3>
-                <p className="text-label-secondary text-sm leading-relaxed">
+                <p className="text-label-secondary text-sm leading-relaxed flex-1 min-h-0">
                   We flag what breaks first and call out the one assumption that could kill the deal. You know where the risk is.
                 </p>
-                <p className="text-xs text-label-tertiary mt-3">Output: fragility narrative and deal-breaker callout.</p>
+                <p className="text-xs text-label-tertiary mt-3 shrink-0">Output: fragility narrative and deal-breaker callout.</p>
               </div>
-              <div className="p-6 rounded-2xl bg-surface-elevated border border-gray-200/60 shadow-card hover:shadow-card-hover hover:border-gray-200 transition-all duration-300 ease-out hover:-translate-y-0.5">
+              <div className="flex flex-col p-6 rounded-2xl bg-surface-elevated border border-gray-200/60 shadow-card hover:shadow-card-hover hover:border-gray-200 transition-all duration-300 ease-out hover:-translate-y-0.5">
                 <h3 className="text-[1.0625rem] font-semibold text-label-primary mb-2">Expense realism</h3>
-                <p className="text-label-secondary text-sm leading-relaxed">
+                <p className="text-label-secondary text-sm leading-relaxed flex-1 min-h-0">
                   We include management, cleaning, utilities, STR insurance, maintenance, and reserves. No bare-bones expense assumptions.
                 </p>
-                <p className="text-xs text-label-tertiary mt-3">Output: full expense breakdown and what we assumed.</p>
+                <p className="text-xs text-label-tertiary mt-3 shrink-0">Output: full expense breakdown and what we assumed.</p>
               </div>
             </div>
           </section>
