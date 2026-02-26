@@ -12,10 +12,11 @@ import type { STRInput } from "@/lib/types";
 const whyCalculatorsDisagree = [
   "Seasonality: many tools assume peak-season performance year-round.",
   "Listing quality: comps may be newer, better located, or better amenitized than yours.",
+  "Comp selection: different tools use different comp sets and radii; results vary widely.",
   "Data lag and sampling bias: scraped or self-reported data can be stale or skewed.",
-  "Cleaning and turnover: per-stay costs and vacancy between guests vary; many tools use simple averages.",
-  "Management variance: self-manage vs. third-party changes costs and vacancy; not all tools model both.",
+  "Cost blind spots: cleaning, utilities, insurance, and reserves are often understated.",
   "Local regulation risk: new rules or enforcement can cut demand; not all tools factor it in.",
+  "Management variance: self-manage vs. third-party changes costs and vacancy; not all tools model both.",
   "Amenity and finish differences: they change rates and occupancy more than people assume.",
 ];
 
@@ -82,7 +83,7 @@ export function HomePage() {
         <div className="max-w-2xl mx-auto flex flex-col gap-14">
           <header className="text-left opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
             <h1 className="text-2xl font-semibold text-label-primary tracking-tight mb-6">
-              Stress-test your STR deal before you buy: a conservative reality check
+              Conservative STR revenue reality check before you buy
             </h1>
             <p className="text-sm text-label-secondary leading-relaxed mb-5">
               This is not a revenue prediction. It is a downside-first stress test of your assumptions. We show how your deal holds up under conservative scenarios and give you a clear verdict before you commit.
@@ -104,22 +105,19 @@ export function HomePage() {
             </p>
             <section className="opacity-0 animate-slide-up mt-10" style={{ animationFillMode: "forwards", animationDelay: "200ms" }}>
               <h2 className="text-2xl font-semibold text-label-primary tracking-tight mb-4">
-                Why this is credible
+                Methodology, in plain English
               </h2>
-              <p className="text-sm text-label-secondary mb-4">
-                Methodology, in plain English. What we do and what we do not do.
-              </p>
               <ul className="list-disc pl-5 space-y-2 text-sm text-label-secondary leading-relaxed mb-6">
                 <li>Conservative defaults and haircuts on optimistic occupancy and rates</li>
                 <li>Ranges and scenarios: strong, typical, and weak year so you see downside</li>
                 <li>Fragility flags: what breaks first and the one assumption that could kill the deal</li>
                 <li>Explicit expense realism: management, cleaning, utilities, insurance, maintenance, reserves</li>
               </ul>
-              <p className="text-sm font-medium text-label-primary mb-2">What we do not do</p>
+              <p className="text-sm font-medium text-label-primary mb-2">Limitations</p>
               <ul className="list-disc pl-5 space-y-2 text-sm text-label-secondary leading-relaxed">
-                <li>We do not promise perfect market forecasts. When something is unknown, we say so.</li>
-                <li>Outcomes depend on your assumptions and management quality. Garbage in, garbage out.</li>
-                <li>Regulations and seasonality can change results. We do not guarantee future conditions.</li>
+                <li>Results depend on your inputs. Garbage in, garbage out.</li>
+                <li>Markets change. We do not guarantee future conditions.</li>
+                <li>This is not financial, legal, or investment advice.</li>
               </ul>
             </section>
 
@@ -229,7 +227,7 @@ export function HomePage() {
 
           <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "500ms" }}>
             <h2 className="text-2xl font-semibold text-label-primary tracking-tight mb-4">
-              What we assume
+              What this analysis assumes
             </h2>
             <p className="text-sm text-label-secondary leading-relaxed mb-6">
               This analysis is intentionally conservative. If your verified numbers are materially stronger, outcomes could improve.
@@ -319,13 +317,13 @@ export function HomePage() {
             <ul className="space-y-3">
               <li>
                 <Link href="/learn/why-str-calculators-disagree" className="inline-flex items-center gap-1.5 text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-200 ease-out group">
-                  Why STR calculators disagree by tens of thousands of dollars
+                  Why STR calculators disagree by tens of thousands
                   <span className="text-label-tertiary group-hover:translate-x-0.5 transition-transform duration-200">→</span>
                 </Link>
               </li>
               <li>
                 <Link href="/learn/conservative-str-underwriting" className="inline-flex items-center gap-1.5 text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-200 ease-out group">
-                  Conservative STR underwriting: how to stress-test a deal before you buy
+                  Conservative STR underwriting: stress-test a deal before you buy
                   <span className="text-label-tertiary group-hover:translate-x-0.5 transition-transform duration-200">→</span>
                 </Link>
               </li>

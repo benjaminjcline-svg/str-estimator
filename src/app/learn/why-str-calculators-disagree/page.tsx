@@ -5,7 +5,7 @@ import { canonicalUrl } from "@/lib/seo";
 import { articleSchema } from "@/lib/seo";
 
 const slug = "why-str-calculators-disagree";
-const title = "Why STR calculators disagree by tens of thousands of dollars";
+const title = "Why STR calculators disagree by tens of thousands";
 const description =
   "Why short-term rental calculators give wildly different numbers. Seasonality, comp selection, data lag, amenities, management, regulations, and cost blind spots.";
 
@@ -44,7 +44,7 @@ export default function WhyStrCalculatorsDisagreePage() {
         />
         <article className="prose prose-gray max-w-none opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
           <h1 className="text-2xl font-semibold text-label-primary tracking-tight mb-6">
-            Why STR calculators disagree by tens of thousands of dollars
+            Why STR calculators disagree by tens of thousands
           </h1>
           <p className="text-sm text-label-secondary leading-relaxed mb-6">
             Run the same property through a few STR tools and you will get different numbers. Sometimes tens of thousands apart. Here is why, and what to do about it.
@@ -63,6 +63,24 @@ export default function WhyStrCalculatorsDisagreePage() {
             </h2>
             <p className="text-sm text-label-secondary mb-4">
               Many tools assume peak-season performance year-round. In seasonal markets, slow months can be 30–50% below peak. Small differences in how seasonality is modeled swing annual revenue by a lot. For more, see <Link href="/learn/str-seasonality-reality-check" className="text-accent hover:text-accent-hover underline">STR seasonality reality check</Link>.
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-semibold text-label-primary mb-4">
+              Occupancy assumptions
+            </h2>
+            <p className="text-sm text-label-secondary mb-4">
+              Default occupancy varies by tool. Some assume peak or top-performer levels; others use more conservative averages. A few percentage points change annual revenue by thousands. Focus on downside and off-season when comparing.
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-semibold text-label-primary mb-4">
+              ADR assumptions
+            </h2>
+            <p className="text-sm text-label-secondary mb-4">
+              Average daily rate (ADR) drives revenue as much as occupancy. Different tools use different comp sets or caps. Small changes in rate assumptions swing the outcome. Stress-test below what you think you can get.
             </p>
           </section>
 

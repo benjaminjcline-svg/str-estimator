@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PrimaryCTA } from "@/components/PrimaryCTA";
 import { canonicalUrl } from "@/lib/seo";
+import { buildFaqJsonLd } from "@/lib/faqJsonLd";
 
 export const metadata: Metadata = {
   title: "FAQ",
@@ -42,24 +43,13 @@ const faqs = [
 ];
 
 export default function FAQPage() {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.q,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.a,
-      },
-    })),
-  };
+  const faqJsonLd = buildFaqJsonLd(faqs);
 
   return (
     <main className="max-w-2xl mx-auto px-5 sm:px-6 py-14 sm:py-20 min-[1025px]:py-24">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <article className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
         <h1 className="text-2xl font-semibold text-label-primary tracking-tight mb-5">

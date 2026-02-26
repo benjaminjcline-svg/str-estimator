@@ -5,7 +5,7 @@ import { canonicalUrl } from "@/lib/seo";
 import { articleSchema } from "@/lib/seo";
 
 const slug = "conservative-str-underwriting";
-const title = "Conservative STR underwriting: how to stress-test a deal before you buy";
+const title = "Conservative STR underwriting: stress-test a deal before you buy";
 const description =
   "How to stress-test a short-term rental deal before you buy. Scenario ranges, downside buffers, expense realism, and decision thresholds.";
 
@@ -44,7 +44,7 @@ export default function ConservativeStrUnderwritingPage() {
         />
         <article className="prose prose-gray max-w-none opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
           <h1 className="text-2xl font-semibold text-label-primary tracking-tight mb-6">
-            Conservative STR underwriting: how to stress-test a deal before you buy
+            Conservative STR underwriting: stress-test a deal before you buy
           </h1>
           <p className="text-sm text-label-secondary leading-relaxed mb-6">
             Before you commit capital, run the deal through downside scenarios. Here is how conservative underwriting works and what to look for.

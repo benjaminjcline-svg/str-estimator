@@ -7,9 +7,9 @@ import { siteUrl } from "./site-config";
 
 export const seoConfig = {
   siteName: "STR Estimator",
-  defaultTitle: "Stress-Test Your STR Deal Before You Buy | Conservative Reality Check | STR Estimator",
+  defaultTitle: "Conservative STR Revenue Reality Check Before You Buy | STR Estimator",
   defaultDescription:
-    "A conservative reality check for STR deals. Not a revenue prediction. Downside-first stress test, scenario ranges, and a clear verdict. Proceed, Borderline, or Walk Away.",
+    "Conservative STR reality check before you buy. Not a revenue prediction. Downside-first stress test, scenario ranges, and a clear verdict. Proceed, Borderline, or Walk Away.",
   twitterHandle: "@strestimator",
   locale: "en_US",
 } as const;

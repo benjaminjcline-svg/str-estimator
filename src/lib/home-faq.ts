@@ -3,7 +3,7 @@
  */
 export const homeFaqs = [
   {
-    q: "Why do STR calculators give wildly different numbers?",
+    q: "Why do STR calculators give very different numbers?",
     a: "Different assumptions on occupancy, rates, expenses, and seasonality. Small changes swing the outcome. We use conservative defaults and show ranges and stress tests, not a single optimistic number.",
   },
   {

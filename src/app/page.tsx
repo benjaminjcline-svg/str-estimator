@@ -2,19 +2,19 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { HomePage } from "@/components/HomePage";
 import { homeFaqs } from "@/lib/home-faq";
+import { buildFaqJsonLd } from "@/lib/faqJsonLd";
 import { siteUrl } from "@/lib/site-config";
 
-// Keyword-to-page: stress-test STR deal, conservative reality check, why STR calculators disagree (skeptical intent).
-// Supporting: STR deal analysis, downside-first, Proceed Borderline Walk Away.
+// Keyword-to-page: conservative, reality check, before you buy, stress test (skeptical intent).
 
 export const metadata: Metadata = {
-  title: "Stress-Test Your STR Deal Before You Buy | Conservative Reality Check | STR Estimator",
+  title: "Conservative STR Revenue Reality Check Before You Buy | STR Estimator",
   description:
-    "A conservative reality check for short-term rental deals. Not a revenue prediction. Downside-first stress test, scenario ranges, and a clear verdict. Proceed, Borderline, or Walk Away.",
+    "Conservative STR reality check before you buy. Not a revenue prediction. Downside-first stress test, scenario ranges, and a clear verdict. Proceed, Borderline, or Walk Away.",
   openGraph: {
-    title: "Stress-Test Your STR Deal Before You Buy | Conservative Reality Check | STR Estimator",
+    title: "Conservative STR Revenue Reality Check Before You Buy | STR Estimator",
     description:
-      "Conservative STR reality check. Downside-first stress test, no hype. Clear verdict before you commit.",
+      "Conservative reality check. Downside-first stress test, no hype. Clear verdict before you commit.",
     url: siteUrl,
   },
   alternates: {
@@ -23,22 +23,11 @@ export const metadata: Metadata = {
 };
 
 function HomeFaqJsonLd() {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: homeFaqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.q,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.a,
-      },
-    })),
-  };
+  const jsonLd = buildFaqJsonLd(homeFaqs);
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
     />
   );
 }
