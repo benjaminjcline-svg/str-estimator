@@ -24,10 +24,10 @@ export default function HowItWorksPage() {
             1. Enter the property details
           </h2>
           <p className="text-label-secondary mb-4">
-            Price, down payment, rate, term, property type (house, condo, duplex), and whether you&apos;ll self-manage. Optional: your expected nightly rate and occupancy. We cap optimistic assumptions either way.
+            Price, down payment, rate, term, property type (house, condo, duplex), and whether you'll self-manage. Optional: your expected nightly rate and occupancy. We cap optimistic assumptions either way.
           </p>
           <p className="text-label-secondary">
-            We don&apos;t invent comps or market data. When something&apos;s unknown, we say so. That uncertainty shows up in the analysis.
+            We don't invent comps or market data. When something's unknown, we say so. That uncertainty shows up in the analysis.
           </p>
         </section>
 
@@ -52,7 +52,7 @@ export default function HowItWorksPage() {
               <strong>Proceed.</strong> Numbers hold. Do your due diligence.
             </li>
             <li>
-              <strong>Borderline.</strong> Thin margins. Only proceed if you&apos;ve got reserves and can stomach break-even.
+              <strong>Borderline.</strong> Thin margins. Only proceed if you've got reserves and can stomach break-even.
             </li>
             <li>
               <strong>Walk Away.</strong> Deal fails. Find something better.
@@ -65,13 +65,13 @@ export default function HowItWorksPage() {
             Why this exists
           </h2>
           <p className="text-label-secondary mb-4">
-            Most STR calculators are built to make deals look good. Plug in 70% occupancy and a dream rate, and everything turns green. Reality is messier. Seasonality, competition, and one bad year can wipe out the margin. It&apos;s easy to talk yourself into a deal when the spreadsheet says yes.
+            Most STR calculators are built to make deals look good. Plug in 70% occupancy and a dream rate, and everything turns green. Reality is messier. Seasonality, competition, and one bad year can wipe out the margin. It's easy to talk yourself into a deal when the spreadsheet says yes.
           </p>
           <p className="text-label-secondary mb-4">
-            Optimism is dangerous in short-term rentals. A single bad assumption can cost you more than an inspection. Conservative analysis isn&apos;t about being negative. It&apos;s about knowing where the deal breaks before you&apos;re in too deep.
+            Optimism is dangerous in short-term rentals. A single bad assumption can cost you more than an inspection. Conservative analysis isn't about being negative. It's about knowing where the deal breaks before you're in too deep.
           </p>
           <p className="text-label-secondary">
-            We don&apos;t maximize upside. We don&apos;t talk you into a deal. If the report helps you walk away from a bad one, we&apos;ve done our job.
+            We don't maximize upside. We don't talk you into a deal. If the report helps you walk away from a bad one, we've done our job.
           </p>
         </section>
 
@@ -83,13 +83,13 @@ export default function HowItWorksPage() {
             One-time payment. No subscription. No upsell. No calls. No pressure. Just a second look before you commit.
           </p>
           <PrimaryCTA sourcePath="/how-it-works">
-          <Link
-            href="/#analyze"
-            className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-medium transition-all duration-button ease-friction hover:bg-accent-hover active:scale-[0.94]"
-          >
-            Stress-test this deal · $49
-          </Link>
-        </PrimaryCTA>
+            <Link
+              href="/#analyze"
+              className="inline-flex items-center min-h-[48px] px-6 py-3 rounded-xl bg-accent text-white font-semibold shadow-button transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_2px_8px_rgba(0,113,227,0.25)] active:scale-[0.98]"
+            >
+              Stress-test this deal · $49
+            </Link>
+          </PrimaryCTA>
         </section>
       </article>
     </main>

@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Report } from "@/components/Report";
+import { trackReportViewed } from "@/lib/analytics";
 import type { AnalysisReport } from "@/lib/types";
 
 async function downloadReportPdf(element: HTMLElement, filename: string) {
@@ -49,13 +50,19 @@ async function downloadReportPdf(element: HTMLElement, filename: string) {
 
 export function ReportWithDownload({
   report,
+  reportId,
   children,
 }: {
   report: AnalysisReport;
+  reportId?: string;
   children?: React.ReactNode;
 }) {
   const reportRef = useRef<HTMLElement>(null);
   const [downloading, setDownloading] = useState(false);
+
+  useEffect(() => {
+    if (reportId) trackReportViewed(reportId);
+  }, [reportId]);
 
   const handleDownloadPdf = async () => {
     const el = reportRef.current;
@@ -136,9 +143,15 @@ export function ReportWithDownload({
 }
 
 /** For report/[id] page: report + PDF button + "Run another deal" footer */
-export function ReportByIdContent({ report }: { report: AnalysisReport }) {
+export function ReportByIdContent({
+  report,
+  reportId,
+}: {
+  report: AnalysisReport;
+  reportId?: string;
+}) {
   return (
-    <ReportWithDownload report={report}>
+    <ReportWithDownload report={report} reportId={reportId}>
       <div className="max-w-2xl mx-auto mt-16 pt-10 border-t border-gray-100 text-center">
         <p className="text-sm text-label-tertiary mb-4">
           Run another deal or share this report.

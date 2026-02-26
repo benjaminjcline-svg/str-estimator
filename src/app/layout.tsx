@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: seoConfig.defaultTitle,
-    description: "Stress-test your short-term rental deal before you buy. Honest cash flow analysis. Proceed, Borderline, or Walk Away. $49.",
+    description: seoConfig.defaultDescription,
     type: "website",
     locale: seoConfig.locale,
   },

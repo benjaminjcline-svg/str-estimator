@@ -1,0 +1,25 @@
+---
+description: Double-check content formatting when updating site copy (no HTML entities in displayed text)
+globs: "**/app/**/*.tsx,**/components/*.tsx"
+alwaysApply: false
+---
+
+# Content formatting on the site
+
+When you add or edit user-facing copy (hero, FAQ, Learn articles, CTAs, legal pages, etc.):
+
+1. **Do not use HTML entities in displayed text.** They render literally and look broken.
+   - Use straight apostrophe `'` (e.g. `don't`, `it's`), not `&apos;`.
+   - Use straight double quote `"` or escaped in JSX (e.g. `{"\"AS IS\""}`), not `&quot;`.
+
+2. **After editing content, do a quick pass** for:
+   - `&apos;` → replace with `'` in strings that are rendered as text.
+   - `&quot;` → replace with `"` or with JSX-safe form (e.g. `{"\"word\""}` inside attributes).
+
+3. **Where to use what:**
+   - In a **string** that gets rendered (e.g. `a: "We don't invent..."`): use real `'` and `"`.
+   - In **JSX text** (e.g. `<p>We don't do that</p>`): use real `'`; for `"` inside JSX use `{"\"quoted\""}` or wrap in `{" "}`.
+
+Example fix:
+- Before: `a: "We don&apos;t invent comps. When something&apos;s unknown, we say so."`
+- After:  `a: "We don't invent comps. When something's unknown, we say so."`

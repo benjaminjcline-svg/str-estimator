@@ -40,7 +40,7 @@ export default async function ReportByIdPage({ params }: Props) {
         </div>
       </div>
       <div className="py-12 sm:py-16 px-6">
-        <ReportByIdContent report={stored.report} />
+        <ReportByIdContent report={stored.report} reportId={id} />
       </div>
     </main>
   );

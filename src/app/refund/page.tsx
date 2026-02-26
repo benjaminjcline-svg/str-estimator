@@ -33,7 +33,7 @@ export default function RefundPage() {
         </p>
 
         <p className="text-label-secondary leading-relaxed mb-6">
-          {PRODUCT_NAME} is operated by {LEGAL_NAME} (&quot;Company&quot;, &quot;we&quot;, &quot;us&quot;). This policy applies to your use of {PRODUCT_NAME} and any purchase of reports or subscriptions offered by the Company.
+          {PRODUCT_NAME} is operated by {LEGAL_NAME} ({"(\"Company\", \"we\", \"us\")"}). This policy applies to your use of {PRODUCT_NAME} and any purchase of reports or subscriptions offered by the Company.
         </p>
         <p className="text-label-secondary leading-relaxed mb-8">
           Refunds are issued by {LEGAL_NAME} for purchases made on {PRODUCT_NAME}.
@@ -87,7 +87,7 @@ export default function RefundPage() {
         <section className="mb-10">
           <h2 className="text-xl font-semibold text-label-primary mb-4">Stripe Refunds</h2>
           <p className="text-label-secondary leading-relaxed mb-4">
-            Refunds are processed through Stripe. Stripe&apos;s refund policies apply. Refunds may appear as a credit on your card statement; timing depends on your bank.
+            Refunds are processed through Stripe. Stripe's refund policies apply. Refunds may appear as a credit on your card statement; timing depends on your bank.
           </p>
         </section>
 

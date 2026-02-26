@@ -16,8 +16,8 @@ const config: Config = {
         },
         label: {
           primary: "#1d1d1f",
-          secondary: "#595959",
-          tertiary: "#595959",
+          secondary: "#525252",
+          tertiary: "#737373",
         },
         accent: {
           DEFAULT: "#0071e3",
@@ -39,15 +39,23 @@ const config: Config = {
       },
       fontSize: {
         "2xs": ["0.6875rem", { lineHeight: "0.875rem" }],
-        display: ["2rem", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
-        "display-lg": ["2rem", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
+        display: ["2rem", { lineHeight: "1.12", letterSpacing: "-0.025em" }],
+        "display-lg": ["2.5rem", { lineHeight: "1.1", letterSpacing: "-0.03em" }],
+        "display-xl": ["3rem", { lineHeight: "1.08", letterSpacing: "-0.035em" }],
       },
       lineHeight: {
-        relaxed: "1.3",
+        relaxed: "1.55",
+        snug: "1.35",
       },
       borderRadius: {
         "2xl": "1rem",
         "3xl": "1.25rem",
+      },
+      boxShadow: {
+        card: "0 1px 3px 0 rgb(0 0 0 / 0.04), 0 4px 12px -2px rgb(0 0 0 / 0.05)",
+        "card-hover": "0 4px 6px -2px rgb(0 0 0 / 0.04), 0 12px 24px -4px rgb(0 0 0 / 0.08)",
+        elevated: "0 8px 30px -6px rgb(0 0 0 / 0.06), 0 2px 8px -2px rgb(0 0 0 / 0.04)",
+        button: "0 1px 2px rgb(0 0 0 / 0.04)",
       },
       transitionTimingFunction: {
         smooth: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",

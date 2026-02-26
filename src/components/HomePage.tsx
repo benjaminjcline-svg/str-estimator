@@ -6,7 +6,25 @@ import Link from "next/link";
 import { isLiveMode } from "@/lib/paymentsMode";
 import { STRForm } from "@/components/STRForm";
 import { WaitlistCTA } from "@/components/WaitlistCTA";
+import { homeFaqs } from "@/lib/home-faq";
 import type { STRInput } from "@/lib/types";
+
+const whyCalculatorsDisagree = [
+  "Seasonality: many tools assume peak-season performance year-round.",
+  "Listing quality: comps may be newer, better located, or better amenitized than yours.",
+  "Data lag and sampling bias: scraped or self-reported data can be stale or skewed.",
+  "Cleaning and turnover: per-stay costs and vacancy between guests vary; many tools use simple averages.",
+  "Management variance: self-manage vs. third-party changes costs and vacancy; not all tools model both.",
+  "Local regulation risk: new rules or enforcement can cut demand; not all tools factor it in.",
+  "Amenity and finish differences: they change rates and occupancy more than people assume.",
+];
+
+const assumptionsList = [
+  "Occupancy: we cap optimistic occupancy and treat high occupancy as fragile.",
+  "Expenses: we include management, cleaning, utilities, STR insurance, maintenance, and reserves.",
+  "Vacancy and seasonality: we stress for weak months and don't assume best-case year-round.",
+  "We do not claim perfect market data. When something is unknown, we say so.",
+];
 
 export function HomePage() {
   const router = useRouter();
@@ -59,58 +77,61 @@ export function HomePage() {
 
   return (
     <main className="min-h-screen bg-surface">
-      <div className="max-w-[1440px] mx-auto px-6 py-16 sm:py-24">
-        <div className="grid grid-cols-1 min-[1025px]:grid-cols-[min(100%,380px)_1fr] min-[1200px]:grid-cols-[min(100%,520px)_1fr] min-[1025px]:gap-16 min-[1025px]:items-start gap-12">
-          <div className="order-1 min-[1025px]:col-start-1 min-[1025px]:row-start-1 min-[1025px]:row-span-2 min-[1025px]:sticky min-[1025px]:top-24 min-[1025px]:self-start space-y-6">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-6 py-14 sm:py-20 min-[1025px]:py-24">
+        <div className="grid grid-cols-1 min-[1025px]:grid-cols-[min(100%,400px)_1fr] min-[1200px]:grid-cols-[min(100%,520px)_1fr] min-[1025px]:gap-20 min-[1025px]:items-start gap-14">
+          <div className="order-1 min-[1025px]:col-start-1 min-[1025px]:row-start-1 min-[1025px]:row-span-2 min-[1025px]:sticky min-[1025px]:top-28 min-[1025px]:self-start space-y-8">
             <header className="text-left opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
-              <h1 className="text-display sm:text-display-lg text-[36px] font-semibold text-label-primary tracking-tight mb-5">
-                Before you buy an Airbnb, stress-test the numbers. Most STR deals look good on paper. This checks reality.
+              <h1 className="text-display sm:text-display-lg min-[1200px]:text-display-xl font-semibold text-label-primary tracking-tight mb-6 min-[1200px]:mb-7">
+                A conservative STR reality check before you buy
               </h1>
+              <p className="text-lg min-[1200px]:text-xl text-label-secondary leading-relaxed mb-5 max-w-md min-[1200px]:leading-snug">
+                This is not a predictive promise. It is a conservative stress test: we show how your deal holds up under downside assumptions and give you a clear verdict before you buy.
+              </p>
+              <p className="text-base text-label-secondary leading-relaxed max-w-md">
+                STR calculators often disagree widely. Tiny changes in occupancy and rate assumptions swing outcomes a lot. This tool focuses on downside and fragility. We show you where the deal breaks, not a best-case headline number.
+              </p>
             </header>
 
-            <section className="text-left opacity-0 animate-slide-up mt-10 min-[1025px]:mt-14" style={{ animationFillMode: "forwards", animationDelay: "300ms" }}>
+            <section className="text-left opacity-0 animate-slide-up mt-6 min-[1025px]:mt-12" style={{ animationFillMode: "forwards", animationDelay: "300ms" }}>
               <p className="text-label-secondary leading-relaxed mb-4 max-w-md">
-                <strong>What this does:</strong> You enter the property and financing details. We run them through conservative underwriting and give you a clear verdict: Proceed, Borderline, or Walk Away.
-              </p>
-              <p className="text-label-secondary leading-relaxed mb-4 max-w-md">
-                <strong>Who it&apos;s for:</strong> Anyone seriously considering buying a short-term rental, especially a first or second property. The kind of buyer who wants a second opinion before writing an offer.
+                <strong>What this does:</strong> You enter the property and financing details. We run them through conservative underwriting and give you a clear verdict.
               </p>
               <p className="text-label-secondary leading-relaxed mb-4 max-w-md">
-                <strong>When to use it:</strong> Before you commit capital or get too far down the road. A sanity check, not a crystal ball.
+                <strong>Who it's for:</strong> Anyone seriously considering buying a short-term rental who wants a second opinion before writing an offer.
               </p>
-              <p className="text-label-secondary leading-relaxed mb-6 max-w-md">
-                <strong>Why it exists:</strong> Most STR income projections are optimistic. Calculators oversimplify. It&apos;s easy to talk yourself into a deal. We don&apos;t. We show you where it breaks.
+              <p className="text-label-secondary leading-relaxed mb-4 max-w-md">
+                <strong>When to use it:</strong> Before you commit capital. A sanity check, not a crystal ball.
               </p>
-              <div className="flex flex-col gap-2 mt-10 min-[1025px]:mt-20">
+              <div className="flex flex-col gap-3 mt-8 min-[1025px]:mt-16">
                 <Link
                   href="/how-it-works"
-                  className="group text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-button ease-friction inline-flex items-center gap-1"
+                  className="group text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-200 ease-out inline-flex items-center gap-1.5"
                 >
                   How it works
-                  <span className="transform transition-transform duration-button ease-friction group-hover:translate-x-0.5">→</span>
+                  <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
                 </Link>
                 <Link
                   href="/sample-report"
-                  className="group text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-button ease-friction inline-flex items-center gap-1"
+                  className="group text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-200 ease-out inline-flex items-center gap-1.5"
                 >
                   See a sample report
-                  <span className="transform transition-transform duration-button ease-friction group-hover:translate-x-0.5">→</span>
+                  <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
                 </Link>
                 <Link
                   href="/learn"
-                  className="group text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-button ease-friction inline-flex items-center gap-1"
+                  className="group text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-200 ease-out inline-flex items-center gap-1.5"
                 >
-                  Why STR calculators mislead
-                  <span className="transform transition-transform duration-button ease-friction group-hover:translate-x-0.5">→</span>
+                  Learn
+                  <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
                 </Link>
               </div>
             </section>
           </div>
 
-          <div className="order-2 min-[1025px]:col-start-2 min-[1025px]:row-start-1 min-[1025px]:row-span-2 min-w-0 overflow-visible -mx-6 min-[1025px]:mx-0 min-[1025px]:pb-28">
+          <div className="order-2 min-[1025px]:col-start-2 min-[1025px]:row-start-1 min-[1025px]:row-span-2 min-w-0 overflow-visible -mx-5 min-[1025px]:mx-0 min-[1025px]:pb-32 sm:px-0 min-[1025px]:px-0">
             <div
               id="analyze"
-              className="rounded-none min-[1025px]:rounded-3xl bg-surface-elevated border-0 min-[1025px]:border min-[1025px]:border-gray-100 p-8 sm:p-10 scroll-mt-24 opacity-0 animate-slide-up overflow-visible"
+              className="rounded-2xl min-[1025px]:rounded-3xl bg-surface-elevated border border-gray-200/70 min-[1025px]:border-gray-200/50 shadow-card min-[1025px]:shadow-elevated p-7 sm:p-9 min-[1025px]:p-10 scroll-mt-28 opacity-0 animate-slide-up overflow-visible"
               style={{ animationFillMode: "forwards", animationDelay: "100ms" }}
             >
               {liveMode ? (
@@ -131,11 +152,169 @@ export function HomePage() {
               )}
             </div>
             {liveMode && (
-              <p className="text-sm text-label-tertiary text-center opacity-0 animate-slide-up mt-10" style={{ animationFillMode: "forwards", animationDelay: "200ms" }}>
-                A &quot;no&quot; is a good outcome. The report is valuable even when we tell you to walk away.
+              <p className="text-sm text-label-tertiary text-center opacity-0 animate-slide-up mt-8" style={{ animationFillMode: "forwards", animationDelay: "200ms" }}>
+                A "no" is a good outcome. The report is valuable even when we tell you to walk away.
               </p>
             )}
           </div>
+        </div>
+
+        <div className="max-w-2xl mx-auto pt-20 sm:pt-28 min-[1025px]:pt-32 pb-12 sm:pb-16 border-t border-gray-200/70 space-y-20 sm:space-y-24">
+          <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "400ms" }}>
+            <h2 className="text-2xl min-[1200px]:text-[1.75rem] font-semibold text-label-primary tracking-tight mb-6">
+              Why most STR calculators disagree
+            </h2>
+            <ul className="list-disc pl-5 space-y-3 text-label-secondary leading-relaxed">
+              {whyCalculatorsDisagree.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "450ms" }}>
+            <h2 className="text-2xl min-[1200px]:text-[1.75rem] font-semibold text-label-primary tracking-tight mb-8">
+              How STR Estimator is different
+            </h2>
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="p-6 rounded-2xl bg-surface-elevated border border-gray-200/60 shadow-card hover:shadow-card-hover hover:border-gray-200 transition-all duration-300 ease-out hover:-translate-y-0.5">
+                <h3 className="text-[1.0625rem] font-semibold text-label-primary mb-2">Conservative defaults</h3>
+                <p className="text-label-secondary text-sm leading-relaxed">
+                  We cap optimistic occupancy and rates. No best-case revenue promises. You get ranges and stress tests, not a single headline number.
+                </p>
+                <p className="text-xs text-label-tertiary mt-3">Output: strong / typical / weak year scenarios.</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-surface-elevated border border-gray-200/60 shadow-card hover:shadow-card-hover hover:border-gray-200 transition-all duration-300 ease-out hover:-translate-y-0.5">
+                <h3 className="text-[1.0625rem] font-semibold text-label-primary mb-2">Downside scenarios</h3>
+                <p className="text-label-secondary text-sm leading-relaxed">
+                  We show weak-year and typical-year outcomes so you see how the deal holds up when things go wrong.
+                </p>
+                <p className="text-xs text-label-tertiary mt-3">Output: stress-tested income ranges.</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-surface-elevated border border-gray-200/60 shadow-card hover:shadow-card-hover hover:border-gray-200 transition-all duration-300 ease-out hover:-translate-y-0.5">
+                <h3 className="text-[1.0625rem] font-semibold text-label-primary mb-2">Fragility flags</h3>
+                <p className="text-label-secondary text-sm leading-relaxed">
+                  We flag what breaks first and call out the one assumption that could kill the deal. You know where the risk is.
+                </p>
+                <p className="text-xs text-label-tertiary mt-3">Output: fragility narrative and deal-breaker callout.</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-surface-elevated border border-gray-200/60 shadow-card hover:shadow-card-hover hover:border-gray-200 transition-all duration-300 ease-out hover:-translate-y-0.5">
+                <h3 className="text-[1.0625rem] font-semibold text-label-primary mb-2">Expense realism</h3>
+                <p className="text-label-secondary text-sm leading-relaxed">
+                  We include management, cleaning, utilities, STR insurance, maintenance, and reserves. No bare-bones expense assumptions.
+                </p>
+                <p className="text-xs text-label-tertiary mt-3">Output: full expense breakdown and what we assumed.</p>
+              </div>
+            </div>
+          </section>
+
+          <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "500ms" }}>
+            <h2 className="text-2xl min-[1200px]:text-[1.75rem] font-semibold text-label-primary tracking-tight mb-4">
+              What we assume
+            </h2>
+            <p className="text-label-secondary leading-relaxed mb-6">
+              This analysis is intentionally conservative. If your verified numbers are materially stronger, outcomes could improve.
+            </p>
+            <ul className="list-disc pl-5 space-y-2 text-label-secondary leading-relaxed">
+              {assumptionsList.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "550ms" }}>
+            <h2 className="text-2xl min-[1200px]:text-[1.75rem] font-semibold text-label-primary tracking-tight mb-8">
+              A quick comparison
+            </h2>
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div className="p-6 rounded-2xl bg-surface-elevated border border-gray-200/60 shadow-card">
+                <h3 className="text-[1rem] font-semibold text-label-primary mb-3">Typical calculator output</h3>
+                <ul className="text-sm text-label-secondary space-y-2.5 leading-relaxed">
+                  <li>Single point estimate (one number)</li>
+                  <li>Optimistic defaults (high occupancy, strong rates)</li>
+                  <li>No verdict; you interpret the number</li>
+                </ul>
+              </div>
+              <div className="p-6 rounded-2xl bg-surface-elevated border-2 border-accent/25 shadow-card ring-1 ring-accent/10">
+                <h3 className="text-[1rem] font-semibold text-label-primary mb-3">STR Estimator output</h3>
+                <ul className="text-sm text-label-secondary space-y-2.5 leading-relaxed">
+                  <li>Ranges and stress tests (strong, typical, weak year)</li>
+                  <li>Conservative defaults; we cap optimism</li>
+                  <li>Clear verdict plus fragility explanation</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "600ms" }}>
+            <h2 className="text-2xl min-[1200px]:text-[1.75rem] font-semibold text-label-primary tracking-tight mb-8">
+              FAQ
+            </h2>
+            <dl className="space-y-7">
+              {homeFaqs.map((faq, i) => (
+                <div key={i} className="border-b border-gray-100 last:border-0 pb-7 last:pb-0">
+                  <dt className="text-[1rem] font-semibold text-label-primary mb-1.5">
+                    {faq.q}
+                  </dt>
+                  <dd className="text-label-secondary text-sm leading-relaxed">
+                    {faq.a}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+            <p className="mt-8">
+              <Link
+                href="/faq"
+                className="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-200 ease-out group"
+              >
+                Full FAQ
+                <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+              </Link>
+            </p>
+          </section>
+
+          <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "650ms" }}>
+            <h2 className="text-2xl min-[1200px]:text-[1.75rem] font-semibold text-label-primary tracking-tight mb-4">
+              About this tool
+            </h2>
+            <p className="text-label-secondary mb-4">
+              STR Estimator is built by Fjord & Field Studio LLC. We built it to avoid overpaying: a conservative lens and stress tests before you commit. Not a crystal ball.
+            </p>
+            <p className="text-sm font-medium text-label-primary mb-2">Limitations</p>
+            <ul className="list-disc pl-6 space-y-1 text-label-secondary text-sm">
+              <li>Results depend on the inputs you provide; garbage in, garbage out.</li>
+              <li>Markets change; we do not guarantee future conditions.</li>
+              <li>This is not financial, legal, or investment advice.</li>
+            </ul>
+          </section>
+
+          <section className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "700ms" }}>
+            <h2 className="text-2xl min-[1200px]:text-[1.75rem] font-semibold text-label-primary tracking-tight mb-4">
+              Further reading
+            </h2>
+            <p className="text-label-secondary text-sm mb-6 leading-relaxed">
+              Deep dives on why calculators vary, seasonality, and what breaks first in tight deals.
+            </p>
+            <ul className="space-y-3">
+              <li>
+                <Link href="/learn/why-str-calculators-overestimate" className="inline-flex items-center gap-1.5 text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-200 ease-out group">
+                  Why STR calculators overestimate revenue
+                  <span className="text-label-tertiary group-hover:translate-x-0.5 transition-transform duration-200">→</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/learn/str-seasonality-reality-check" className="inline-flex items-center gap-1.5 text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-200 ease-out group">
+                  STR seasonality reality check for underwriting
+                  <span className="text-label-tertiary group-hover:translate-x-0.5 transition-transform duration-200">→</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/learn/str-fragility-checklist" className="inline-flex items-center gap-1.5 text-accent hover:text-accent-hover font-medium text-sm transition-colors duration-200 ease-out group">
+                  STR fragility checklist: what breaks first
+                  <span className="text-label-tertiary group-hover:translate-x-0.5 transition-transform duration-200">→</span>
+                </Link>
+              </li>
+            </ul>
+          </section>
         </div>
       </div>
     </main>

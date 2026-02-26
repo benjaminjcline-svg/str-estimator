@@ -70,9 +70,9 @@ export default function SampleReportPage() {
 
           <div className="relative">
             <p className="text-label-secondary leading-relaxed text-lg">
-              Cash flow&apos;s thin or slightly negative.{" "}
+              Cash flow's thin or slightly negative.{" "}
               <span className="sample-report-blur inline">
-                This deal lives or dies on hitting your occupancy and rate assumptions. A weak year? Meaningful stress. Only proceed if you&apos;ve got reserves and can stomach 6–12 months of break-even.
+                This deal lives or dies on hitting your occupancy and rate assumptions. A weak year? Meaningful stress. Only proceed if you've got reserves and can stomach 6–12 months of break-even.
               </span>
             </p>
             <p className="text-sm text-label-tertiary leading-relaxed mt-3">
@@ -106,9 +106,9 @@ export default function SampleReportPage() {
                     Peak demand, limited competition, rates at or above $175/night, 70–75% occupancy.
                   </p>
                   <p className="text-label-primary leading-relaxed">
-                    Gross revenue could run 20–25% above baseline. Cash flow gets comfortable. But you can&apos;t count on this. Favorable conditions don&apos;t last forever.
+                    Gross revenue could run 20–25% above baseline. Cash flow gets comfortable. But you can't count on this. Favorable conditions don't last forever.
                   </p>
-                  <p className="text-sm text-amber-600 italic">Don&apos;t bank on this. It&apos;s not typical.</p>
+                  <p className="text-sm text-amber-600 italic">Don't bank on this. It's not typical.</p>
                 </div>
               </div>
             ))}
@@ -164,7 +164,7 @@ export default function SampleReportPage() {
           <div className="relative p-6 rounded-2xl bg-rose-50/50 border-2 border-rose-200">
             <div className="sample-report-blur space-y-3">
               <p><strong>Monthly cash bleed:</strong> Roughly $400–$520/month depending on actual performance.</p>
-              <p><strong>Duration:</strong> Stress lasts 6–18 months. Markets don&apos;t bounce overnight.</p>
+              <p><strong>Duration:</strong> Stress lasts 6–18 months. Markets don't bounce overnight.</p>
               <p>Carrying a negative-cash-flow STR is draining. Financial and mental load. Right when you hoped for passive income.</p>
               <p>Survivable with reserves. Not comfortable. Every negative month erodes your cushion.</p>
             </div>
@@ -209,7 +209,7 @@ export default function SampleReportPage() {
           <div className="relative p-6 rounded-2xl bg-accent/5 border border-accent/20">
             <div className="sample-report-blur">
               <p className="text-label-primary leading-relaxed text-lg font-medium">
-                My take: pause unless you&apos;ve got strong reserves and conviction. Most disciplined buyers pass on borderline when better deals exist. Reasonable to walk.
+                My take: pause unless you've got strong reserves and conviction. Most disciplined buyers pass on borderline when better deals exist. Reasonable to walk.
               </p>
             </div>
             <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-surface-elevated/95">

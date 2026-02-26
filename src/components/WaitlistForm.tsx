@@ -59,7 +59,7 @@ export function WaitlistForm({ sourcePath, mode, onClose }: WaitlistFormProps) {
     return (
       <div className={mode === "modal" ? "text-center py-4" : ""}>
         <p className="text-lg font-medium text-label-primary">
-          You&apos;re on the list. We&apos;ll email you as soon as reports are live.
+          You're on the list. We'll email you as soon as reports are live.
         </p>
         {mode === "modal" && onClose && (
           <button
@@ -82,7 +82,7 @@ export function WaitlistForm({ sourcePath, mode, onClose }: WaitlistFormProps) {
             Get notified when reports open
           </h2>
           <p className="text-sm text-label-secondary mb-6">
-            Payments are temporarily unavailable while we complete standard business verification. Join the list and we&apos;ll email you when reports are live.
+            Payments are temporarily unavailable while we complete standard business verification. Join the list and we'll email you when reports are live.
           </p>
         </>
       )}

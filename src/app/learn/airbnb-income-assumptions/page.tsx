@@ -44,7 +44,7 @@ export default function AirbnbIncomeAssumptionsPage() {
           The two numbers that kill most STR deals
         </h1>
         <p className="text-lg text-label-secondary leading-relaxed mb-8">
-          Occupancy and nightly rate. That&apos;s where optimism meets reality. And where most buyers go wrong. Here&apos;s what gets people in trouble.
+          Occupancy and nightly rate. That's where optimism meets reality. And where most buyers go wrong. Here's what gets people in trouble.
         </p>
 
         <section className="mb-8">
@@ -70,7 +70,7 @@ export default function AirbnbIncomeAssumptionsPage() {
             demand. Using comps without stress-testing lower? You're exposed.
           </p>
           <p className="text-label-secondary">
-            We don&apos;t invent comps. We apply conservative defaults when you can&apos;t verify. And we tell you what we assumed.
+            We don't invent comps. We apply conservative defaults when you can't verify. And we tell you what we assumed.
           </p>
         </section>
 
@@ -79,7 +79,7 @@ export default function AirbnbIncomeAssumptionsPage() {
             Stress-test it yourself
           </h2>
           <p className="text-label-secondary mb-4">
-            Run the numbers at 55% occupancy. Drop the rate 15%. See what breaks. If the deal collapses, you&apos;re banking on best case. Smart buyers pause or walk.
+            Run the numbers at 55% occupancy. Drop the rate 15%. See what breaks. If the deal collapses, you're banking on best case. Smart buyers pause or walk.
           </p>
           <p className="text-label-secondary">
             We do this automatically. Conservative caps, three scenarios (strong,

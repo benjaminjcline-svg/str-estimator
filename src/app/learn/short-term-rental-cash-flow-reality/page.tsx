@@ -42,7 +42,7 @@ export default function ShortTermRentalCashFlowRealityPage() {
           Where the gap between projected income and your bank account kills deals
         </h1>
         <p className="text-lg text-label-secondary leading-relaxed mb-8">
-          Projected STR income vs. what actually hits. That&apos;s where most deals die. Here&apos;s what breaks first. And how to plan for it.
+          Projected STR income vs. what actually hits. That's where most deals die. Here's what breaks first. And how to plan for it.
         </p>
 
         <section className="mb-8">
@@ -84,7 +84,7 @@ export default function ShortTermRentalCashFlowRealityPage() {
             overnight.
           </p>
           <p className="text-label-secondary">
-            The question isn&apos;t whether a weak year can happen. It&apos;s whether you survive it. If the deal only works in a strong year, it&apos;s not built to last.
+            The question isn't whether a weak year can happen. It's whether you survive it. If the deal only works in a strong year, it's not built to last.
           </p>
         </section>
 

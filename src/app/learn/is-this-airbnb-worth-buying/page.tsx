@@ -68,7 +68,7 @@ export default function IsThisAirbnbWorthBuyingPage() {
             your assumptions. A weak year? Meaningful stress.
           </p>
           <p className="text-label-secondary">
-            Only proceed if you&apos;ve got 6–12 months of reserves and can stomach break-even. Otherwise, pass. Find something stronger.
+            Only proceed if you've got 6–12 months of reserves and can stomach break-even. Otherwise, pass. Find something stronger.
           </p>
         </section>
 
@@ -77,7 +77,7 @@ export default function IsThisAirbnbWorthBuyingPage() {
             Walk away
           </h2>
           <p className="text-label-secondary mb-4">
-            The deal fails under conservative assumptions. Revenue vs. costs. The gap&apos;s too big. Walking away means you&apos;re not subsidizing a property or hoping optimistic projections pan out.
+            The deal fails under conservative assumptions. Revenue vs. costs. The gap's too big. Walking away means you're not subsidizing a property or hoping optimistic projections pan out.
           </p>
           <p className="text-label-secondary">
             Reasonable call. Most disciplined buyers wouldn't take on something

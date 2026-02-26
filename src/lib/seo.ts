@@ -7,9 +7,9 @@ import { siteUrl } from "./site-config";
 
 export const seoConfig = {
   siteName: "STR Estimator",
-  defaultTitle: "STR Estimator | Short-Term Rental Cash Flow & Deal Analysis",
+  defaultTitle: "Conservative STR Calculator & Deal Analysis Before You Buy | STR Estimator",
   defaultDescription:
-    "Stress-test your STR deal before you buy. Honest short-term rental cash flow analysis and Airbnb income reality check. Proceed, Borderline, or Walk Away. $49.",
+    "Conservative STR calculator and Airbnb investment reality check. STR deal analysis with stress tests, fragility flags, and a clear verdict. Proceed, Borderline, or Walk Away.",
   twitterHandle: "@strestimator",
   locale: "en_US",
 } as const;

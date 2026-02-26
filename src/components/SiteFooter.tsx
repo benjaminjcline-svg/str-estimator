@@ -13,24 +13,24 @@ const footerLinks = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-gray-100 bg-surface mt-auto">
-      <div className="max-w-[1440px] mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 min-[1025px]:grid-cols-[min(100%,380px)_1fr] min-[1200px]:grid-cols-[min(100%,520px)_1fr] gap-8 min-[1025px]:gap-16">
+    <footer className="border-t border-gray-200/60 bg-surface mt-auto">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-6 py-14 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 min-[1025px]:grid-cols-[min(100%,380px)_1fr] min-[1200px]:grid-cols-[min(100%,520px)_1fr] gap-10 min-[1025px]:gap-20">
           <div className="min-[1025px]:col-span-1">
-            <p className="font-semibold text-label-primary mb-4">{PRODUCT_NAME}</p>
-            <p className="text-sm text-label-secondary">
+            <p className="font-semibold text-label-primary mb-3 text-[1.0625rem]">{PRODUCT_NAME}</p>
+            <p className="text-sm text-label-secondary leading-relaxed max-w-sm">
               A sober second look at short-term rental income. The numbers. The verdict. No hype.
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row gap-8 min-[1025px]:gap-16">
+          <div className="flex flex-col sm:flex-row gap-10 min-[1025px]:gap-20">
             <div>
-              <p className="font-semibold text-label-primary mb-4">Product</p>
-              <ul className="space-y-2">
+              <p className="font-semibold text-label-primary mb-3 text-[0.8125rem] uppercase tracking-wider">Product</p>
+              <ul className="space-y-2.5">
                 {footerLinks.slice(0, 4).map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm font-medium text-accent hover:text-accent-hover transition-colors duration-button ease-friction"
+                      className="text-sm font-medium text-label-secondary hover:text-accent transition-colors duration-200"
                     >
                       {link.label}
                     </Link>
@@ -38,14 +38,14 @@ export function SiteFooter() {
                 ))}
               </ul>
             </div>
-            <div className="min-[1025px]:ml-[240px]">
-              <p className="font-semibold text-label-primary mb-4">Resources</p>
-              <ul className="space-y-2">
+            <div className="min-[1025px]:ml-[200px]">
+              <p className="font-semibold text-label-primary mb-3 text-[0.8125rem] uppercase tracking-wider">Resources</p>
+              <ul className="space-y-2.5">
                 {footerLinks.slice(4).map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm font-medium text-accent hover:text-accent-hover transition-colors duration-button ease-friction"
+                      className="text-sm font-medium text-label-secondary hover:text-accent transition-colors duration-200"
                     >
                       {link.label}
                     </Link>
@@ -55,19 +55,19 @@ export function SiteFooter() {
             </div>
           </div>
         </div>
-        <div className="mt-12 pt-8 border-t border-gray-100 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-4">
-          <div className="text-sm text-label-tertiary">
-            <p className="text-label-primary">{LEGAL_ATTRIBUTION}</p>
+        <div className="mt-14 pt-8 border-t border-gray-200/60 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-5">
+          <div className="text-sm text-label-tertiary leading-relaxed">
+            <p className="text-label-primary font-medium">{LEGAL_ATTRIBUTION}</p>
             <p>{COPYRIGHT_LINE}</p>
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-1">
-            <Link href="/terms" className="text-sm text-label-tertiary hover:text-label-secondary transition-colors duration-button ease-friction">
+            <Link href="/terms" className="text-sm text-label-tertiary hover:text-label-secondary transition-colors duration-200">
               Terms of Service
             </Link>
-            <Link href="/privacy" className="text-sm text-label-tertiary hover:text-label-secondary transition-colors duration-button ease-friction">
+            <Link href="/privacy" className="text-sm text-label-tertiary hover:text-label-secondary transition-colors duration-200">
               Privacy Policy
             </Link>
-            <Link href="/refund" className="text-sm text-label-tertiary hover:text-label-secondary transition-colors duration-button ease-friction">
+            <Link href="/refund" className="text-sm text-label-tertiary hover:text-label-secondary transition-colors duration-200">
               Refund Policy
             </Link>
           </div>

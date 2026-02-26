@@ -33,7 +33,7 @@ export default function PrivacyPage() {
         </p>
 
         <p className="text-label-secondary leading-relaxed mb-6">
-          {PRODUCT_NAME} is operated by {LEGAL_NAME} (&quot;Company&quot;, &quot;we&quot;, &quot;us&quot;). This policy applies to your use of {PRODUCT_NAME} and any purchase of reports or subscriptions offered by the Company.
+          {PRODUCT_NAME} is operated by {LEGAL_NAME} ({"(\"Company\", \"we\", \"us\")"}). This policy applies to your use of {PRODUCT_NAME} and any purchase of reports or subscriptions offered by the Company.
         </p>
         <p className="text-label-secondary leading-relaxed mb-8">
           {LEGAL_NAME} is the entity responsible for processing your information as described in this policy.
@@ -79,7 +79,7 @@ export default function PrivacyPage() {
             We do not sell your personal information. We may share data with:
           </p>
           <ul className="list-disc pl-6 text-label-secondary space-y-2 mb-4">
-            <li><strong>Stripe.</strong> Our payment processor. Stripe&apos;s privacy policy applies to payment data they process.</li>
+            <li><strong>Stripe.</strong> Our payment processor. Stripe's privacy policy applies to payment data they process.</li>
             <li><strong>Service providers.</strong> Hosting, email delivery, and analytics. They process data on our behalf under contractual obligations.</li>
             <li><strong>Legal requirements.</strong> When required by law, court order, or to protect our rights, safety, or property.</li>
           </ul>
@@ -117,7 +117,7 @@ export default function PrivacyPage() {
         <section className="mb-10">
           <h2 className="text-xl font-semibold text-label-primary mb-4">9. Changes</h2>
           <p className="text-label-secondary leading-relaxed mb-4">
-            We may update this Privacy Policy from time to time. We will post the updated policy and change the &quot;Last updated&quot; date. Continued use of the Service after changes constitutes acceptance.
+            We may update this Privacy Policy from time to time. We will post the updated policy and change the {"\"Last updated\""} date. Continued use of the Service after changes constitutes acceptance.
           </p>
         </section>
 

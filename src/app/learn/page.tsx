@@ -12,6 +12,24 @@ export const metadata: Metadata = {
 
 const evergreenArticles = [
   {
+    href: "/learn/why-str-calculators-overestimate",
+    title: "Why STR Calculators Overestimate Revenue",
+    excerpt:
+      "Data lag, optimistic defaults, and how to sanity-check your STR projections before you buy.",
+  },
+  {
+    href: "/learn/str-seasonality-reality-check",
+    title: "STR Seasonality Reality Check for Underwriting",
+    excerpt:
+      "Why seasonality breaks deals. How to stress-test for slow months instead of assuming peak year-round.",
+  },
+  {
+    href: "/learn/str-fragility-checklist",
+    title: "STR Fragility Checklist: What Breaks First in Tight Deals",
+    excerpt:
+      "What breaks first when margins are thin. Occupancy, rate, expenses, and how to stress-test.",
+  },
+  {
     href: "/learn/airbnb-income-assumptions",
     title: "Airbnb Income Assumptions: What Buyers Get Wrong",
     excerpt:
@@ -50,16 +68,16 @@ export default async function LearnPage() {
       : [{ date: today, headline: "STR news" }];
 
   return (
-    <main className="max-w-2xl mx-auto px-6 py-16 sm:py-24">
+    <main className="max-w-2xl mx-auto px-5 sm:px-6 py-14 sm:py-20 min-[1025px]:py-24">
       <article className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
-        <h1 className="font-sans text-3xl sm:text-4xl font-semibold text-label-primary tracking-tight mb-4">
+        <h1 className="font-sans text-3xl sm:text-4xl min-[1200px]:text-[2.25rem] font-semibold text-label-primary tracking-tight mb-5">
           What most buyers never learn
         </h1>
-        <p className="text-lg text-label-secondary mb-12">
+        <p className="text-lg text-label-secondary leading-relaxed mb-14">
           Occupancy traps. Stale comps. Where the hype falls apart. Read this before you run your numbers.
         </p>
 
-        <div className="space-y-8 overflow-visible">
+        <div className="space-y-6 overflow-visible">
           {evergreenArticles.map((article) => (
             <LearnCard
               key={article.href}
@@ -70,15 +88,15 @@ export default async function LearnPage() {
           ))}
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-100">
-          <h2 className="text-sm font-medium text-label-secondary mb-3">Daily market briefs</h2>
-          <p className="text-sm text-label-tertiary mb-4">Newest first. Older briefs stay in the list.</p>
-          <div className="overflow-hidden">
+        <div className="mt-14 pt-10 border-t border-gray-200/60">
+          <h2 className="text-xs font-semibold text-label-secondary uppercase tracking-wider mb-3">Daily market briefs</h2>
+          <p className="text-sm text-label-tertiary mb-4 leading-relaxed">Newest first. Older briefs stay in the list.</p>
+          <div className="overflow-hidden rounded-xl border border-gray-200/60 bg-surface-elevated shadow-card">
             {listRows.map(({ date, headline }) => (
               <Link
                 key={date}
                 href={`/learn/brief/${date}`}
-                className="flex items-center gap-2 py-3.5 border-b border-gray-100 last:border-b-0 hover:text-accent transition-colors duration-button ease-friction group min-w-0"
+                className="flex items-center gap-2 px-4 py-3.5 border-b border-gray-100 last:border-b-0 hover:bg-gray-50/80 hover:text-accent transition-colors duration-200 group min-w-0"
               >
                 <span className="shrink-0 w-[11rem] text-label-primary group-hover:text-accent transition-colors duration-button ease-friction">
                   {formatBriefDate(date)}
@@ -95,15 +113,15 @@ export default async function LearnPage() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-100">
+        <div className="mt-14 pt-10 border-t border-gray-200/60">
           <PrimaryCTA sourcePath="/learn">
-          <Link
-            href="/#analyze"
-            className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-medium transition-all duration-button ease-friction hover:bg-accent-hover active:scale-[0.94]"
-          >
-            Check the numbers before you buy · $49
-          </Link>
-        </PrimaryCTA>
+            <Link
+              href="/#analyze"
+              className="inline-flex items-center min-h-[48px] px-6 py-3 rounded-xl bg-accent text-white font-semibold shadow-button transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_2px_8px_rgba(0,113,227,0.25)] active:scale-[0.98]"
+            >
+              Check the numbers before you buy · $49
+            </Link>
+          </PrimaryCTA>
         </div>
       </article>
     </main>

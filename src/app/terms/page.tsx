@@ -40,13 +40,13 @@ export default function TermsPage() {
         </p>
 
         <p className="text-label-secondary leading-relaxed mb-6">
-          {PRODUCT_NAME} is operated by {LEGAL_NAME} (&quot;Company&quot;, &quot;we&quot;, &quot;us&quot;). These terms apply to your use of {PRODUCT_NAME} and any purchase of reports or subscriptions offered by the Company.
+          {PRODUCT_NAME} is operated by {LEGAL_NAME} ({"(\"Company\", \"we\", \"us\")"}). These terms apply to your use of {PRODUCT_NAME} and any purchase of reports or subscriptions offered by the Company.
         </p>
 
         <section className="mb-10">
           <h2 className="text-xl font-semibold text-label-primary mb-4">1. Agreement to Terms</h2>
           <p className="text-label-secondary leading-relaxed mb-4">
-            By accessing or using {PRODUCT_NAME} (&quot;Service&quot;), you agree to be bound by these Terms of Service (&quot;Terms&quot;). If you do not agree to these Terms, do not use the Service.
+            By accessing or using {PRODUCT_NAME} ({"(\"Service\")"}), you agree to be bound by these Terms of Service ({"(\"Terms\")"}). If you do not agree to these Terms, do not use the Service.
           </p>
         </section>
 
@@ -98,7 +98,7 @@ export default function TermsPage() {
             <strong>TO THE MAXIMUM EXTENT PERMITTED BY LAW:</strong>
           </p>
           <ul className="list-disc pl-6 text-label-secondary space-y-2 mb-4">
-            <li>The Service is provided &quot;AS IS&quot; and &quot;AS AVAILABLE&quot; without warranties of any kind, express or implied.</li>
+            <li>The Service is provided {"\"AS IS\""} and {"\"AS AVAILABLE\""} without warranties of any kind, express or implied.</li>
             <li>We disclaim all warranties, including merchantability, fitness for a particular purpose, and non-infringement.</li>
             <li>Our total liability to you for any claim arising from or related to the Service shall not exceed the amount you paid us in the twelve (12) months preceding the claim, or fifty dollars ($50), whichever is greater.</li>
             <li>We are not liable for any indirect, incidental, special, consequential, or punitive damages, including lost profits, lost data, or business interruption, even if we have been advised of the possibility of such damages.</li>
@@ -109,21 +109,21 @@ export default function TermsPage() {
         <section className="mb-10">
           <h2 className="text-xl font-semibold text-label-primary mb-4">8. Indemnification</h2>
           <p className="text-label-secondary leading-relaxed mb-4">
-            You agree to indemnify, defend, and hold harmless {LEGAL_NAME} and its affiliates, officers, and agents from any claims, damages, losses, or expenses (including reasonable attorneys&apos; fees) arising from your use of the Service, your violation of these Terms, or your violation of any third-party rights.
+            You agree to indemnify, defend, and hold harmless {LEGAL_NAME} and its affiliates, officers, and agents from any claims, damages, losses, or expenses (including reasonable attorneys' fees) arising from your use of the Service, your violation of these Terms, or your violation of any third-party rights.
           </p>
         </section>
 
         <section className="mb-10">
           <h2 className="text-xl font-semibold text-label-primary mb-4">9. Dispute Resolution</h2>
           <p className="text-label-secondary leading-relaxed mb-4">
-            Any dispute arising from these Terms or the Service shall be resolved by binding arbitration in accordance with the rules of the American Arbitration Association, except that either party may seek relief in small claims court for disputes within that court&apos;s jurisdiction. You agree to waive any right to a jury trial and to participate in a class action. The prevailing party may recover reasonable attorneys&apos; fees.
+            Any dispute arising from these Terms or the Service shall be resolved by binding arbitration in accordance with the rules of the American Arbitration Association, except that either party may seek relief in small claims court for disputes within that court's jurisdiction. You agree to waive any right to a jury trial and to participate in a class action. The prevailing party may recover reasonable attorneys' fees.
           </p>
         </section>
 
         <section className="mb-10">
           <h2 className="text-xl font-semibold text-label-primary mb-4">10. Modifications</h2>
           <p className="text-label-secondary leading-relaxed mb-4">
-            We may modify these Terms at any time. We will post the updated Terms and update the &quot;Last updated&quot; date. Your continued use of the Service after changes constitutes acceptance of the modified Terms. If you do not agree, discontinue use and contact us for a refund if applicable under our refund policy.
+            We may modify these Terms at any time. We will post the updated Terms and update the {"\"Last updated\""} date. Your continued use of the Service after changes constitutes acceptance of the modified Terms. If you do not agree, discontinue use and contact us for a refund if applicable under our refund policy.
           </p>
         </section>
 

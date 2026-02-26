@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { trackCTAClick } from "@/lib/analytics";
 import { WaitlistForm } from "./WaitlistForm";
 
 export type WaitlistCTAProps = {
@@ -21,14 +22,14 @@ export function WaitlistCTA({
     return (
       <div className={className}>
         <h2 className="text-lg font-semibold text-label-primary tracking-tight mb-4">
-          Early access to STR reports
+          Get a conservative reality check
         </h2>
         <p className="text-sm text-label-secondary mb-4 max-w-md">
-          Designed for buyers evaluating a deal right now.
+          Stress-test your deal. We'll email you when reports are live.
         </p>
         <WaitlistForm sourcePath={sourcePath} mode="inline" />
         <p className="text-xs text-label-tertiary mt-4 max-w-md">
-          Payments are temporarily unavailable while we complete standard business verification. Join the list and we&apos;ll email you when reports are live.
+          Payments are temporarily unavailable while we complete standard business verification. Join the list and we'll email you when reports are live.
         </p>
         {showBadge && (
           <p className="text-xs text-label-tertiary mt-2">Payments temporarily unavailable</p>
@@ -41,9 +42,10 @@ export function WaitlistCTA({
     <div className={className}>
       <Link
         href="/#analyze"
-        className="inline-block px-6 py-3 rounded-xl bg-accent text-white font-medium transition-all duration-button ease-friction hover:bg-accent-hover active:scale-[0.94]"
+        className="inline-flex items-center min-h-[48px] px-6 py-3 rounded-xl bg-accent text-white font-semibold shadow-button transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_2px_8px_rgba(0,113,227,0.25)] active:scale-[0.98]"
+        onClick={() => trackCTAClick("waitlist_button")}
       >
-        Reserve early access
+        Get notified when reports are live
       </Link>
       {showBadge && (
         <p className="text-xs text-label-tertiary mt-2">Payments temporarily unavailable</p>
