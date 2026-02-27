@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LearnCard } from "@/components/LearnCard";
 import { PrimaryCTA } from "@/components/PrimaryCTA";
-import { getCachedBriefList, getTodayDateString } from "@/lib/content-engine/brief-service";
 import { canonicalUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -63,24 +62,7 @@ const evergreenArticles = [
   },
 ];
 
-function formatBriefDate(dateStr: string): string {
-  const d = new Date(dateStr);
-  return d.toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
-}
-
-export default async function LearnPage() {
-  const today = getTodayDateString();
-  const briefList = await getCachedBriefList();
-  // Show all stored briefs, newest first. No limit—older briefs stay accessible.
-  const listRows =
-    briefList.length > 0
-      ? briefList
-      : [{ date: today, headline: "STR news" }];
-
+export default function LearnPage() {
   return (
     <main className="max-w-2xl mx-auto px-5 sm:px-6 py-14 sm:py-20 min-[1025px]:py-24">
       <article className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
@@ -100,31 +82,6 @@ export default async function LearnPage() {
               excerpt={article.excerpt}
             />
           ))}
-        </div>
-
-        <div className="mt-14 pt-10 border-t border-gray-200/60">
-          <h2 className="text-sm font-semibold text-label-secondary uppercase tracking-wider mb-3">Daily market briefs</h2>
-          <p className="text-sm text-label-tertiary mb-4 leading-relaxed">Newest first. Older briefs stay in the list.</p>
-          <div className="overflow-hidden rounded-xl border border-gray-200/60 bg-surface-elevated shadow-card">
-            {listRows.map(({ date, headline }) => (
-              <Link
-                key={date}
-                href={`/learn/brief/${date}`}
-                className="flex items-center gap-2 px-4 py-3.5 border-b border-gray-100 last:border-b-0 hover:bg-gray-50/80 hover:text-accent transition-colors duration-200 group min-w-0"
-              >
-                <span className="shrink-0 w-[11rem] text-label-primary group-hover:text-accent transition-colors duration-button ease-friction">
-                  {formatBriefDate(date)}
-                </span>
-                <span className="shrink-0 text-label-tertiary" aria-hidden>·</span>
-                <span className="min-w-0 flex-1 truncate text-label-primary group-hover:text-accent transition-colors duration-button ease-friction">
-                  {headline}
-                </span>
-                <svg className="w-5 h-5 text-label-tertiary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            ))}
-          </div>
         </div>
 
         <div className="mt-14 pt-10 border-t border-gray-200/60">
